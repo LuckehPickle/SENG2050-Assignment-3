@@ -1,0 +1,8 @@
+body {
+  overflow-x: hidden;
+  width: 100%;
+
+  &.no-scroll {
+    overflow: hidden;
+  }
+}
