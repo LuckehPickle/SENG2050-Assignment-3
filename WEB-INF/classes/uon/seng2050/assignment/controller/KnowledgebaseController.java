@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import uon.seng2050.assignment.exception.HttpException;
 import uon.seng2050.assignment.exception.HttpStatusCode;
-import uon.seng2050.assignment.util.PageUtil;
 
 /**
  * @since 2018-05-21
@@ -28,33 +27,41 @@ public class KnowledgebaseController extends HttpServlet {
       throws ServletException, IOException {
 
     String method = request.getMethod();
-    long startTime = Controller.logRequestStart(request);
+    long requestStart = Controller.logRequestStart(request);
 
-    try {
+    // TODO get article primary key from URL
 
-      switch (method) {
-        case "GET":
-          handleIndex(request, response);
-          break;
-        case "POST":
-          handlePublish(request, response);
-          break;
-        case "PATCH":
-        case "PUT":
-          handleUpdate(request, response);
-          break;
-        default:
-          throw new HttpException(
-              HttpStatusCode.METHOD_NOT_ALLOWED,
-              String.format("Sorry, you cannot use the %s method here.", method)
-          );
-      }
-
-    } catch (HttpException e) {
-      PageUtil.renderError(e, request, response);
+    switch (method) {
+      case "GET":
+        handleIndex(request, response);
+        break;
+      case "POST":
+        handlePublish(request, response);
+        break;
+      case "PATCH":
+      case "PUT":
+        handleUpdate(request, response);
+        break;
+      default:
+        throw new HttpException(
+            HttpStatusCode.METHOD_NOT_ALLOWED, requestStart,
+            String.format("Sorry, you cannot use the %s method here.", method)
+        );
     }
 
-    Controller.logRequestEnd(startTime, request);
+    Controller.logRequestEnd(requestStart, response);
+
+  }
+
+  private void handleIndex(HttpServletRequest request, HttpServletResponse response) {
+
+  }
+
+  private void handlePublish(HttpServletRequest request, HttpServletResponse response) {
+
+  }
+
+  private void handleUpdate(HttpServletRequest request, HttpServletResponse response) {
 
   }
 

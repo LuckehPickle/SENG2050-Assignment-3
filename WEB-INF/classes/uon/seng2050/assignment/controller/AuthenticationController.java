@@ -29,29 +29,23 @@ public class AuthenticationController extends HttpServlet {
       throws ServletException, IOException {
 
     String method = request.getMethod();
-    long startTime = Controller.logRequestStart(request);
+    long requestStart = Controller.logRequestStart(request);
 
-    try {
-
-      switch (method) {
-        case "POST":
-          handleLogin(request, response);
-          break;
-        case "DELETE":
-          handleLogout(request, response);
-          break;
-        default:
-          throw new HttpException(
-              HttpStatusCode.METHOD_NOT_ALLOWED,
-              String.format("Sorry, you cannot use the %s method here.", method)
-          );
-      }
-
-    } catch (HttpException e) {
-      PageUtil.renderError(e, request, response);
+    switch (method) {
+      case "POST":
+        handleLogin(request, response);
+        break;
+      case "DELETE":
+        handleLogout(request, response);
+        break;
+      default:
+        throw new HttpException(
+            HttpStatusCode.METHOD_NOT_ALLOWED, requestStart,
+            String.format("Sorry, you cannot use the %s method here.", method)
+        );
     }
 
-    Controller.logRequestEnd(startTime, request);
+    Controller.logRequestEnd(requestStart, response);
 
   }
 

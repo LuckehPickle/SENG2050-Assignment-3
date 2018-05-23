@@ -6,8 +6,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import uon.seng2050.assignment.View;
-import uon.seng2050.assignment.util.PageUtil;
+import uon.seng2050.assignment.exception.HttpException;
+import uon.seng2050.assignment.exception.HttpStatusCode;
+import uon.seng2050.assignment.util.Logger;
 
 /**
  * A controller which manages requests to the index of the website.
@@ -28,7 +29,11 @@ public class WelcomeController extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
-    PageUtil.render(View.INDEX, request, response);
+    String method = request.getMethod();
+    long requestStart = Controller.logRequestStart(request);
+
+//    PageUtil.render(View.INDEX, request, response);
+    throw new HttpException(HttpStatusCode.PAGE_NOT_FOUND, requestStart, "Hello world");
   }
 
 }
