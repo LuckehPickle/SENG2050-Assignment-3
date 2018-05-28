@@ -11,6 +11,7 @@ import uon.seng2050.assignment.util.PageUtil;
 public enum View {
 
   INDEX("index"),
+  LOGIN("session/login"),
   ERROR("error");
 
   private static final String PATH_FORMAT = "/WEB-INF/views/%s.jsp";

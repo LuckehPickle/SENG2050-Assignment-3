@@ -1,20 +1,65 @@
 package uon.seng2050.assignment.controller;
 
+import java.io.IOException;
 import java.util.Map;
 import java.util.StringJoiner;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import uon.seng2050.assignment.View;
+import uon.seng2050.assignment.exception.HttpException;
 import uon.seng2050.assignment.exception.HttpStatusCode;
 import uon.seng2050.assignment.util.Logger;
+import uon.seng2050.assignment.util.PageUtil;
 
 /**
- * A class that contains some standard functions for dealing with controllers.
+ * A standard controller class, containing for the most part simply logging functions.
  *
  * @since 2018-05-21
  */
-public class Controller {
+abstract class Controller extends HttpServlet {
+
 
   private static Logger LOGGER = new Logger();
+
+
+  /**
+   * Catches all HTTP requests.
+   *
+   * @param request HTTP request object
+   * @param response HTTP response object
+   */
+  @Override
+  protected void service(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+
+    long start = logRequestStart(request);
+
+    try {
+      handleRequest(request, response);
+    } catch (HttpException exception) {
+      // Gracefully handle HTTP exception
+      response.setStatus(exception.getStatusCode());
+      request.setAttribute("message", exception.getMessage());
+      PageUtil.render(View.ERROR, request, response);
+    }
+
+    logRequestEnd(start, response);
+
+  }
+
+
+  /**
+   * Handles all requests to this controller, and delegates them to more specific handlers.
+   *
+   * @param request HTTP request object
+   * @param response HTTP response object
+   * @throws HttpException if an exception state is encountered that would typically return a HTTP
+   * status code.
+   */
+  protected abstract void handleRequest(HttpServletRequest request, HttpServletResponse response)
+      throws HttpException, ServletException, IOException;
 
 
   /**
@@ -23,7 +68,7 @@ public class Controller {
    * @param request HTTP request object.
    * @return The current time in milliseconds.
    */
-  static long logRequestStart(HttpServletRequest request) {
+  private long logRequestStart(HttpServletRequest request) {
 
     LOGGER.info("\nStarted %s \"%s\"",
         request.getMethod(),
@@ -41,7 +86,7 @@ public class Controller {
    *
    * @param response HTTP response object.
    */
-  static void logRequestEnd(long startTime, HttpServletResponse response) {
+  private void logRequestEnd(long startTime, HttpServletResponse response) {
 
     // Get status
     HttpStatusCode status = HttpStatusCode.fromCode(response.getStatus());
@@ -65,7 +110,7 @@ public class Controller {
    * @param params Parameter map.
    * @see #logRequestStart(HttpServletRequest)
    */
-  private static void logParameters(Map<String, String[]> params) {
+  private void logParameters(Map<String, String[]> params) {
 
     // Ensure params are not empty
     if (params.isEmpty()) {
@@ -79,7 +124,7 @@ public class Controller {
       joiner.add(String.format("%s => %s", key, getParamString(params.get(key))));
     }
 
-    LOGGER.info("Parameters %s", joiner.toString());
+    LOGGER.fine("Parameters %s", joiner.toString());
 
   }
 
@@ -91,7 +136,7 @@ public class Controller {
    * @return String form of paramater array.
    * @see #logParameters(Map)
    */
-  private static String getParamString(String[] params) {
+  private String getParamString(String[] params) {
 
     // Handle basic cases
     if (params.length == 0) {

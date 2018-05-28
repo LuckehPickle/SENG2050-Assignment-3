@@ -1,5 +1,6 @@
 <%@tag description="Standard application layout" pageEncoding="UTF-8" %>
 <%@attribute name="title" fragment="true" %>
+<%@attribute name="bodyClass" fragment="true" %>
 <!DOCTYPE html>
 <html lang="en-AU">
 <head>
@@ -18,7 +19,7 @@
   <link rel="stylesheet" type="text/css"
         href="${pageContext.request.contextPath}/static/styles/app.min.css"/>
 </head>
-<body>
+<body class="<jsp:invoke fragment="bodyClass" />">
   <jsp:doBody/>
 </body>
 </html>

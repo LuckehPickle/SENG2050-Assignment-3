@@ -1,9 +1,85 @@
 .buttons {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: -0.5rem;
+  margin-top: 1.5rem;
 
+  .button,
+  .button-secondary,
+  .button-tertiary {
+    margin: 0.5rem;
+  }
 }
 
 .button,
 .button-secondary,
 .button-tertiary {
-  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  line-height: 1.1;
+  vertical-align: middle;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 16px 26px;
+  @include no-highlight;
+
+  i.material-icons {
+    font-size: 22px;
+    font-weight: normal;
+    margin: -3px 0.75rem;
+
+    // This leaves the icon with a similar amount of padding as compared to bare text
+    &:first-child {
+      margin-left: -8px;
+    }
+
+    &:last-child {
+      margin-right: -8px;
+    }
+  }
+
+  // For buttons that should fill the width of their container
+  &.wide {
+    justify-content: center;
+    width: 100%;
+  }
+
+  &:hover {
+    // Counter-act any :hover underlining.
+    text-decoration: none;
+  }
+}
+
+.button {
+  color: $primary-inverted;
+  background: linear-gradient(90deg, $primary, adjust-hue($primary, 12deg));
+  transition: transform 300ms;
+  transform: translateY(0px);
+
+  // For variants of this button that indicate an action with potentially dangerous consequences.
+  &.danger {
+    color: $danger-inverted;
+    background: $danger;
+  }
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.button-secondary {
+  position: relative;
+  color: darken($primary, 3%);
+  background: none;
+  border: 2px solid $button-border;
+  padding: 14px 24px;
+
+  i.material-icons {
+    color: lighten($primary, 6%);
+  }
 }
