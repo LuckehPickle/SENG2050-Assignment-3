@@ -1,5 +1,7 @@
 package uon.seng2050.assignment.controller;
 
+import java.io.IOException;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import uon.seng2050.assignment.exception.HttpException;
@@ -23,7 +25,7 @@ abstract class AuthenticatedController extends Controller {
    */
   @Override
   protected void handleRequest(HttpServletRequest request, HttpServletResponse response)
-      throws HttpException {
+      throws HttpException, ServletException, IOException {
 
   }
 

@@ -10,7 +10,7 @@
 
       <%-- Header --%>
       <div class="form-header">
-        <h1>Welcome back!</h1>
+        <h1>Secure Login</h1>
         <p class="subtitle">Please enter your account details below.</p>
       </div>
 

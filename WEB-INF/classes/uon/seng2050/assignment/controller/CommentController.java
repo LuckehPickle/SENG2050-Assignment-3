@@ -1,5 +1,7 @@
 package uon.seng2050.assignment.controller;
 
+import java.io.IOException;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,7 +14,7 @@ import uon.seng2050.assignment.exception.MethodNotAllowedException;
  * @see AuthenticatedController
  * @since 2018-05-28
  */
-@WebServlet(urlPatterns = "/comments/")
+@WebServlet(urlPatterns = "/comments")
 public class CommentController extends AuthenticatedController {
 
 
@@ -26,7 +28,7 @@ public class CommentController extends AuthenticatedController {
    */
   @Override
   protected void handleRequest(HttpServletRequest request, HttpServletResponse response)
-      throws HttpException {
+      throws HttpException, ServletException, IOException {
 
     // Call super to authenticate user
     super.handleRequest(request, response);

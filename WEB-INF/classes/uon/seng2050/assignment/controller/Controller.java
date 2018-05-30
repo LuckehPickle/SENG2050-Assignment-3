@@ -21,7 +21,7 @@ import uon.seng2050.assignment.util.PageUtil;
 abstract class Controller extends HttpServlet {
 
 
-  private static Logger LOGGER = new Logger();
+  protected static Logger LOGGER = new Logger();
 
 
   /**
@@ -60,6 +60,23 @@ abstract class Controller extends HttpServlet {
    */
   protected abstract void handleRequest(HttpServletRequest request, HttpServletResponse response)
       throws HttpException, ServletException, IOException;
+
+
+  /**
+   * Parses a request URL and returns an array of parameters encoded in the URL.
+   *
+   * @param request HTTP request object.
+   * @return An array of params.
+   */
+  protected String[] parseUrlParams(HttpServletRequest request) {
+
+    // Retrieve tokens
+    String[] tokens = request.getRequestURI().split("/");
+
+    // Trim servlet name and web app name
+
+
+  }
 
 
   /**

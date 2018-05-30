@@ -29,7 +29,7 @@ public class WelcomeController extends AuthenticatedController {
    */
   @Override
   protected void handleRequest(HttpServletRequest request, HttpServletResponse response)
-      throws HttpException {
+      throws HttpException, ServletException, IOException {
 
     // Call super to authenticate user
     super.handleRequest(request, response);

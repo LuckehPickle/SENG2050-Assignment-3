@@ -12,6 +12,8 @@ public enum View {
 
   INDEX("index"),
   LOGIN("session/login"),
+  ISSUES("issues/index"),
+  NEW_ISSUE("issues/new"),
   ERROR("error");
 
   private static final String PATH_FORMAT = "/WEB-INF/views/%s.jsp";

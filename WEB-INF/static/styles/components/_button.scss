@@ -56,11 +56,9 @@
 
 .button {
   color: $primary-inverted;
-  background: linear-gradient(90deg, $primary, adjust-hue($primary, 12deg));
+  background: linear-gradient(45deg, $primary, adjust-hue($primary, 12deg));
   transition: transform 300ms;
   transform: translateY(0px);
-  //border: 1px solid darken($primary, 12%);
-  //text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 
   // For variants of this button that indicate an action with potentially dangerous consequences.
   &.danger {
