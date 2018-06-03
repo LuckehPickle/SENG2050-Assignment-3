@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 import uon.seng2050.assignment.View;
 import uon.seng2050.assignment.exception.HttpException;
 import uon.seng2050.assignment.exception.MethodNotAllowedException;
-import uon.seng2050.assignment.util.PageUtil;
 
 /**
  * A controller which handles all requests related to issues.
@@ -43,9 +42,10 @@ public class IssueController extends AuthenticatedController {
         if (tokens.length == 2) {
           renderIndex(request, response);
         } else {
-          String param = tokens[2];
-          if (param.equals("new")) {
+          if (tokens[2].equals("new")) {
             renderNew(request, response);
+          } else {
+            renderIssue(tokens[2], request, response);
           }
         }
         break;
@@ -57,7 +57,7 @@ public class IssueController extends AuthenticatedController {
 
 
   /**
-   * Renders to index page. Should be mapped to GET requests at /issues/
+   * Renders to index page. GET /issues/
    *
    * @param request HTTP request object
    * @param response HTTP response object
@@ -67,7 +67,27 @@ public class IssueController extends AuthenticatedController {
     render(View.ISSUES, request, response);
   }
 
+
+  /**
+   * Renders a new issue page. GET /issues/new
+   *
+   * @param request HTTP request object
+   * @param response HTTP response object
+   */
   private void renderNew(HttpServletRequest request, HttpServletResponse response) {
+
+  }
+
+
+  /**
+   * Renders a particular issue. GET /issue/:id
+   *
+   * @param id The desired issue id, taken from the request URL.
+   * @param request HTTP request object
+   * @param response HTTP response object
+   */
+  private void renderIssue(String id, HttpServletRequest request,
+      HttpServletResponse response) {
 
   }
 
