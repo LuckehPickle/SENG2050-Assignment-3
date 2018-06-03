@@ -40,8 +40,14 @@ public class IssueController extends AuthenticatedController {
 
     switch (method) {
       case "GET":
-        if (tokens.length == 2)
-        renderIndex(request, response);
+        if (tokens.length == 2) {
+          renderIndex(request, response);
+        } else {
+          String param = tokens[2];
+          if (param.equals("new")) {
+            renderNew(request, response);
+          }
+        }
         break;
       default:
         throw new MethodNotAllowedException(method);
@@ -58,7 +64,11 @@ public class IssueController extends AuthenticatedController {
    */
   private void renderIndex(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    PageUtil.render(View.ISSUES, request, response);
+    render(View.ISSUES, request, response);
+  }
+
+  private void renderNew(HttpServletRequest request, HttpServletResponse response) {
+
   }
 
 }

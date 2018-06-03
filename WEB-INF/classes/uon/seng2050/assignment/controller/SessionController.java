@@ -61,7 +61,7 @@ public class SessionController extends Controller {
       throws ServletException, IOException {
 
     // TODO Ensure the user is not already logged in
-    PageUtil.render(View.LOGIN, request, response);
+    render(View.LOGIN, request, response);
   }
 
 

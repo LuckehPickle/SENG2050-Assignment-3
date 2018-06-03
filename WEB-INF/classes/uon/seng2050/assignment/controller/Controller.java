@@ -42,7 +42,7 @@ abstract class Controller extends HttpServlet {
       // Gracefully handle HTTP exception
       response.setStatus(exception.getStatusCode());
       request.setAttribute("message", exception.getMessage());
-      PageUtil.render(View.ERROR, request, response);
+      render(View.ERROR, request, response);
     }
 
     logRequestEnd(start, response);
@@ -74,7 +74,7 @@ abstract class Controller extends HttpServlet {
     String[] tokens = request.getRequestURI().split("/");
 
     // Trim servlet name and web app name
-
+    return tokens;
 
   }
 
@@ -171,6 +171,19 @@ abstract class Controller extends HttpServlet {
 
     return joiner.toString();
 
+  }
+
+
+  /**
+   * Renders a particular view, within the context of a HTTP request and response.
+   *
+   * @param view The view that should be rendered.
+   * @param request HTTP request object.
+   * @param response HTTP response object.
+   */
+  protected void render(View view, HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+    PageUtil.render(view, request, response);
   }
 
 }
