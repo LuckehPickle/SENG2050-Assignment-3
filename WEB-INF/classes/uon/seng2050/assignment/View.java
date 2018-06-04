@@ -14,6 +14,9 @@ public enum View {
   LOGIN("session/login"),
   ISSUES("issues/index"),
   NEW_ISSUE("issues/new"),
+  MAINTENANCE("maintenance/index"),
+  NEW_MAINTENANCE("maintenance/new"),
+  EDIT_MAINTENANCE("maintenance/edit"),
   ERROR("error");
 
   private static final String PATH_FORMAT = "/WEB-INF/views/%s.jsp";
