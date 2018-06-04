@@ -10,7 +10,7 @@ public class Article extends Model {
   private String title;
   private String body;
   private String answer;
-  private int helpfulness;
+  private Integer helpfulness;
   private Date publishedAt;
   private Date updatedAt;
 
@@ -64,11 +64,11 @@ public class Article extends Model {
     this.answer = answer;
   }
 
-  public int getHelpfulness() {
+  public Integer getHelpfulness() {
     return helpfulness;
   }
 
-  public void setHelpfulness(int helpfulness) {
+  public void setHelpfulness(Integer helpfulness) {
     this.helpfulness = helpfulness;
   }
 

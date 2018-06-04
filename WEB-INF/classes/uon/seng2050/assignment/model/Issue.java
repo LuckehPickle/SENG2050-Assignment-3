@@ -14,7 +14,7 @@ public class Issue extends Model {
   private String body;
   private Date createdAt;
   private Date updatedAt;
-  private boolean locked;
+  private Boolean locked;
   //List for comments?
 
   public Issue() {
@@ -39,13 +39,13 @@ public class Issue extends Model {
   }
 
   public enum Category {
-    Network, Software, Hardware, Email, Account, Other
+    NETWORK, SOFTWARE, HARDWARE, EMAIL, ACCOUNT, OTHER
   }
 
   public enum SubCategory {
-    CantConnect, Speed, ConstantDropouts, SlowToLoad, WontLoadAtAll,
-    ComputerWontTurnOn, BlueScreen, DiskDrive, Peripherals, CantSend,
-    CantRecieve, SPAM, PasswordReset, WrongDetails, Other
+    CANT_CONNECT, SPEED, CONSTANT_DROPOUTS, SLOW_TO_LOAD, WONT_LOAD,
+    WONT_BOOT, BLUE_SCREEN, DISK_DRIVE, PERIPHERALS, CANT_SEND,
+    CANT_RECEIVE, SPAM, PASSWORD_RESET, WRONG_DETAILS, OTHER
   }
 
   //GET/SET

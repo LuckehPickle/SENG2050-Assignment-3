@@ -8,7 +8,7 @@ public class Comment extends Model {
 
   private UUID id;
   private String body;
-  private boolean edited;
+  private Boolean edited;
   private Date createdAt;
   private Date updatedAt;
 
