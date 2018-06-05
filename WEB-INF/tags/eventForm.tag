@@ -31,7 +31,7 @@
 
     <div class="buttons">
         <%-- Submit --%>
-        <input type="submit" value="Submit">
+        <input type="submit" value="Submit" class="button">
 
         <%-- Cancel --%>
         <a href="${pageContext.request.contextPath}/maintenance" class="button-tertiary">Cancel</a>

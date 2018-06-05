@@ -14,8 +14,7 @@
 
         <%-- Main Content --%>
         <%-- Button/Link to Access create New Maintenance Event --%>
-        <%-- Link Not Set --%>
-        <a href="${pageContext.request.contextPath}/maintenance/new">New maintenance event</a>
+        <a href="${pageContext.request.contextPath}/maintenance/new" class="button">New maintenance event</a>
 
         <%-- Loads up each event in the database and displays event descriptor: Event(Button) Event Date(String/Date) Event Time(String/Time) --%>
         <p>Event Name</p>
