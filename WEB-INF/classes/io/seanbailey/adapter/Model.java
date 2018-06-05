@@ -1,8 +1,10 @@
 package io.seanbailey.adapter;
 
+import io.seanbailey.adapter.annotation.Excluded;
 import io.seanbailey.adapter.exception.SQLAdapterException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -16,9 +18,11 @@ import java.util.List;
  */
 public abstract class Model {
 
+  @Excluded private List<String> errors = new ArrayList<>();
+  @Excluded private boolean saved = false;
 
-  private List<String> errors = new ArrayList<String>();
-  private boolean saved = false;
+  private Date createdAt;
+  private Date updatedAt;
 
 
   /**
@@ -239,6 +243,22 @@ public abstract class Model {
 
   public void setSaved(boolean saved) {
     this.saved = saved;
+  }
+
+  public Date getCreatedAt() {
+    return createdAt;
+  }
+
+  public void setCreatedAt(Date createdAt) {
+    this.createdAt = createdAt;
+  }
+
+  public Date getUpdatedAt() {
+    return updatedAt;
+  }
+
+  public void setUpdatedAt(Date updatedAt) {
+    this.updatedAt = updatedAt;
   }
 
 }

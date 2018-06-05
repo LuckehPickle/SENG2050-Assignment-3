@@ -151,8 +151,15 @@ public class SQLChain {
    * @param page The page to return.
    * @return An SQLChain for further chaining.
    */
-  public SQLChain page(int page) {
-    this.page = page;
+  public SQLChain page(Integer page) {
+
+    // Set page default
+    if (page != null) {
+      this.page = page;
+    } else {
+      this.page = 1;
+    }
+
     return this;
   }
 

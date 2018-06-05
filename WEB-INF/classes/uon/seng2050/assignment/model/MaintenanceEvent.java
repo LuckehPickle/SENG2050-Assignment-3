@@ -10,25 +10,30 @@ public class MaintenanceEvent extends Model {
   private String description;
   private Date startAt;
   private Date finishAt;
-  private Date createdAt;
-  private Date updatedAt;
 
-  public MaintenanceEvent() {
-    //constructor
-  }
 
+  /**
+   * Default constructor. Set any defaults here. Note: All primitives must have a default.
+   */
+  @SuppressWarnings("unused")
+  public MaintenanceEvent() { }
+
+
+  /**
+   * Attempts to validate the model before any database operations are carried out. Also, be sure to
+   * include an errors using addError(). Errors will be shown to the user on forms.
+   *
+   * @return Whether this model is considered valid.
+   * @see #beforeValidate()
+   * @see #afterValidate()
+   * @see #addError(String)
+   * @since 2018-05-14
+   */
   @Override
   public boolean validate() {
-    boolean isValid = true;
-    //run data checks
-    if(isValid) {
-      return true;
-    }
-    else {
-      addError("Invalid MaintenanceEvent data");
-    }
     return false;
   }
+
 
   //GET/SET
   public UUID getId() {
@@ -63,19 +68,4 @@ public class MaintenanceEvent extends Model {
     this.finishAt = finishAt;
   }
 
-  public Date getCreatedAt() {
-    return createdAt;
-  }
-
-  public void setCreatedAt(Date createdAt) {
-    this.createdAt = createdAt;
-  }
-
-  public Date getUpdatedAt() {
-    return updatedAt;
-  }
-
-  public void setUpdatedAt(Date updatedAt) {
-    this.updatedAt = updatedAt;
-  }
 }

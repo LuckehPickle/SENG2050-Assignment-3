@@ -15,7 +15,7 @@
       </div>
 
       <%-- Login form --%>
-      <form action="${pageContext.request.contextPath}/auth" method="POST" accept-charset="UTF-8">
+      <form action="${pageContext.request.contextPath}/session" method="POST" accept-charset="UTF-8">
         <input name="utf8" value="✓" type="hidden" />
 
         <%-- Username --%>

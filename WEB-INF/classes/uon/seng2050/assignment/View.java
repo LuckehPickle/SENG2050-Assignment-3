@@ -8,12 +8,21 @@ import uon.seng2050.assignment.util.PageUtil;
  * @see PageUtil
  * @since 2018-05-21
  */
+@SuppressWarnings("unused")
 public enum View {
 
-  INDEX("index"),
+  WELCOME("index"),
   LOGIN("session/login"),
   ISSUES("issues/index"),
+  ISSUE("issues/show"),
   NEW_ISSUE("issues/new"),
+  EDIT_ISSUE("issues/edit"),
+  ARTICLES("articles/index"),
+  ARTICLE("articles/show"),
+  EDIT_ARTICLE("articles/edit"),
+  MAINTENANCE("maintenance/index"),
+  NEW_MAINTENANCE("maintenance/new"),
+  EDIT_MAINTENANCE("maintenance/edit"),
   ERROR("error");
 
   private static final String PATH_FORMAT = "/WEB-INF/views/%s.jsp";

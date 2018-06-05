@@ -14,29 +14,41 @@ public class User extends Model {
   private String password;
   private String phoneNumber;
   private Role role;
-  private Date createdAt;
-  private Date updatedAt;
 
+
+  /**
+   * Default constructor. Set any defaults here. Note: All primitives must have a default.
+   */
   public User() {
-    //constructor
   }
 
+
+  /**
+   * AN enum which represents the current role of this user.
+   *
+   * @see java.lang.Enum
+   */
+  @SuppressWarnings("unused")
+  public enum Role {
+    USER, IT_STAFF
+  }
+
+
+  /**
+   * Attempts to validate the model before any database operations are carried out. Also, be sure to
+   * include an errors using addError(). Errors will be shown to the user on forms.
+   *
+   * @return Whether this model is considered valid.
+   * @see #beforeValidate()
+   * @see #afterValidate()
+   * @see #addError(String)
+   * @since 2018-05-14
+   */
   @Override
   public boolean validate() {
-    boolean isValid = true;
-    //run data checks
-    if(isValid) {
-      return true;
-    }
-    else {
-      addError("Invalid User data");
-    }
     return false;
   }
 
-  public enum Role {
-    USER, ITSTAFF
-  }
 
   public UUID getId() {
     return id;
@@ -102,19 +114,4 @@ public class User extends Model {
     this.role = role;
   }
 
-  public Date getCreatedAt() {
-    return createdAt;
-  }
-
-  public void setCreatedAt(Date createdAt) {
-    this.createdAt = createdAt;
-  }
-
-  public Date getUpdatedAt() {
-    return updatedAt;
-  }
-
-  public void setUpdatedAt(Date updatedAt) {
-    this.updatedAt = updatedAt;
-  }
 }

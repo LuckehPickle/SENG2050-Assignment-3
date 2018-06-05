@@ -1,13 +1,14 @@
 package uon.seng2050.assignment.controller;
 
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import uon.seng2050.assignment.View;
+import uon.seng2050.assignment.annotation.Action;
 import uon.seng2050.assignment.exception.HttpException;
-import uon.seng2050.assignment.exception.MethodNotAllowedException;
 
 /**
  * A controller which handles all requests related to issues.
@@ -34,60 +35,94 @@ public class IssueController extends AuthenticatedController {
     // Call super first to authenticate user
     super.handleRequest(request, response);
 
-    String method = request.getMethod();
-    String[] tokens = request.getRequestURI().split("/");
-
-    switch (method) {
-      case "GET":
-        if (tokens.length == 2) {
-          renderIndex(request, response);
-        } else {
-          if (tokens[2].equals("new")) {
-            renderNew(request, response);
-          } else {
-            renderIssue(tokens[2], request, response);
-          }
-        }
-        break;
-      default:
-        throw new MethodNotAllowedException(method);
-    }
+    // Route to a particular action
+    route(this, request, response);
 
   }
 
 
   /**
-   * Renders to index page. GET /issues/
+   * Renders the index page.
    *
    * @param request HTTP request object
    * @param response HTTP response object
+   * @param params URL parameters.
    */
-  private void renderIndex(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
+  @Action(route = "/issues/?")
+  private void renderIndex(HttpServletRequest request, HttpServletResponse response,
+      List<String> params) throws ServletException, IOException {
+
     render(View.ISSUES, request, response);
   }
 
 
   /**
-   * Renders a new issue page. GET /issues/new
+   * Renders a particular issue.
    *
    * @param request HTTP request object
    * @param response HTTP response object
+   * @param params URL parameters.
    */
-  private void renderNew(HttpServletRequest request, HttpServletResponse response) {
+  @Action(route = "/issues/:id;")
+  private void renderIssue(HttpServletRequest request, HttpServletResponse response,
+      List<String> params) throws ServletException, IOException {
+
+    render(View.ISSUE, request, response);
+  }
+
+
+  /**
+   * Renders a new issue page.
+   *
+   * @param request HTTP request object
+   * @param response HTTP response object
+   * @param params URL parameters.
+   */
+  @Action(route = "/issues/new")
+  private void renderNew(HttpServletRequest request, HttpServletResponse response,
+      List<String> params) throws ServletException, IOException {
+    render(View.NEW_ISSUE, request, response);
+  }
+
+
+  /**
+   * Creates a new issue.
+   *
+   * @param request HTTP request object
+   * @param response HTTP response object
+   * @param params URL parameters.
+   */
+  @Action(methods = "POST", route = "/issues")
+  private void createIssue(HttpServletRequest request, HttpServletResponse response,
+      List<String> params) {
 
   }
 
 
   /**
-   * Renders a particular issue. GET /issue/:id
+   * Renders a page for editing issues.
    *
-   * @param id The desired issue id, taken from the request URL.
    * @param request HTTP request object
    * @param response HTTP response object
+   * @param params URL parameters.
    */
-  private void renderIssue(String id, HttpServletRequest request,
-      HttpServletResponse response) {
+  @Action(route = "/issues/:id;/edit")
+  private void renderEdit(HttpServletRequest request, HttpServletResponse response,
+      List<String> params) throws ServletException, IOException {
+    render(View.EDIT_ISSUE, request, response);
+  }
+
+
+  /**
+   * Updates an existing issues.
+   *
+   * @param request HTTP request object
+   * @param response HTTP response object
+   * @param params URL parameters.
+   */
+  @Action(methods = {"PATCH", "PUT"}, route = "/issues/:id;")
+  private void updateIssue(HttpServletRequest request, HttpServletResponse response,
+      List<String> params) {
 
   }
 

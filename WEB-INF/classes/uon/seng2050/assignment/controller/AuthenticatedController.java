@@ -10,9 +10,10 @@ import uon.seng2050.assignment.exception.HttpException;
  * A controller that forces uses to be authenticated before accessing any of it's contents.
  *
  * @see Controller
+ * @see ActionController
  * @since 2018-05-28
  */
-abstract class AuthenticatedController extends Controller {
+abstract class AuthenticatedController extends ActionController {
 
 
   /**
@@ -27,6 +28,7 @@ abstract class AuthenticatedController extends Controller {
   protected void handleRequest(HttpServletRequest request, HttpServletResponse response)
       throws HttpException, ServletException, IOException {
 
+    // TODO Authenticate user
   }
 
 }

@@ -4,30 +4,41 @@ import io.seanbailey.adapter.Model;
 import java.util.Date;
 import java.util.UUID;
 
+/**
+ *
+ */
 public class Comment extends Model {
 
   private UUID id;
+  private UUID issueId;
   private String body;
-  private Boolean edited;
-  private Date createdAt;
-  private Date updatedAt;
+  private boolean edited;
 
+
+  /**
+   * Default constructor. Set any defaults here. Note: All primitives must have a default.
+   */
+  @SuppressWarnings("unused")
   public Comment() {
-    //constructor
+    edited = false;
   }
 
+
+  /**
+   * Attempts to validate the model before any database operations are carried out. Also, be sure to
+   * include an errors using addError(). Errors will be shown to the user on forms.
+   *
+   * @return Whether this model is considered valid.
+   * @see #beforeValidate()
+   * @see #afterValidate()
+   * @see #addError(String)
+   * @since 2018-05-14
+   */
   @Override
   public boolean validate() {
-    boolean isValid = true;
-    //run data checks
-    if(isValid) {
-      return true;
-    }
-    else {
-      addError("Invalid Comment data");
-    }
     return false;
   }
+
 
   //GET/SET
   public UUID getId() {
@@ -36,6 +47,14 @@ public class Comment extends Model {
 
   public void setId(UUID id) {
     this.id = id;
+  }
+
+  public UUID getIssueId() {
+    return issueId;
+  }
+
+  public void setIssueId(UUID issueId) {
+    this.issueId = issueId;
   }
 
   public String getBody() {
@@ -54,19 +73,4 @@ public class Comment extends Model {
     this.edited = edited;
   }
 
-  public Date getCreatedAt() {
-    return createdAt;
-  }
-
-  public void setCreatedAt(Date createdAt) {
-    this.createdAt = createdAt;
-  }
-
-  public Date getUpdatedAt() {
-    return updatedAt;
-  }
-
-  public void setUpdatedAt(Date updatedAt) {
-    this.updatedAt = updatedAt;
-  }
 }

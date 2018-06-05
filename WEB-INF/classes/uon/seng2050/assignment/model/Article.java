@@ -1,7 +1,6 @@
 package uon.seng2050.assignment.model;
 
 import io.seanbailey.adapter.Model;
-import java.util.Date;
 import java.util.UUID;
 
 public class Article extends Model {
@@ -10,26 +9,33 @@ public class Article extends Model {
   private String title;
   private String body;
   private String answer;
-  private Integer helpfulness;
-  private Date publishedAt;
-  private Date updatedAt;
+  private int helpfulness;
 
+
+  /**
+   * Default constructor. Set any defaults here. Note: All primitives must have a default.
+   */
+  @SuppressWarnings("unused")
   public Article() {
-    //constructor
+    helpfulness = 0;
   }
 
+
+  /**
+   * Attempts to validate the model before any database operations are carried out. Also, be sure to
+   * include an errors using addError(). Errors will be shown to the user on forms.
+   *
+   * @return Whether this model is considered valid.
+   * @see #beforeValidate()
+   * @see #afterValidate()
+   * @see #addError(String)
+   * @since 2018-05-14
+   */
   @Override
   public boolean validate() {
-    boolean isValid = true;
-    //run data checks
-    if(isValid) {
-      return true;
-    }
-    else {
-      addError("Invalid Article data");
-    }
     return false;
   }
+
 
   //GET/SET
   public UUID getId() {
@@ -64,27 +70,12 @@ public class Article extends Model {
     this.answer = answer;
   }
 
-  public Integer getHelpfulness() {
+  public int getHelpfulness() {
     return helpfulness;
   }
 
-  public void setHelpfulness(Integer helpfulness) {
+  public void setHelpfulness(int helpfulness) {
     this.helpfulness = helpfulness;
   }
 
-  public Date getPublishedAt() {
-    return publishedAt;
-  }
-
-  public void setPublishedAt(Date publishedAt) {
-    this.publishedAt = publishedAt;
-  }
-
-  public Date getUpdatedAt() {
-    return updatedAt;
-  }
-
-  public void setUpdatedAt(Date updatedAt) {
-    this.updatedAt = updatedAt;
-  }
 }
