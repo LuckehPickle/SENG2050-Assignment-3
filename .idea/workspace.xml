@@ -1,30 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="863dd7db-cac3-4a13-8bf3-63dfc1960642" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/annotation/Action.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/controller/ActionController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WEB-INF/views/articles/.keep" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WEB-INF/classes/io/seanbailey/adapter/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/WEB-INF/classes/io/seanbailey/adapter/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WEB-INF/classes/io/seanbailey/adapter/SQLChain.java" beforeDir="false" afterPath="$PROJECT_DIR$/WEB-INF/classes/io/seanbailey/adapter/SQLChain.java" afterDir="false" />
+    <list default="true" id="e4218100-d219-46b8-87e0-f3df9e80da5b" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/View.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/controller/AuthenticatedController.java" beforeDir="false" afterPath="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/controller/AuthenticatedController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/controller/CommentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/controller/IssueController.java" beforeDir="false" afterPath="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/controller/IssueController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/controller/KnowledgebaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/controller/KnowledgebaseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/controller/MaintenanceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/controller/MaintenanceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/controller/SessionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/controller/SessionController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/controller/WelcomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/controller/WelcomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/model/.keep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/model/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/model/Article.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/model/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/model/Comment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/model/Issue.java" beforeDir="false" afterPath="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/model/Issue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/model/MaintenanceEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/model/MaintenanceEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WEB-INF/views/session/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WEB-INF/views/session/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
+    <ignored path="$PROJECT_DIR$/node_modules/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -85,17 +68,35 @@
       <file leaf-file-name="WelcomeController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/controller/WelcomeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="45" column="34" selection-start-line="45" selection-start-column="34" selection-end-line="45" selection-end-column="34" />
+            <state relative-caret-position="200">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.jsp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="473">
+              <caret line="233" column="7" selection-start-line="233" selection-start-column="7" selection-end-line="233" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WEB-INF/views/session/login.jsp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="340">
               <caret line="17" column="62" selection-start-line="17" selection-start-column="62" selection-end-line="17" selection-end-column="62" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="View.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/View.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="520">
+              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
             </state>
           </provider>
         </entry>
@@ -134,57 +135,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/WEB-INF/static/styles/generic/_highlight.scss" />
-        <option value="$PROJECT_DIR$/WEB-INF/static/styles/elements/_paragraph.scss" />
-        <option value="$PROJECT_DIR$/static/styles/modern-normalize.css" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/controller/ErrorController.java" />
-        <option value="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/util/PageUtil.java" />
-        <option value="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/util/Logger.java" />
-        <option value="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/exception/HttpStatusCode.java" />
-        <option value="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/controller/AuthenticationController.java" />
-        <option value="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/controller/AuthController.java" />
-        <option value="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/exception/MethodNotAllowedException.java" />
-        <option value="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/exception/HttpException.java" />
-        <option value="$PROJECT_DIR$/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/WEB-INF/views/error.jsp" />
-        <option value="$PROJECT_DIR$/WEB-INF/static/styles/generic/_type.scss" />
-        <option value="$PROJECT_DIR$/WEB-INF/static/styles/settings/_fonts.scss" />
-        <option value="$PROJECT_DIR$/WEB-INF/static/styles/app.scss" />
-        <option value="$PROJECT_DIR$/WEB-INF/static/styles/settings/_colours.scss" />
-        <option value="$PROJECT_DIR$/WEB-INF/static/styles/elements/_input.scss" />
-        <option value="$PROJECT_DIR$/WEB-INF/tags/application.tag" />
-        <option value="$PROJECT_DIR$/WEB-INF/static/styles/components/_wrapper.scss" />
-        <option value="$PROJECT_DIR$/WEB-INF/static/styles/elements/_body.scss" />
-        <option value="$PROJECT_DIR$/WEB-INF/static/styles/elements/_form.scss" />
-        <option value="$PROJECT_DIR$/WEB-INF/static/styles/elements/_headings.scss" />
-        <option value="$PROJECT_DIR$/WEB-INF/static/styles/components/_button.scss" />
-        <option value="$PROJECT_DIR$/WEB-INF/views/issues/new.jsp" />
-        <option value="$PROJECT_DIR$/WEB-INF/views/issues/index.jsp" />
-        <option value="$PROJECT_DIR$/WEB-INF/classes/io/seanbailey/adapter/annotation/Default.java" />
-        <option value="$PROJECT_DIR$/WEB-INF/classes/io/seanbailey/adapter/annotation/DefaultBoolean.java" />
-        <option value="$PROJECT_DIR$/WEB-INF/classes/io/seanbailey/adapter/annotation/DefaultInteger.java" />
-        <option value="$PROJECT_DIR$/WEB-INF/classes/io/seanbailey/adapter/Model.java" />
-        <option value="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/model/Comment.java" />
-        <option value="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/model/Article.java" />
-        <option value="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/model/Issue.java" />
-        <option value="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/model/MaintenanceEvent.java" />
-        <option value="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/model/User.java" />
-        <option value="$PROJECT_DIR$/WEB-INF/classes/io/seanbailey/adapter/SQLChain.java" />
-        <option value="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/util/Method.java" />
-        <option value="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/annotation/Route.java" />
-        <option value="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/annotation/Action.java" />
-        <option value="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/controller/AuthenticatedController.java" />
-        <option value="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/controller/Controller.java" />
-        <option value="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/View.java" />
-        <option value="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/controller/IssueController.java" />
-        <option value="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/controller/ActionController.java" />
-        <option value="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/controller/CommentController.java" />
-        <option value="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/controller/KnowledgebaseController.java" />
-        <option value="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/controller/MaintenanceController.java" />
-        <option value="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/controller/SessionController.java" />
-        <option value="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/controller/WelcomeController.java" />
-        <option value="$PROJECT_DIR$/WEB-INF/views/session/login.jsp" />
+        <option value="$PROJECT_DIR$/WEB-INF/views/index.jsp" />
+        <option value="$PROJECT_DIR$/WEB-INF/views/maintenance/new.jsp" />
+        <option value="$PROJECT_DIR$/WEB-INF/views/maintenance/edit.jsp" />
+        <option value="$PROJECT_DIR$/WEB-INF/views/maintenance/index.jsp" />
       </list>
     </option>
   </component>
@@ -200,10 +154,10 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="55" />
-    <option name="y" value="111" />
-    <option name="width" value="1303" />
-    <option name="height" value="554" />
+    <option name="x" value="543" />
+    <option name="y" value="-27" />
+    <option name="width" value="1346" />
+    <option name="height" value="688" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -218,6 +172,11 @@
             <path>
               <item name="assignment-3" type="b2602c69:ProjectViewProjectNode" />
               <item name="assignment-3" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="assignment-3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="assignment-3" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="assignment-3" type="b2602c69:ProjectViewProjectNode" />
@@ -289,22 +248,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="Welcome&#9;FILE&#9;file:///opt/tomcat-latest/webapps/assignment-3/WEB-INF/classes/uon/seng2050/assignment/controller/WelcomeController.java&#10;colo&#9;FILE&#9;file:///opt/tomcat-latest/webapps/assignment-3/WEB-INF/static/styles/settings/_colours.scss&#10;contr&#9;FILE&#9;file:///opt/tomcat-latest/webapps/assignment-3/WEB-INF/classes/uon/seng2050/assignment/controller/Controller.java&#10;stat&#9;FILE&#9;file:///opt/tomcat-latest/webapps/assignment-3/WEB-INF/classes/uon/seng2050/assignment/exception/HttpStatusCode.java&#10;err&#9;FILE&#9;file:///opt/tomcat-latest/webapps/assignment-3/WEB-INF/classes/uon/seng2050/assignment/controller/ErrorController.java&#10;Err&#9;FILE&#9;file:///opt/tomcat-latest/webapps/assignment-3/WEB-INF/classes/uon/seng2050/assignment/controller/ErrorController.java&#10;Con&#9;FILE&#9;file:///opt/tomcat-latest/webapps/assignment-3/WEB-INF/classes/uon/seng2050/assignment/controller/Controller.java&#10;Controller&#9;FILE&#9;file:///opt/tomcat-latest/webapps/assignment-3/WEB-INF/classes/uon/seng2050/assignment/controller/Controller.java&#10;Log&#9;FILE&#9;file:///opt/tomcat-latest/webapps/assignment-3/WEB-INF/classes/uon/seng2050/assignment/util/Logger.java&#10;git&#9;FILE&#9;file:///opt/tomcat-latest/webapps/assignment-3/.gitignore" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../lib/servlet-api.jar!/" />
-    <property name="list.type.of.created.stylesheet" value="SCSS" />
-    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.25172412" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JSP" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/WEB_INF/static/styles" />
-    </key>
+    <property name="settings.editor.selected.configurable" value="preferences.customizations" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -319,9 +263,6 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
@@ -334,7 +275,7 @@
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="singleModule" />
@@ -352,7 +293,7 @@
       <option name="TEST_OBJECT" value="CLASS" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <option name="OUTPUT_DIRECTORY" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
@@ -363,77 +304,22 @@
       <properties />
       <listeners />
     </configuration>
-    <configuration default="true" type="Remote" factoryName="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
-      <method />
-    </configuration>
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
-      <module name="" />
-      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
-      <option name="PROGRAM_PARAMETERS" />
-      <predefined_log_file id="idea.log" enabled="true" />
-      <method />
-    </configuration>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="863dd7db-cac3-4a13-8bf3-63dfc1960642" name="Default" comment="" />
-      <created>1526885762799</created>
+      <changelist id="e4218100-d219-46b8-87e0-f3df9e80da5b" name="Default" comment="" />
+      <created>1528077839703</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1526885762799</updated>
-      <workItem from="1526885771482" duration="14356000" />
-      <workItem from="1527035020522" duration="7968000" />
-      <workItem from="1527469915890" duration="9686000" />
-      <workItem from="1527488098204" duration="382000" />
-      <workItem from="1527561276989" duration="1887000" />
-      <workItem from="1527649807430" duration="1963000" />
-      <workItem from="1528067722296" duration="1389000" />
-      <workItem from="1528080248851" duration="1458000" />
-      <workItem from="1528092302505" duration="727000" />
-      <workItem from="1528109301049" duration="779000" />
-      <workItem from="1528156730898" duration="17208000" />
+      <updated>1528077839703</updated>
     </task>
-    <task id="LOCAL-00001" summary="Created general project structure. Nothing concrete yet.">
-      <created>1526901632969</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1526901632969</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Logging is now beautiful! HttpExceptions are now caught automatically.">
-      <created>1527042738858</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1527042738858</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Added a utility render function that enables DRY, and some SQL scripts.">
-      <created>1528068248731</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1528068248731</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Fixed some routing in the IssueController">
-      <created>1528068866576</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1528068866576</updated>
-    </task>
-    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57803000" />
+    <option name="totallyTimeSpent" value="58353000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="55" y="1" width="1311" height="767" extended-state="6" />
@@ -460,14 +346,33 @@
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="right" id="Palette" order="3" />
       <window_info id="Web" order="6" side_tool="true" />
+      <window_info id="Designer" order="2" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Java Enterprise" order="10" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.25" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="UI Designer" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="right" id="Maven Projects" order="3" />
+      <window_info id="Favorites" order="2" side_tool="true" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -484,41 +389,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Fixed some routing in the IssueController" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/WEB-INF/views/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WEB-INF/static/styles/mixins/_no-highlight.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WEB-INF/static/styles/app.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WEB-INF/static/styles/generic/_type.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WEB-INF/static/styles/settings/_fonts.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/styles/app.min.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1502" />
@@ -767,11 +637,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-480" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.idea/misc.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -781,13 +646,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WEB-INF/views/articles/.keep">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/View.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WEB-INF/classes/io/seanbailey/adapter/ConnectionManager.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -882,10 +740,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/WEB-INF/views/session/login.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="17" column="62" selection-start-line="17" selection-start-column="62" selection-end-line="17" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/View.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/controller/WelcomeController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="45" column="34" selection-start-line="45" selection-start-column="34" selection-end-line="45" selection-end-column="34" />
+        <state relative-caret-position="200">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="473">
+          <caret line="233" column="7" selection-start-line="233" selection-start-column="7" selection-end-line="233" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WEB-INF/views/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -896,92 +782,26 @@
         </state>
       </provider>
     </entry>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.25172412" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>Detection</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.25172412" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.25172412" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.25172412" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>assignment-3</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.25172412" />
-                <option value="0.6" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>servlet-api</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.25172412" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
+    <entry file="file://$PROJECT_DIR$/WEB-INF/views/maintenance/new.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="15" column="55" selection-start-line="15" selection-start-column="55" selection-end-line="15" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WEB-INF/views/maintenance/edit.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="15" column="55" selection-end-line="17" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WEB-INF/views/maintenance/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="26" column="16" lean-forward="true" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>

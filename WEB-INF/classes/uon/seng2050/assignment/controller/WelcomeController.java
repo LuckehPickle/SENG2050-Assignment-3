@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import uon.seng2050.assignment.annotation.Action;
 import uon.seng2050.assignment.exception.HttpException;
-import uon.seng2050.assignment.exception.HttpStatusCode;
+import uon.seng2050.assignment.View;
 
 /**
  * A controller which manages requests to the index of the website.
@@ -44,14 +44,12 @@ public class WelcomeController extends AuthenticatedController {
    * @param request HTTP request object
    * @param response HTTP response object
    * @param params URL parameters.
-   * @throws HttpException if an exception state is encountered that would typically return a HTTP
-   * status code.
    */
   @Action(route = "/?")
   private void handleIndex(HttpServletRequest request, HttpServletResponse response,
-      List<String> params) throws HttpException {
+      List<String> params) throws ServletException, IOException {
 
-    throw new HttpException(HttpStatusCode.PAGE_NOT_FOUND, "Hello world");
+    render(View.EDIT_MAINTENANCE, request, response);
   }
 
 }
