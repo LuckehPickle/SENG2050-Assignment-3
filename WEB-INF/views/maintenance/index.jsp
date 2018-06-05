@@ -3,25 +3,23 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <t:application>
-  <jsp:attribute name="title">Maintenance</jsp:attribute>
-  <jsp:body>
+    <jsp:attribute name="title">Maintenance</jsp:attribute>
+    <jsp:body>
 
-      <%-- Header --%>
-      <div class="">
-        <h1>Maintenance Events</h1>
-        <p class="">Here you can create and edit maintenance events regarding your page.</p>
-      </div>
+        <%-- Header --%>
+        <div class="">
+            <h1>Maintenance Events</h1>
+            <p class="">Here you can create and edit maintenance events regarding your page.</p>
+        </div>
 
-      <%-- Main Content --%>
+        <%-- Main Content --%>
         <%-- Button/Link to Access create New Maintenance Event --%>
         <%-- Link Not Set --%>
-        <form action="Link not Set">
-            <input type="submit" value="New Maintenance Event" />
-        </form>
+        <a href="${pageContext.request.contextPath}/maintenance/new">New maintenance event</a>
 
         <%-- Loads up each event in the database and displays event descriptor: Event(Button) Event Date(String/Date) Event Time(String/Time) --%>
         <p>Event Name</p>
         <p>Event Date</p>
         <p>Event Time</p>
-  </jsp:body>
+    </jsp:body>
 </t:application>

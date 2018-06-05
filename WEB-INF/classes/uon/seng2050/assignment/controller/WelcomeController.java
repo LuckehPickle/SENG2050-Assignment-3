@@ -59,7 +59,7 @@ public class WelcomeController extends AuthenticatedController {
   private void handleIndex(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
-    render(View.MAINTENANCE, request, response);
+    render(View.EDIT_MAINTENANCE, request, response);
   }
 
 }
