@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4218100-d219-46b8-87e0-f3df9e80da5b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/View.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/controller/WelcomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/controller/WelcomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,18 +14,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="IssueController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/controller/IssueController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-33">
-              <caret line="48" column="34" selection-start-line="48" selection-start-column="34" selection-end-line="48" selection-end-column="34" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ActionController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WEB-INF/classes/uon/seng2050/assignment/controller/ActionController.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -74,11 +59,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="473">
-              <caret line="233" column="7" selection-start-line="233" selection-start-column="7" selection-end-line="233" selection-end-column="7" />
+            <state relative-caret-position="16120">
+              <caret line="806" column="7" selection-start-line="806" selection-start-column="7" selection-end-line="806" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="500">
+              <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -139,6 +133,7 @@
         <option value="$PROJECT_DIR$/WEB-INF/views/maintenance/new.jsp" />
         <option value="$PROJECT_DIR$/WEB-INF/views/maintenance/edit.jsp" />
         <option value="$PROJECT_DIR$/WEB-INF/views/maintenance/index.jsp" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -319,7 +314,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58353000" />
+    <option name="totallyTimeSpent" value="58420000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="55" y="1" width="1311" height="767" extended-state="6" />
@@ -389,11 +384,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Fixed some routing in the IssueController" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/static/styles/app.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1502" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WEB-INF/static/styles/components/_button.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-13">
@@ -763,8 +753,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="473">
-          <caret line="233" column="7" selection-start-line="233" selection-start-column="7" selection-end-line="233" selection-end-column="7" />
+        <state relative-caret-position="16120">
+          <caret line="806" column="7" selection-start-line="806" selection-start-column="7" selection-end-line="806" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -800,6 +790,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="416">
           <caret line="26" column="16" lean-forward="true" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
         </state>
       </provider>
     </entry>
