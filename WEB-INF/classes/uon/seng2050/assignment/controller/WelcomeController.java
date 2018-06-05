@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import uon.seng2050.assignment.exception.HttpException;
 import uon.seng2050.assignment.exception.HttpStatusCode;
 import uon.seng2050.assignment.exception.MethodNotAllowedException;
+import uon.seng2050.assignment.View;
 
 /**
  * A controller which manages requests to the index of the website.
@@ -56,9 +57,9 @@ public class WelcomeController extends AuthenticatedController {
    * status code.
    */
   private void handleIndex(HttpServletRequest request, HttpServletResponse response)
-      throws HttpException {
+      throws ServletException, IOException {
 
-    throw new HttpException(HttpStatusCode.PAGE_NOT_FOUND, "Hello world");
+    render(View.EDIT_MAINTENANCE, request, response);
   }
 
 }
