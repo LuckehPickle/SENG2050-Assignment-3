@@ -37,7 +37,7 @@
             </div>
 
             <div class="buttons">
-                <a href="${pageContext.request.contextPath}/articles" class="button wide">Return</a>
+                <a href="${pageContext.request.contextPath}/articles" class="button">Return</a>
             </div>
 
         </div>
