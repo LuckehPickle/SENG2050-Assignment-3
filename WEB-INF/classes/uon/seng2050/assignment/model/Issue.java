@@ -1,14 +1,18 @@
 package uon.seng2050.assignment.model;
 
 import io.seanbailey.adapter.Model;
+import io.seanbailey.adapter.exception.SQLAdapterException;
+import java.sql.SQLException;
+import java.util.List;
 import java.util.UUID;
 
 public class Issue extends Model {
 
   private UUID id;
+  private UUID authorId;
+  private State state;
   private Category category;
   private SubCategory subCategory;
-  private State state;
   private String title;
   private String body;
   private boolean locked;
@@ -68,33 +72,88 @@ public class Issue extends Model {
    */
   @Override
   public boolean validate() {
-    return false;
+
+    boolean valid = true;
+
+    // Validate title length and existence
+    if (title == null) {
+      addError("Title must exist.");
+      valid = false;
+    } else if (title.length() > 128) {
+      addError("Title must be less than 128 characters long.");
+      valid = false;
+    } else if (title.length() < 10) {
+      addError("Title must be at least 10 characters long.");
+      valid = false;
+    }
+
+    return valid;
+
   }
 
 
-  //GET/SET
-  public UUID getId() {
-    return id;
+  /**
+   * Attempts to retrieve the author of this issue.
+   *
+   * @return The author of this issue: a user.
+   */
+  public User getAuthor() {
+
+    // Attempt to find user
+    List<Model> users;
+    try {
+      users = Model.find(User.class, "id", authorId.toString()).execute();
+    } catch (SQLException | SQLAdapterException e) {
+      return null;
+    }
+
+    if (users.isEmpty()) {
+      return null;
+    } else {
+      return (User) users.get(0);
+    }
+
   }
 
-  public void setId(UUID id) {
-    this.id = id;
+
+  public String getAuthorId() {
+    return authorId.toString();
   }
 
-  public Category getCategory() {
-    return category;
+  public void setAuthorId(String authorId) {
+    this.authorId = UUID.fromString(authorId);
   }
 
-  public void setCategory(Category category) {
-    this.category = category;
+  public String getId() {
+    return id.toString();
   }
 
-  public SubCategory getSubCategory() {
-    return subCategory;
+  public void setId(String id) {
+    this.id = UUID.fromString(id);
   }
 
-  public void setSubCategory(SubCategory subCategory) {
-    this.subCategory = subCategory;
+  public String getState() {
+    return state.name();
+  }
+
+  public void setState(String state) {
+    this.state = State.valueOf(state);
+  }
+
+  public String getCategory() {
+    return category.name();
+  }
+
+  public void setCategory(String category) {
+    this.category = Category.valueOf(category);
+  }
+
+  public String getSubCategory() {
+    return subCategory.name();
+  }
+
+  public void setSubCategory(String subCategory) {
+    this.subCategory = SubCategory.valueOf(subCategory);
   }
 
   public String getTitle() {
@@ -119,14 +178,6 @@ public class Issue extends Model {
 
   public void setLocked(boolean locked) {
     this.locked = locked;
-  }
-
-  public State getState() {
-    return state;
-  }
-
-  public void setState(State state) {
-    this.state = state;
   }
 
 }

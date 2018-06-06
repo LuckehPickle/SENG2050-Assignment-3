@@ -235,11 +235,13 @@ public class Adapter {
       field.set(model, value);
 
     } catch (IllegalAccessException | InvocationTargetException | NoSuchFieldException e) {
-      throw new SQLAdapterException(String.format(
+      SQLAdapterException exception = new SQLAdapterException(String.format(
           "Could not set attribute for %s. Exception: %s",
           model.getClass().getSimpleName(),
           e.getMessage()
       ));
+      exception.initCause(e);
+      throw exception;
     }
 
   }

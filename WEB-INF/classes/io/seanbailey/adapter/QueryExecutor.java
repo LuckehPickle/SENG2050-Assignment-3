@@ -14,8 +14,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringJoiner;
-import java.util.logging.Logger;
 import javax.naming.NamingException;
+import uon.seng2050.assignment.util.Logger;
 
 /**
  * A class for executing SQL queries.
@@ -26,11 +26,7 @@ import javax.naming.NamingException;
  */
 class QueryExecutor {
 
-  private static Logger LOGGER;
-
-  static {
-    LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass().getSimpleName());
-  }
+  private static Logger LOGGER = new Logger();
 
 
   /**
@@ -249,7 +245,7 @@ class QueryExecutor {
       joiner.add(object.toString());
     }
 
-    LOGGER.info(String.format("%s [%s]", generator.getSql(), joiner.toString()));
+    LOGGER.fine("%s [%s]", generator.getSql(), joiner.toString());
 
   }
 

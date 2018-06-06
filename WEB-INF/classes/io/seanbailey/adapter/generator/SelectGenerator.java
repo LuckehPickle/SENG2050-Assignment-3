@@ -157,7 +157,7 @@ public class SelectGenerator extends Generator {
 
     // Handle offset via page
     if (chain.getPage() != null && chain.getLimit() != null) {
-      offset = chain.getPage() * chain.getLimit();
+      offset = (chain.getPage() - 1) * chain.getLimit();
     }
 
     // Handle offset via offset

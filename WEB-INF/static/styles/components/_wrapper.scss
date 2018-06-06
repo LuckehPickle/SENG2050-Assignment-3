@@ -1,11 +1,41 @@
-.wrapper {
+.wrapper,
+.column-wrapper {
   width: 100%;
-  max-width: 1300px;
+  max-width: 1200px;
   margin: 4rem auto;
   padding: 0 1rem;
 
   // A thinner wrapper for the authentication form
   &.auth-wrapper {
     max-width: 400px;
+
+    h1 {
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+  }
+
+}
+
+// Wraps content into two columns on desktop, or one column on mobile.
+.column-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  grid-gap: 2rem;
+  align-items: flex-start;
+
+  & > .column.border {
+    border: 1px solid $border;
+    border-radius: 3px;
+    padding: 2rem;
+  }
+
+  & > .column {
+
+    .buttons:first-child,
+    .buttons:first-child .button {
+      margin-top: 0;
+    }
+
   }
 }

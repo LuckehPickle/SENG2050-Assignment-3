@@ -46,16 +46,21 @@ public class User extends Model {
    */
   @Override
   public boolean validate() {
-    return false;
+    return true;
   }
 
 
-  public UUID getId() {
-    return id;
+  public String getFullName() {
+    return firstName + " " + lastName;
   }
 
-  public void setId(UUID id) {
-    this.id = id;
+
+  public String getId() {
+    return id.toString();
+  }
+
+  public void setId(String id) {
+    this.id = UUID.fromString(id);
   }
 
   public String getUsername() {
@@ -106,12 +111,12 @@ public class User extends Model {
     this.phoneNumber = phoneNumber;
   }
 
-  public Role getRole() {
-    return role;
+  public String getRole() {
+    return role.name();
   }
 
-  public void setRole(Role role) {
-    this.role = role;
+  public void setRole(String role) {
+    this.role = Role.valueOf(role);
   }
 
 }

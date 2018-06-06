@@ -1,6 +1,9 @@
 package uon.seng2050.assignment.controller;
 
+import io.seanbailey.adapter.Model;
+import io.seanbailey.adapter.exception.SQLAdapterException;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import uon.seng2050.assignment.View;
 import uon.seng2050.assignment.annotation.Action;
 import uon.seng2050.assignment.exception.HttpException;
+import uon.seng2050.assignment.exception.HttpStatusCode;
+import uon.seng2050.assignment.model.Issue;
 
 /**
  * A controller which handles all requests related to issues.
@@ -50,9 +55,17 @@ public class IssueController extends AuthenticatedController {
    */
   @Action(route = "/issues/?")
   private void renderIndex(HttpServletRequest request, HttpServletResponse response,
-      List<String> params) throws ServletException, IOException {
+      List<String> params) throws ServletException, IOException, SQLException, SQLAdapterException {
 
+    List<Model> issues = Model
+        .all(Issue.class)
+        .page(request.getParameter("page"))
+        .per(25)
+        .execute();
+
+    request.setAttribute("issues", issues);
     render(View.ISSUES, request, response);
+
   }
 
 
@@ -65,9 +78,21 @@ public class IssueController extends AuthenticatedController {
    */
   @Action(route = "/issues/:id;")
   private void renderIssue(HttpServletRequest request, HttpServletResponse response,
-      List<String> params) throws ServletException, IOException {
+      List<String> params)
+      throws ServletException, IOException, SQLException, SQLAdapterException, HttpException {
 
+    // Retrieve issue in question
+    List<Model> issues = Model.find(Issue.class, "id", params.get(0)).execute();
+
+    // Ensure result set is not empty
+    if (issues.isEmpty()) {
+      throw new HttpException(HttpStatusCode.PAGE_NOT_FOUND,
+          "Could not find an issue with the id " + params.get(0));
+    }
+
+    request.setAttribute("issue", issues.get(0));
     render(View.ISSUE, request, response);
+
   }
 
 

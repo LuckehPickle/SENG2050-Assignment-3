@@ -148,6 +148,24 @@ public class SQLChain {
   /**
    * Sets which page the result set should be returned from.
    *
+   * @return An SQLChain for further chaining.
+   */
+  public SQLChain page(String page) {
+
+    Integer p = null;
+
+    // Attempt to parse as int
+    try {
+      p = Integer.parseInt(page);
+    } catch (NumberFormatException ignored) {}
+
+    return page(p);
+
+  }
+
+  /**
+   * Sets which page the result set should be returned from.
+   *
    * @param page The page to return.
    * @return An SQLChain for further chaining.
    */
