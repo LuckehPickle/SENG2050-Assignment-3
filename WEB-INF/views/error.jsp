@@ -11,7 +11,7 @@
       <c:out value="${requestScope.message}" /><br/>
       <c:choose>
         <c:when test="${pageContext.response.getStatus() == 404}">
-          If you think it shouldCreate a new issue and let us know
+          If you think it should, create a new issue and let us know.
           <div class="buttons">
             <a class="button" href="${pageContext.request.contextPath}/">
             Home
