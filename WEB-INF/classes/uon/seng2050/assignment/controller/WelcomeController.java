@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import uon.seng2050.assignment.View;
 import uon.seng2050.assignment.annotation.Action;
 import uon.seng2050.assignment.exception.HttpException;
+import uon.seng2050.assignment.exception.HttpStatusCode;
 
 /**
  * A controller which manages requests to the index of the website.
@@ -45,8 +46,9 @@ public class WelcomeController extends AuthenticatedController {
    */
   @Action(route = "/?")
   private void handleIndex(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
-    render(View.EDIT_MAINTENANCE, request, response);
+      throws ServletException, IOException, HttpException {
+
+    throw new HttpException(HttpStatusCode.PAGE_NOT_FOUND, "We could not find that page");
   }
 
 }
