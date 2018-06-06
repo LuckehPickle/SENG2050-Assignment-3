@@ -172,8 +172,7 @@ abstract class ActionController extends Controller {
 
     List<String> params = new ArrayList<>();
 
-    while(matcher.find()) {
-      LOGGER.info(matcher.group(1));
+    if (matcher.find(0)) {
       params.add(matcher.group(1));
     }
 
