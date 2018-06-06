@@ -9,13 +9,26 @@
       <h1>Support Portal</h1>
       <h2><c:out value="${pageContext.response.getStatus()}" /></h2>
       <c:out value="${requestScope.message}" /><br/>
-      <jsp:if
-      If you think it shouldCreate a new issue and let us know
-      <div class="buttons">
-        <a class="button" href="${pageContext.request.contextPath}/issue/new">
-          New Issue
-        </a>
-      </div>
+      <c:choose>
+        <c:when test="${pageContext.response.getStatus() == 404}">
+          If you think it shouldCreate a new issue and let us know
+          <div class="buttons">
+            <a class="button" href="${pageContext.request.contextPath}/">
+            Home
+            </a>
+            <a class="button-secondary" href="${pageContext.request.contextPath}/issue/new">
+              New Issue
+            </a>
+          </div>
+        </c:when>
+        <c:otherwise>
+          <div class="buttons">
+            <a class="button" href="${pageContext.request.contextPath}/">
+              Home
+            </a>
+          </div>
+        </c:otherwise>
+      </c:choose>
     </div>
 
 
