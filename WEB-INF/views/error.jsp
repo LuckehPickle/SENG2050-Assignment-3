@@ -16,7 +16,7 @@
             <a class="button" href="${pageContext.request.contextPath}/">
             Home
             </a>
-            <a class="button-secondary" href="${pageContext.request.contextPath}/issue/new">
+            <a class="button-secondary" href="${pageContext.request.contextPath}/issues/new">
               New Issue
             </a>
           </div>
