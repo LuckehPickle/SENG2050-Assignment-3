@@ -13,6 +13,7 @@
         </div>
 
         <%-- Form --%>
-        <%@ include file="/WEB-INF/tags/eventForm.tag" %>
+        <jsp:include page="_form.jsp"/>
     </jsp:body>
 </t:application>
+
