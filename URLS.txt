@@ -1,0 +1,2 @@
+http://localhost:8080/SENG2050-Assignment-3/session/login
+http://localhost:8080/SENG2050-Assignment-3/issues
