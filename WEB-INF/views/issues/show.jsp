@@ -29,8 +29,20 @@
 
         <%-- All comments --%>
         <div class="issue-comments">
+          <c:choose>
 
+          </c:choose>
         </div>
+
+        <%-- Comment box --%>
+        <form action="${pageContext.request.contextPath}/comments/${issue.getId()}">
+          <input name="utf8" value="✓" type="hidden" />
+
+          <div class="field">
+            <input type="text" />
+          </div>
+
+        </form>
 
       </div>
 

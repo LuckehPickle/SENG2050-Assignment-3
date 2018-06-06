@@ -46,5 +46,7 @@
 }
 
 .issue-comments {
-  
+  border-left: 1px solid lighten($border, 5%);
+  padding: 1.5rem;
+  margin-left: 2rem;
 }
