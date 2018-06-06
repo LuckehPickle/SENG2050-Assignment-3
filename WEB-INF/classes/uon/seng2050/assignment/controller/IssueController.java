@@ -51,11 +51,10 @@ public class IssueController extends AuthenticatedController {
    *
    * @param request HTTP request object
    * @param response HTTP response object
-   * @param params URL parameters.
    */
   @Action(route = "/issues/?")
-  private void renderIndex(HttpServletRequest request, HttpServletResponse response,
-      List<String> params) throws ServletException, IOException, SQLException, SQLAdapterException {
+  private void renderIndex(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException, SQLException, SQLAdapterException {
 
     List<Model> issues = Model
         .all(Issue.class)
@@ -70,42 +69,13 @@ public class IssueController extends AuthenticatedController {
 
 
   /**
-   * Renders a particular issue.
-   *
-   * @param request HTTP request object
-   * @param response HTTP response object
-   * @param params URL parameters.
-   */
-  @Action(route = "/issues/:id;")
-  private void renderIssue(HttpServletRequest request, HttpServletResponse response,
-      List<String> params)
-      throws ServletException, IOException, SQLException, SQLAdapterException, HttpException {
-
-    // Retrieve issue in question
-    List<Model> issues = Model.find(Issue.class, "id", params.get(0)).execute();
-
-    // Ensure result set is not empty
-    if (issues.isEmpty()) {
-      throw new HttpException(HttpStatusCode.PAGE_NOT_FOUND,
-          "Could not find an issue with the id " + params.get(0));
-    }
-
-    request.setAttribute("issue", issues.get(0));
-    render(View.ISSUE, request, response);
-
-  }
-
-
-  /**
    * Renders a new issue page.
    *
    * @param request HTTP request object
    * @param response HTTP response object
-   * @param params URL parameters.
    */
   @Action(route = "/issues/new")
-  private void renderNew(HttpServletRequest request, HttpServletResponse response,
-      List<String> params) throws ServletException, IOException {
+  private void renderNew(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     render(View.NEW_ISSUE, request, response);
   }
 
@@ -135,6 +105,32 @@ public class IssueController extends AuthenticatedController {
   private void renderEdit(HttpServletRequest request, HttpServletResponse response,
       List<String> params) throws ServletException, IOException {
     render(View.EDIT_ISSUE, request, response);
+  }
+
+
+  /**
+   * Renders a particular issue.
+   *
+   * @param request HTTP request object
+   * @param response HTTP response object
+   * @param id Issue id.
+   */
+  @Action(route = "/issues/:id;")
+  private void renderIssue(HttpServletRequest request, HttpServletResponse response, String id)
+      throws ServletException, IOException, SQLException, SQLAdapterException, HttpException {
+
+    // Retrieve issue in question
+    List<Model> issues = Model.find(Issue.class, "id", id).execute();
+
+    // Ensure result set is not empty
+    if (issues.isEmpty()) {
+      throw new HttpException(HttpStatusCode.PAGE_NOT_FOUND,
+          "Could not find an issue with the id " + id);
+    }
+
+    request.setAttribute("issue", issues.get(0));
+    render(View.ISSUE, request, response);
+
   }
 
 

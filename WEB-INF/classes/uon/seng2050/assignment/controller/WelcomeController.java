@@ -1,14 +1,13 @@
 package uon.seng2050.assignment.controller;
 
 import java.io.IOException;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import uon.seng2050.assignment.View;
 import uon.seng2050.assignment.annotation.Action;
 import uon.seng2050.assignment.exception.HttpException;
-import uon.seng2050.assignment.View;
 
 /**
  * A controller which manages requests to the index of the website.
@@ -43,12 +42,10 @@ public class WelcomeController extends AuthenticatedController {
    *
    * @param request HTTP request object
    * @param response HTTP response object
-   * @param params URL parameters.
    */
   @Action(route = "/?")
-  private void handleIndex(HttpServletRequest request, HttpServletResponse response,
-      List<String> params) throws ServletException, IOException {
-
+  private void handleIndex(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
     render(View.EDIT_MAINTENANCE, request, response);
   }
 

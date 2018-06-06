@@ -4,7 +4,6 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -26,11 +25,6 @@ abstract class ActionController extends Controller {
 
 
   private static Logger LOGGER = new Logger();
-  private static final Pattern GROUP_PATTERN;
-
-  static {
-    GROUP_PATTERN = Pattern.compile(Matcher.quoteReplacement("(\\?<\\w+>)"));
-  }
 
 
   /**
@@ -74,7 +68,7 @@ abstract class ActionController extends Controller {
 
       try {
         method.setAccessible(true);
-        method.invoke(controller, request, response, getUrlParams(matcher));
+        method.invoke(controller, constructMethodArguments(matcher, request, response));
       } catch (IllegalAccessException e) {
         e.printStackTrace();
       } catch (InvocationTargetException e) {
@@ -168,15 +162,20 @@ abstract class ActionController extends Controller {
    * @param matcher Regex matcher.
    * @return A list of matched url patterns.
    */
-  private List<String> getUrlParams(Matcher matcher) {
+  private Object[] constructMethodArguments(Matcher matcher, HttpServletRequest request,
+      HttpServletResponse response) {
 
-    List<String> params = new ArrayList<>();
+    Object[] args = new Object[2 + Math.max(0, matcher.groupCount())];
 
-    if (matcher.find(0)) {
-      params.add(matcher.group(1));
+    args[0] = request;
+    args[1] = response;
+
+    for (int i = 0; i < matcher.groupCount(); i++) {
+
+      args[i + 2] = matcher.group(i + 1);
     }
 
-    return params;
+    return args;
 
   }
 

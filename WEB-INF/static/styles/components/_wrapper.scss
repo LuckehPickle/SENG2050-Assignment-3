@@ -21,8 +21,9 @@
 .column-wrapper {
   display: grid;
   grid-template-columns: 1fr 300px;
-  grid-gap: 2rem;
+  grid-gap: 2.5rem;
   align-items: flex-start;
+  margin-top: -2rem;
 
   & > .column.border {
     border: 1px solid $border;

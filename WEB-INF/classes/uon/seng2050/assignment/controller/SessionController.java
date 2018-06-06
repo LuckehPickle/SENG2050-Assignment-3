@@ -1,7 +1,6 @@
 package uon.seng2050.assignment.controller;
 
 import java.io.IOException;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -38,11 +37,10 @@ public class SessionController extends ActionController {
    *
    * @param request HTTP request object
    * @param response HTTP response object
-   * @param params URL parameters.
    */
   @Action(route = "/session/login")
-  private void renderLogin(HttpServletRequest request, HttpServletResponse response,
-      List<String> params) throws ServletException, IOException {
+  private void renderLogin(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
 
     // TODO Ensure the user is not already logged in
     render(View.LOGIN, request, response);
@@ -54,11 +52,9 @@ public class SessionController extends ActionController {
    *
    * @param request HTTP request object.
    * @param response HTTP response object.
-   * @param params URL parameters.
    */
   @Action(methods = "POST", route = "/session")
-  private void handleLogin(HttpServletRequest request, HttpServletResponse response,
-      List<String> params) {
+  private void handleLogin(HttpServletRequest request, HttpServletResponse response) {
 
   }
 
@@ -68,10 +64,8 @@ public class SessionController extends ActionController {
    *
    * @param request HTTP request object.
    * @param response HTTP response object.
-   * @param params URL parameters.
    */
-  private void handleLogout(HttpServletRequest request, HttpServletResponse response,
-      List<String> params) {
+  private void handleLogout(HttpServletRequest request, HttpServletResponse response) {
 
   }
 

@@ -25,6 +25,6 @@ public @interface Action {
   /**
    * @return A regex pattern that should match the given route.
    */
-  String route() default "/";
+  String route();
 
 }

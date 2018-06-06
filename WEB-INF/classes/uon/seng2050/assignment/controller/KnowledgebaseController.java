@@ -37,11 +37,10 @@ public class KnowledgebaseController extends AuthenticatedController {
    *
    * @param request HTTP request object
    * @param response HTTP response object
-   * @param params URL parameters.
    */
   @Action(route = "/articles/?")
-  private void renderIndex(HttpServletRequest request, HttpServletResponse response,
-      List<String> params) throws ServletException, IOException {
+  private void renderIndex(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
     render(View.ARTICLES, request, response);
   }
 
@@ -51,11 +50,10 @@ public class KnowledgebaseController extends AuthenticatedController {
    *
    * @param request HTTP request object
    * @param response HTTP response object
-   * @param params URL parameters.
    */
   @Action(route = "/articles/:id;")
-  private void renderArticle(HttpServletRequest request, HttpServletResponse response,
-      List<String> params) throws ServletException, IOException {
+  private void renderArticle(HttpServletRequest request, HttpServletResponse response, String id)
+      throws ServletException, IOException {
     render(View.ARTICLE, request, response);
   }
 
@@ -67,8 +65,7 @@ public class KnowledgebaseController extends AuthenticatedController {
    * @param response HTTP response object
    */
   @Action(methods = "POST", route = "/articles")
-  private void publish(HttpServletRequest request, HttpServletResponse response,
-      List<String> params) {
+  private void publish(HttpServletRequest request, HttpServletResponse response) {
 
   }
 
@@ -78,11 +75,10 @@ public class KnowledgebaseController extends AuthenticatedController {
    *
    * @param request HTTP request object
    * @param response HTTP response object
-   * @param params URL parameters.
    */
   @Action(route = "/articles/:id;/edit")
-  private void renderEdit(HttpServletRequest request, HttpServletResponse response,
-      List<String> params) throws ServletException, IOException {
+  private void renderEdit(HttpServletRequest request, HttpServletResponse response, String id)
+      throws ServletException, IOException {
     render(View.EDIT_ARTICLE, request, response);
   }
 
@@ -92,11 +88,9 @@ public class KnowledgebaseController extends AuthenticatedController {
    *
    * @param request HTTP request object
    * @param response HTTP response object
-   * @param params URL parameters.
    */
   @Action(methods = {"PATCH", "PUT"}, route = "/articles/:id;")
-  private void updateArticle(HttpServletRequest request, HttpServletResponse response,
-      List<String> params) {
+  private void updateArticle(HttpServletRequest request, HttpServletResponse response, String id) {
 
   }
 

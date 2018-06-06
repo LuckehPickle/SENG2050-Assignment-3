@@ -1,7 +1,6 @@
 package uon.seng2050.assignment.controller;
 
 import java.io.IOException;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -42,11 +41,9 @@ public class CommentController extends AuthenticatedController {
    *
    * @param request HTTP request object
    * @param response HTTP response object
-   * @param params URL parameters.
    */
   @Action(methods = "POST", route = "/comments/:id;")
-  private void handleCreate(HttpServletRequest request, HttpServletResponse response,
-      List<String> params) {
+  private void handleCreate(HttpServletRequest request, HttpServletResponse response, String id) {
 
   }
 
@@ -56,11 +53,9 @@ public class CommentController extends AuthenticatedController {
    *
    * @param request HTTP request object
    * @param response HTTP response object
-   * @param params URL parameters.
    */
   @Action(methods = {"PATCH", "PUT"}, route = "/comments/:id;")
-  private void handleUpdate(String id, HttpServletRequest request, HttpServletResponse response,
-      List<String> params) {
+  private void handleUpdate(HttpServletRequest request, HttpServletResponse response, String id) {
 
   }
 

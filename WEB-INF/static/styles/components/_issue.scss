@@ -1,0 +1,50 @@
+.issue-description {
+  margin: 0.25rem 0;
+
+  .badge {
+    background: $primary;
+    color: $primary-inverted;
+    border-radius: 2px;
+    margin-right: 0.25rem;
+    font-size: 85%;
+    padding: 1px 0;
+    line-height: 1.0;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    &:before,
+    &:after {
+      content: '\00a0';
+    }
+  }
+}
+
+.issue-body {
+  padding: 1.5rem;
+  border: 1px solid $border;
+  border-radius: 3px;
+
+  p {
+    margin-top: 0;
+  }
+
+  .badge {
+    text-transform: lowercase;
+    background: $input;
+    border-radius: 2px;
+    font-weight: normal;
+    color: lighten($text, 8%);
+    margin: 0;
+    padding: 2px 0;
+    font-size: 95%;
+
+    &:before,
+    &:after {
+      content: '\00a0';
+    }
+  }
+}
+
+.issue-comments {
+  
+}
