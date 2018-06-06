@@ -171,7 +171,6 @@ abstract class ActionController extends Controller {
     args[1] = response;
 
     for (int i = 0; i < matcher.groupCount(); i++) {
-
       args[i + 2] = matcher.group(i + 1);
     }
 
