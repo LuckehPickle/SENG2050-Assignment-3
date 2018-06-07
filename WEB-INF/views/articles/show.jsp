@@ -32,8 +32,8 @@
 
             <%-- Helpfulness --%>
             <div class="article-helpful">
-                <p class="help"><c:out value="${article.helpfulness}"/> found this article helpful.</p>
-                <%-- halp button here --%>
+                <p id="help"><c:out value="${article.helpfulness}"/> found this article helpful.</p>
+                <div class ="button js-help" data-article-id="${article.id}">This helped!</div>
             </div>
 
             <div class="buttons">
@@ -42,5 +42,6 @@
 
         </div>
 
+        <script src="${pageContext.request.contextPath}/static/scripts/help.min.js"></script>
     </jsp:body>
 </t:application>

@@ -75,7 +75,7 @@ public class KnowledgebaseController extends AuthenticatedController {
     // Ensure result set is not empty
     if (articles.isEmpty()) {
       throw new HttpException(HttpStatusCode.PAGE_NOT_FOUND,
-          "Could not find an issue with the id " + id);
+          "Could not find an article with the id " + id);
     }
 
     request.setAttribute("article", articles.get(0));
@@ -117,6 +117,24 @@ public class KnowledgebaseController extends AuthenticatedController {
   @Action(methods = {"PATCH", "PUT"}, route = "/articles/:id;")
   private void updateArticle(HttpServletRequest request, HttpServletResponse response, String id) {
 
+  }
+
+  @Action(methods = "POST", route = "/articles/:id;")
+  private void addHelp(HttpServletRequest request, HttpServletResponse response, String id)
+      throws ServletException, IOException, HttpException, SQLException, SQLAdapterException{
+
+    List<Model> articles = Model.find(Article.class, "id", id).execute();
+
+    if (articles.isEmpty()) {
+      throw new HttpException(HttpStatusCode.PAGE_NOT_FOUND,
+          "Could not find an article with the id " + id);
+    }
+
+    request.setAttribute("article", articles.get(0));
+    Article article = (Article) articles.get(0);
+    article.addHelpful();
+    article.update();
+    throw new HttpException(HttpStatusCode.BAD_REQUEST,"hey");
   }
 
 }
