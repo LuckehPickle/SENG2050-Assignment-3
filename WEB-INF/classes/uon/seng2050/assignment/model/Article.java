@@ -11,8 +11,6 @@ public class Article extends Model {
   private String body;
   private String answer;
   private int helpfulness;
-  private Date published;
-  private Date updated;
 
   /**
    * Default constructor. Set any defaults here. Note: All primitives must have a default.

@@ -27,9 +27,7 @@ CREATE TABLE Articles (
   title       VARCHAR(128) NOT NULL,
   body        TEXT         NOT NULL,
   answer      TEXT         NOT NULL,
-  helpfulness INT          NOT NULL DEFAULT 0,
-  published   DATE         NOT NULL,
-  updated     DATE         NOT NULL
+  helpfulness INT          NOT NULL DEFAULT 0
 );
 
 
