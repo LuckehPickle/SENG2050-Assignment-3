@@ -13,7 +13,7 @@
 }
 
 form {
-  border: 1px solid $border;
+  border: 2px solid $border;
   border-radius: 3px;
   padding: 1.5rem;
 
@@ -33,6 +33,20 @@ form {
     border: none;
     border-bottom: 1px solid $border;
     margin: 2rem 0;
+  }
+
+  .error {
+    margin: 0.5rem 0 2rem;
+    padding: 0.5rem 1rem;
+    background: $danger;
+    color: $danger-inverted;
+    border-radius: 2px;
+
+    // Fix the highlight colour, otherwise it will cause my eyes to bleed.
+    ::selection {
+      background: $danger-inverted;
+      color: $danger;
+    }
   }
 
   *:first-child {

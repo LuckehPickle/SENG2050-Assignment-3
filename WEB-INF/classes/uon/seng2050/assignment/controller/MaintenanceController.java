@@ -25,9 +25,10 @@ public class MaintenanceController extends AuthenticatedController {
   protected void handleRequest(HttpServletRequest request, HttpServletResponse response)
       throws HttpException, ServletException, IOException {
 
-    // Call super first to authenticate user
-    super.handleRequest(request, response);
-    route(this, request, response);
+    // Authenticate user
+    if (authenticate(request, response)) {
+      route(this, request, response);
+    }
 
   }
 

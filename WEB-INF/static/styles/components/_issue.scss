@@ -1,5 +1,7 @@
 .issue-description {
   margin: 0.25rem 0;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid $border;
 
   .badge {
     background: $primary;
@@ -21,7 +23,7 @@
 
 .issue-body {
   padding: 1.5rem;
-  border: 1px solid $border;
+  border: 2px solid $border;
   border-radius: 3px;
 
   p {
@@ -46,7 +48,28 @@
 }
 
 .issue-comments {
-  border-left: 1px solid lighten($border, 5%);
+  border-left: 2px solid $border;
   padding: 1.5rem;
   margin-left: 2rem;
+}
+
+.comment-box {
+  padding: 1.5rem;
+
+  .field {
+    margin: 0;
+  }
+
+  textarea {
+    width: 100%;
+  }
+
+  .buttons {
+    margin: 1rem 0 0;
+    justify-content: flex-end;
+
+    .button {
+      margin: 0;
+    }
+  }
 }

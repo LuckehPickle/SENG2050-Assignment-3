@@ -16,3 +16,16 @@ input[type="password"] {
     max-width: unset;
   }
 }
+
+textarea {
+  position: relative;
+  margin-top: 0.5rem;
+  height: 5rem;
+  border: 1px solid $border;
+  background: $input;
+  resize: none;
+  border-radius: 2px;
+  line-height: 1.1;
+  color: $text;
+  padding: 10px;
+}

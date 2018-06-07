@@ -33,4 +33,18 @@ public class PageUtil {
 
   }
 
+
+  /**
+   * Redirects a user to a given page, and cleanly completes logging.
+   *
+   * @param path Path to redirect to.
+   * @param request HTTP Request object.
+   * @param response HTTP Response object.
+   */
+  public static void redirect (String path, HttpServletRequest request, HttpServletResponse response)
+      throws IOException {
+    LOGGER.fine("Redirecting to " + path);
+    response.sendRedirect(request.getContextPath() + path);
+  }
+
 }

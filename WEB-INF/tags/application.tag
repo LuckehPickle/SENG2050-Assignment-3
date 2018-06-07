@@ -1,6 +1,7 @@
-<%@tag description="Standard application layout" pageEncoding="UTF-8" %>
-<%@attribute name="title" fragment="true" %>
-<%@attribute name="bodyClass" fragment="true" %>
+<%@ tag description="Standard application layout" pageEncoding="UTF-8" %>
+<%@ attribute name="title" fragment="true" %>
+<%@ attribute name="bodyClass" fragment="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en-AU">
 <head>
@@ -20,6 +21,11 @@
         href="${pageContext.request.contextPath}/static/styles/app.min.css"/>
 </head>
 <body class="<jsp:invoke fragment="bodyClass" />">
+  <c:if test="${requestScope.flash != null}">
+    <div class="flash">
+      <p><c:out value="${requestScope.flash}" /></p>
+    </div>
+  </c:if>
   <jsp:doBody/>
 </body>
 </html>

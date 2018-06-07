@@ -26,9 +26,11 @@ public class KnowledgebaseController extends AuthenticatedController {
   protected void handleRequest(HttpServletRequest request, HttpServletResponse response)
       throws HttpException, ServletException, IOException {
 
-    // Call super first to authenticate user
-    super.handleRequest(request, response);
-    route(this, request, response);
+    // Authenticate user
+    if (authenticate(request, response)) {
+      route(this, request, response);
+    }
+
   }
 
 
@@ -41,14 +43,6 @@ public class KnowledgebaseController extends AuthenticatedController {
   @Action(route = "/articles/?")
   private void renderIndex(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-
-    List<Model> articles = Model
-        .all(Article.class)
-        .page(request.getParameter("page"))
-        .per(25)
-        .execute();
-
-    request.setAttribute("articles", articles);
     render(View.ARTICLES, request, response);
   }
 
@@ -60,19 +54,8 @@ public class KnowledgebaseController extends AuthenticatedController {
    * @param response HTTP response object
    */
   @Action(route = "/articles/:id;")
-
   private void renderArticle(HttpServletRequest request, HttpServletResponse response, String id)
       throws ServletException, IOException {
-
-    List<Model> articles = Model.find(Article.class, "id", id).execute();
-
-    // Ensure result set is not empty
-    if (articles.isEmpty()) {
-      throw new HttpException(HttpStatusCode.PAGE_NOT_FOUND,
-          "Could not find an issue with the id " + id);
-    }
-
-    request.setAttribute("article", articles.get(0));
     render(View.ARTICLE, request, response);
   }
 

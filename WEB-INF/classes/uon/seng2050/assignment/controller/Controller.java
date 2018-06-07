@@ -169,4 +169,17 @@ abstract class Controller extends HttpServlet {
     PageUtil.render(view, request, response);
   }
 
+
+  /**
+   * Redirects to a particular URL.
+   *
+   * @param url URL to redirect to.
+   * @param request HTTP request object.
+   * @param response HTTP response object.
+   */
+  void redirect(String url, HttpServletRequest request, HttpServletResponse response)
+      throws IOException {
+    PageUtil.redirect(url, request, response);
+  }
+
 }

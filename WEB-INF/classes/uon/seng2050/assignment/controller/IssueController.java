@@ -37,11 +37,10 @@ public class IssueController extends AuthenticatedController {
   protected void handleRequest(HttpServletRequest request, HttpServletResponse response)
       throws HttpException, ServletException, IOException {
 
-    // Call super first to authenticate user
-    super.handleRequest(request, response);
-
-    // Route to a particular action
-    route(this, request, response);
+    // Authenticate user
+    if (authenticate(request, response)) {
+      route(this, request, response);
+    }
 
   }
 

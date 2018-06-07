@@ -15,19 +15,27 @@
       </div>
 
       <%-- Login form --%>
-      <form action="${pageContext.request.contextPath}/session" method="POST" accept-charset="UTF-8">
-        <input name="utf8" value="✓" type="hidden" />
+      <form action="${pageContext.request.contextPath}/session" method="POST"
+            accept-charset="UTF-8">
+        <input name="utf8" value="✓" type="hidden"/>
+
+        <c:if test="${requestScope.message != null}">
+          <div class="error">
+            <p><c:out value="${requestScope.message}"/></p>
+          </div>
+        </c:if>
 
         <%-- Username --%>
         <div class="field">
           <label for="username">Username</label><br/>
-          <input type="text" id="username" name="username" spellcheck="false" class="wide" placeholder="e.g. seanbailey" autofocus />
+          <input type="text" id="username" name="username" spellcheck="false" class="wide"
+                 placeholder="e.g. seanbailey" autofocus/>
         </div>
 
         <%-- Password --%>
         <div class="field">
           <label for="password">Password</label><br/>
-          <input type="password" id="password" name="password" spellcheck="false" class="wide" />
+          <input type="password" id="password" name="password" spellcheck="false" class="wide"/>
         </div>
 
         <hr/>

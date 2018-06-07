@@ -4,6 +4,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import uon.seng2050.assignment.exception.HttpException;
 
 /**
@@ -17,18 +18,26 @@ abstract class AuthenticatedController extends ActionController {
 
 
   /**
-   * Handles all requests to this controller, and delegates them to more specific handlers.
+   * Ensure that the user is logged in.
    *
    * @param request HTTP request object
    * @param response HTTP response object
-   * @throws HttpException if an exception state is encountered that would typically return a HTTP
-   * status code.
+   * @return Whether the user is logged in
    */
-  @Override
-  protected void handleRequest(HttpServletRequest request, HttpServletResponse response)
-      throws HttpException, ServletException, IOException {
+  protected boolean authenticate(HttpServletRequest request, HttpServletResponse response)
+      throws IOException {
 
-    // TODO Authenticate user
+    // Get session
+    HttpSession session = request.getSession();
+
+    // Check if user is not logged in
+    if (session.getAttribute("userId") == null) {
+      redirect("/session/login", request, response);
+      return false;
+    }
+
+    return true;
+
   }
 
 }
