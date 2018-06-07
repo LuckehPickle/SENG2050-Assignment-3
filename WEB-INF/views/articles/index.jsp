@@ -69,9 +69,11 @@
                 </c:choose>
             </div>
         </div>
-        <div class="buttons">
-            <a href="" class="button">Previous Page</a>
-            <a href="" class="button">Next Page</a>
+        <div class="wrapper">
+            <div class="buttons">
+                <a href="" class="button">Previous Page</a>
+                <a href="" class="button">Next Page</a>
+            </div>
         </div>
     </jsp:body>
 </t:application>
