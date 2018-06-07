@@ -32,5 +32,11 @@ CREATE TABLE Articles (
   subCategory VARCHAR(32)  NOT NULL
 );
 
+CREATE TABLE MaintenanceEvents (
+  id          CHAR(36)     PRIMARY KEY,
+  description TEXT         NOT NULL,
+  startAt     DATETIME     NOT NULL,
+  finishAt       DATETIME     NOT NULL
+);
 
 ALTER TABLE Issues ADD INDEX author_index (authorId);

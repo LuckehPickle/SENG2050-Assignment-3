@@ -7,13 +7,12 @@
     <jsp:body>
 
         <%-- Header --%>
-        <div class="">
+        <div class="wrapper">
             <h1>New Maintenance Events</h1>
             <p class="">Enter in the data of the new Maintenance Event.</p>
         </div>
 
         <%-- Form --%>
         <jsp:include page="_form.jsp"/>
-
     </jsp:body>
 </t:application>

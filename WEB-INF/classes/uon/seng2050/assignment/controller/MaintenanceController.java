@@ -1,6 +1,10 @@
 package uon.seng2050.assignment.controller;
 
+import io.seanbailey.adapter.Model;
+import io.seanbailey.adapter.exception.SQLAdapterException;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import uon.seng2050.assignment.View;
 import uon.seng2050.assignment.annotation.Action;
 import uon.seng2050.assignment.exception.HttpException;
+import uon.seng2050.assignment.exception.HttpStatusCode;
+import uon.seng2050.assignment.model.MaintenanceEvent;
 
 @WebServlet(urlPatterns = {"/maintenance", "/maintenance/*"})
 public class MaintenanceController extends AuthenticatedController {
@@ -44,7 +50,14 @@ public class MaintenanceController extends AuthenticatedController {
    */
   @Action(route = "/maintenance/?")
   private void renderIndex(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
+      throws ServletException, IOException, SQLException, SQLAdapterException {
+        List<Model> events = Model
+        .all(MaintenanceEvent.class)
+        .page(request.getParameter("page"))
+        .per(25)
+        .execute();
+
+    request.setAttribute("events", events);
     render(View.MAINTENANCE, request, response);
   }
 
@@ -59,6 +72,7 @@ public class MaintenanceController extends AuthenticatedController {
   @Action(route = "/maintenance/new")
   private void renderNew(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
+
     render(View.NEW_MAINTENANCE, request, response);
   }
 
@@ -84,7 +98,18 @@ public class MaintenanceController extends AuthenticatedController {
    */
   @Action(route = "/maintenance/:id;/edit")
   private void renderEdit(HttpServletRequest request, HttpServletResponse response, String id)
-      throws ServletException, IOException {
+      throws ServletException, IOException, SQLException, SQLAdapterException, HttpException {
+
+    // Retrieve issue in question
+    List<Model> events = Model.find(MaintenanceEvent.class, "id", id).execute();
+
+    // Ensure result set is not empty
+    if (events.isEmpty()) {
+      throw new HttpException(HttpStatusCode.PAGE_NOT_FOUND,
+          "Could not find an event with the id " + id);
+    }
+
+    request.setAttribute("event", events.get(0));
     render(View.EDIT_MAINTENANCE, request, response);
   }
 

@@ -7,7 +7,7 @@
     <jsp:body>
 
         <%-- Header --%>
-        <div class="">
+        <div class="wrapper">
             <h1>Edit Maintenance Events</h1>
             <p class="">Enter data to edit this Maintenance Event.</p>
         </div>
