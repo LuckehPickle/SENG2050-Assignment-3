@@ -3,6 +3,8 @@ package uon.seng2050.assignment.model;
 import io.seanbailey.adapter.Model;
 import java.util.Date;
 import java.util.UUID;
+import uon.seng2050.assignment.model.Issue.Category;
+import uon.seng2050.assignment.model.Issue.SubCategory;
 
 public class Article extends Model {
 
@@ -37,29 +39,6 @@ public class Article extends Model {
   public boolean validate() {
     return false;
   }
-
-  /**
-   * An enum which represents the category of this issue.
-   *
-   * @see java.lang.Enum
-   */
-  @SuppressWarnings("unused")
-  public enum Category {
-    NETWORK, SOFTWARE, HARDWARE, EMAIL, ACCOUNT, OTHER
-  }
-
-
-  /**
-   * An enum which represents the subcategory of this issue.
-   *
-   * @see java.lang.Enum
-   */
-  @SuppressWarnings("unused")
-  public enum SubCategory {
-    CANT_CONNECT, SPEED, CONSTANT_DROPOUTS, SLOW_TO_LOAD, WONT_LOAD, WONT_BOOT, BLUE_SCREEN,
-    DISK_DRIVE, PERIPHERALS, CANT_SEND, CANT_RECEIVE, SPAM, PASSWORD_RESET, WRONG_DETAILS, OTHER
-  }
-
 
   //GET/SET
   public String getId() {
