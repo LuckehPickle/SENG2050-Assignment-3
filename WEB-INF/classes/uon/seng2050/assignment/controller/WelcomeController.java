@@ -36,7 +36,7 @@ public class WelcomeController extends AuthenticatedController {
     if (authenticate(request, response)) {
       route(this, request, response);
     }
-    
+
   }
 
 

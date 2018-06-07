@@ -27,5 +27,6 @@
     </div>
   </c:if>
   <jsp:doBody/>
+  <script src="${pageContext.request.contextPath}/static/scripts/ujs.min.js"></script>
 </body>
 </html>

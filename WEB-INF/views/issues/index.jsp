@@ -61,6 +61,13 @@
 
         <p>Something should go here.</p>
 
+        <div class="buttons">
+          <a href="${pageContext.request.contextPath}/session" data-method="DELETE" class="button-secondary">
+            <i class="material-icons">exit_to_app</i>
+            <span>Logout</span>
+          </a>
+        </div>
+
       </div>
 
     </div>
