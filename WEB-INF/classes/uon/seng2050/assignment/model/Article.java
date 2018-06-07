@@ -11,6 +11,8 @@ public class Article extends Model {
   private String body;
   private String answer;
   private int helpfulness;
+  private Category category;
+  private SubCategory subCategory;
 
   /**
    * Default constructor. Set any defaults here. Note: All primitives must have a default.
@@ -34,6 +36,28 @@ public class Article extends Model {
   @Override
   public boolean validate() {
     return false;
+  }
+
+  /**
+   * An enum which represents the category of this issue.
+   *
+   * @see java.lang.Enum
+   */
+  @SuppressWarnings("unused")
+  public enum Category {
+    NETWORK, SOFTWARE, HARDWARE, EMAIL, ACCOUNT, OTHER
+  }
+
+
+  /**
+   * An enum which represents the subcategory of this issue.
+   *
+   * @see java.lang.Enum
+   */
+  @SuppressWarnings("unused")
+  public enum SubCategory {
+    CANT_CONNECT, SPEED, CONSTANT_DROPOUTS, SLOW_TO_LOAD, WONT_LOAD, WONT_BOOT, BLUE_SCREEN,
+    DISK_DRIVE, PERIPHERALS, CANT_SEND, CANT_RECEIVE, SPAM, PASSWORD_RESET, WRONG_DETAILS, OTHER
   }
 
 
@@ -78,4 +102,19 @@ public class Article extends Model {
     this.helpfulness = helpfulness;
   }
 
+  public String getCategory() {
+    return category.name();
+  }
+
+  public void setCategory(String category) {
+    this.category = Category.valueOf(category);
+  }
+
+  public String getSubCategory() {
+    return subCategory.name();
+  }
+
+  public void setSubCategory(String subCategory) {
+    this.subCategory = SubCategory.valueOf(subCategory);
+  }
 }

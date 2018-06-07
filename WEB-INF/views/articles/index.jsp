@@ -55,12 +55,10 @@
                                         </p>
 
                                         <div class="footer">
-                                            <p>Posted by <c:out
+                                            <p>Rating: <c:out
                                                     value="${article.helpfulness}"/></p>
-                                            <%--<p>Posted by <c:out
-                                                    value="${article.published}"/></p>
-                                            <p>Posted by <c:out
-                                                    value="${article.updated}"/></p>--%>
+                                            <p><c:out value="${article.category}"/></p>
+                                            <p><c:out value="${article.subCategory}"/></p>
                                         </div>
 
                                     </a>
