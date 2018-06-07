@@ -13,3 +13,9 @@ INSERT INTO Articles (id, title, body, answer, helpfulness, category, subCategor
 VALUES ('f31a1c3e-d526-4de3-aa42-b6f5770c4068', 'Why does Linux Sux', 'Halp I jest dunt ud3rStnD', 'Just Dont thx its bud', 20, 'SOFTWARE', 'WONT_BOOT'),
        ('80b63a6c-032b-4d02-a6a2-1cb5eef31c4c', 'Posting Issue', 'How do I post a Issue', 'Just Dont thx its bud', 5, 'NETWORK', 'CANT_CONNECT'),
        ('e7f41ce0-28eb-4642-a480-bd9c60d03901','How to plagiarize an article without your fellow mates finding out','Hello fellow mates, it is I, Chit. How do I copy english text without being catched. A good GDay to you all','Chit pls', 9001, 'EMAIL', 'DISK_DRIVE');
+
+INSERT INTO MaintenanceEvents (id, description, startAt, finishAt)
+VALUES ('f31a1c3e-d526-4de3-aa42-b6f5770c4054','PINGUUUU PINNNNGUUUUUU YOU WILL ALL GET PINGUED','2016-06-1 07:27:39','2018-07-1 07:27:39'),
+	('f31a2c3e-d526-4de3-aa42-b6f5770c4054','Prepare for a DDOS Attack','2018-06-1 07:27:39','2018-07-1 07:27:39'),
+	('f31a3c3e-d526-4de3-aa42-b6f5770c4054','Website down due to file type encryption to .Crabs','2018-06-1 07:27:39','2018-07-1 07:27:39'),
+	('f34a1c3e-d526-4de3-aa42-b6f5770c4054','Site shut down due to Hax','2018-06-1 07:27:39','2018-07-1 07:27:39');
