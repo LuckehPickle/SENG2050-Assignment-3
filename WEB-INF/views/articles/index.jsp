@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <t:application>
     <jsp:attribute name="title">KnowledgeBase</jsp:attribute>
@@ -13,59 +14,53 @@
         </div>
 
         <%-- Search bar to search through knowledgebase articles --%>
-        <jsp:include page="_form.jsp"/>
+
 
         <%-- Main Content --%>
+        <%--<jsp:include page="_form.jsp"/>--%>
         <div class="column-wrapper">
 
             <div class="column border">
 
 
-                    <%-- General Article Structure --%>
+
+                    <%-- General Article Structure
                 <a href="" class="article-container">
                     <div>
 
                         <span>Title</span>
 
                         <p>Question Preview...</p>
-
-                        <div class="article-details">
-                            <p>Category</p>
-                            <p>Helpfullness</p>
-                            <p>Dateupdated</p>
-                        </div>
                     </div>
-                </a>
+                </a>--%>
 
                 <c:choose>
-                    <c:when test="${issues.isEmpty()}">
+                    <c:when test="${articles.isEmpty()}">
                         <%-- TODO Improve this empty state --%>
                         There's nothing here!
                     </c:when>
                     <c:otherwise>
                         <ul class="issue-list">
-                            <c:forEach items="${issues}" var="issue">
+                            <c:forEach items="${articles}" var="article">
                                 <li class="issue">
-                                    <a href="${pageContext.request.contextPath}/issues/${issue.id}">
+                                    <a href="${pageContext.request.contextPath}/articles/${article.id}">
 
                                             <%-- Title --%>
                                         <p class="title">
-                                            <c:out value="${issue.title}"/>
-                                            <span class="state"><c:out
-                                                    value="${issue.state.replaceAll('_', ' ')}"/></span>
+                                            <c:out value="${article.title}"/>
                                         </p>
 
                                         <p class="preview">
-                                            <c:out value="${fn:substring(issue.body, 0, 64)}"/>
+                                            <c:out value="${fn:substring(article.body, 0, 64)}"/>
                                         </p>
 
                                         <div class="footer">
                                             <p>Posted by <c:out
-                                                    value="${issue.getAuthor().getFullName()}"/></p>
-                                            <span class="badge"><c:out
-                                                    value="${issue.category.replaceAll('_', ' ')}"/></span>
-                                            <span class="badge"><c:out
-                                                    value="${issue.subCategory.replaceAll('_', ' ')}"/></span>
+                                                    value="${article.helpfulness}"/></p>
+                                            <%--<p>Posted by <c:out
+                                                    value="${article.published}"/></p>
+                                            <p>Posted by <c:out
+                                                    value="${article.updated}"/></p>--%>
                                         </div>
 
                                     </a>
@@ -82,5 +77,3 @@
         </div>
     </jsp:body>
 </t:application>
-
-for each issue.categories.values

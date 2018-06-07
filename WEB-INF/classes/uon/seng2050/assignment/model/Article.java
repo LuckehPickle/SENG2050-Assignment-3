@@ -1,6 +1,7 @@
 package uon.seng2050.assignment.model;
 
 import io.seanbailey.adapter.Model;
+import java.util.Date;
 import java.util.UUID;
 
 public class Article extends Model {
@@ -10,7 +11,8 @@ public class Article extends Model {
   private String body;
   private String answer;
   private int helpfulness;
-
+  private Date published;
+  private Date updated;
 
   /**
    * Default constructor. Set any defaults here. Note: All primitives must have a default.
@@ -38,12 +40,12 @@ public class Article extends Model {
 
 
   //GET/SET
-  public UUID getId() {
-    return id;
+  public String getId() {
+    return id.toString();
   }
 
-  public void setId(UUID id) {
-    this.id = id;
+  public void setId(String id) {
+    this.id = UUID.fromString(id);
   }
 
   public String getTitle() {
@@ -76,6 +78,22 @@ public class Article extends Model {
 
   public void setHelpfulness(int helpfulness) {
     this.helpfulness = helpfulness;
+  }
+
+  public Date getPublished() {
+    return published;
+  }
+
+  public void setPublished(Date published) {
+    this.published = published;
+  }
+
+  public Date getUpdated() {
+    return updated;
+  }
+
+  public void setUpdated(Date updated) {
+    this.updated = updated;
   }
 
 }
