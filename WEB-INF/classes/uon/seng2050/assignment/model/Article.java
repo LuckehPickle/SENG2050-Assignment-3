@@ -78,20 +78,4 @@ public class Article extends Model {
     this.helpfulness = helpfulness;
   }
 
-  public Date getPublished() {
-    return published;
-  }
-
-  public void setPublished(Date published) {
-    this.published = published;
-  }
-
-  public Date getUpdated() {
-    return updated;
-  }
-
-  public void setUpdated(Date updated) {
-    this.updated = updated;
-  }
-
 }
