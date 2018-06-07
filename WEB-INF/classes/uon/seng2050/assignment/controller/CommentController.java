@@ -30,6 +30,7 @@ public class CommentController extends AuthenticatedController {
   protected void handleRequest(HttpServletRequest request, HttpServletResponse response)
       throws HttpException, ServletException, IOException {
 
+    super.handleRequest(request,response);
     // Authenticate user
     if (authenticate(request, response)) {
       route(this, request, response);

@@ -23,7 +23,7 @@ public enum View {
   MAINTENANCE("maintenance/index"),
   NEW_MAINTENANCE("maintenance/new"),
   EDIT_MAINTENANCE("maintenance/edit"),
-  ERROR("error");
+  ERROR("shared/error");
 
   private static final String PATH_FORMAT = "/WEB-INF/views/%s.jsp";
 

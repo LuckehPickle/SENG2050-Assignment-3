@@ -11,10 +11,11 @@
       <c:out value="${requestScope.message}" /><br/>
       <c:choose>
         <c:when test="${pageContext.response.getStatus() == 404}">
-          If you think it should, create a new issue and let us know.
+          <p>If you think this page should exist, create a new issue and let us know.</p>
           <div class="buttons">
             <a class="button" href="${pageContext.request.contextPath}/">
-            Home
+              <i class="material-icons">home</i>
+              <span>Return Home</span>
             </a>
             <a class="button-secondary" href="${pageContext.request.contextPath}/issues/new">
               New Issue
@@ -24,7 +25,8 @@
         <c:otherwise>
           <div class="buttons">
             <a class="button" href="${pageContext.request.contextPath}/">
-              Home
+              <i class="material-icons">home</i>
+              <span>Return Home</span>
             </a>
           </div>
         </c:otherwise>

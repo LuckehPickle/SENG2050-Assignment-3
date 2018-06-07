@@ -117,7 +117,21 @@ public class SessionController extends ActionController {
    * @param request HTTP request object.
    * @param response HTTP response object.
    */
-  private void handleLogout(HttpServletRequest request, HttpServletResponse response) {
+  @Action(methods = "DELETE", route = "/session")
+  private void handleLogout(HttpServletRequest request, HttpServletResponse response)
+      throws IOException {
+
+    HttpSession session = request.getSession();
+
+    // Ensure user is not already logged in
+    if (session.getAttribute("userId") == null) {
+      redirect("/session/login", request, response);
+      return;
+    }
+
+    LOGGER.fine("Logging out user.");
+    session.invalidate();
+    redirect("/session/login", request, response);
 
   }
 

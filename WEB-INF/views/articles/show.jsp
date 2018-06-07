@@ -20,11 +20,11 @@
             <%-- Question / Answer --%>
             <div class="article-body">
 
-                <div class="article-question">
+                <div class="issue-body">
                     <p class="question"><c:out value="${article.body}"/></p>
                 </div>
 
-                <div class="article-answer">
+                <div class="issue-comments">
                     <p class="answer"><c:out value="${article.answer}"/></p>
                 </div>
 
@@ -32,15 +32,16 @@
 
             <%-- Helpfulness --%>
             <div class="article-helpful">
-                <p class="help"><c:out value="${article.helpfulness}"/> found this article helpful.</p>
-                <%-- halp button here --%>
+                <p id="help"><c:out value="${article.helpfulness}"/> found this article helpful.</p>
             </div>
 
             <div class="buttons">
+                <div class ="button js-help" data-article-id="${article.id}">This helped!</div>
                 <a href="${pageContext.request.contextPath}/articles" class="button">Return</a>
             </div>
 
         </div>
 
+        <script src="${pageContext.request.contextPath}/static/scripts/help.min.js"></script>
     </jsp:body>
 </t:application>

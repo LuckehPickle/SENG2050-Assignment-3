@@ -1,6 +1,8 @@
 package uon.seng2050.assignment.controller;
 
+import io.seanbailey.adapter.exception.SQLAdapterException;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Map;
 import java.util.StringJoiner;
 import javax.servlet.ServletException;
