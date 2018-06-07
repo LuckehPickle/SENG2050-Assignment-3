@@ -32,9 +32,11 @@ public class WelcomeController extends AuthenticatedController {
   protected void handleRequest(HttpServletRequest request, HttpServletResponse response)
       throws HttpException, ServletException, IOException {
 
-    // Call super to authenticate user
-    super.handleRequest(request, response);
-    route(this, request, response);
+    // Authenticate user
+    if (authenticate(request, response)) {
+      route(this, request, response);
+    }
+    
   }
 
 
