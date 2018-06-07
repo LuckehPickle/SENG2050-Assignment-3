@@ -12,16 +12,16 @@
             <%-- Header --%>
             <div class="article-header">
                 <h1 class="title"><c:out value="${article.title}"/></h1>
-                <h2 class="category"><c:out value="${article.category}"/></h2>
+                <%--<h2 class="category"><c:out value="${article.category}"/></h2>--%>
                 <%-- Subcategory --%>
-                <h3 class="date"><c:out value="${article.lastUpdated}"/></h3>
+                <%--<h3 class="date"><c:out value="${article.lastUpdated}"/></h3>--%>
             </div>
 
             <%-- Question / Answer --%>
             <div class="article-body">
 
                 <div class="article-question">
-                    <p class="question"><c:out value="${article.question}"/></p>
+                    <p class="question"><c:out value="${article.body}"/></p>
                 </div>
 
                 <div class="article-answer">

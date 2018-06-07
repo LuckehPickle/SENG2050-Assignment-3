@@ -1,7 +1,10 @@
 package uon.seng2050.assignment.model;
 
 import io.seanbailey.adapter.Model;
+import java.util.Date;
 import java.util.UUID;
+import uon.seng2050.assignment.model.Issue.Category;
+import uon.seng2050.assignment.model.Issue.SubCategory;
 
 public class Article extends Model {
 
@@ -10,7 +13,8 @@ public class Article extends Model {
   private String body;
   private String answer;
   private int helpfulness;
-
+  private Category category;
+  private SubCategory subCategory;
 
   /**
    * Default constructor. Set any defaults here. Note: All primitives must have a default.
@@ -36,14 +40,13 @@ public class Article extends Model {
     return false;
   }
 
-
   //GET/SET
-  public UUID getId() {
-    return id;
+  public String getId() {
+    return id.toString();
   }
 
-  public void setId(UUID id) {
-    this.id = id;
+  public void setId(String id) {
+    this.id = UUID.fromString(id);
   }
 
   public String getTitle() {
@@ -78,4 +81,19 @@ public class Article extends Model {
     this.helpfulness = helpfulness;
   }
 
+  public String getCategory() {
+    return category.name();
+  }
+
+  public void setCategory(String category) {
+    this.category = Category.valueOf(category);
+  }
+
+  public String getSubCategory() {
+    return subCategory.name();
+  }
+
+  public void setSubCategory(String subCategory) {
+    this.subCategory = SubCategory.valueOf(subCategory);
+  }
 }

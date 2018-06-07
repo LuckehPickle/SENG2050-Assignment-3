@@ -29,9 +29,9 @@
 
         <%-- All comments --%>
         <div class="issue-comments">
-          <c:choose>
+          <%--<c:choose>
 
-          </c:choose>
+          </c:choose>--%>
         </div>
 
         <%-- Comment box --%>
