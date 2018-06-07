@@ -22,4 +22,15 @@ CREATE TABLE Issues (
   locked      BIT          NOT NULL DEFAULT 0
 );
 
+CREATE TABLE Articles (
+  id          CHAR(36)     PRIMARY KEY,
+  title       VARCHAR(128) NOT NULL,
+  body        TEXT         NOT NULL,
+  answer      TEXT         NOT NULL,
+  helpfulness INT          NOT NULL DEFAULT 0,
+  category    VARCHAR(24)  NOT NULL,
+  subCategory VARCHAR(32)  NOT NULL
+);
+
+
 ALTER TABLE Issues ADD INDEX author_index (authorId);

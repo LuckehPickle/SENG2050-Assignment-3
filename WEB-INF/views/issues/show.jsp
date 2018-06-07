@@ -29,9 +29,11 @@
         <%-- All comments --%>
         <div class="issue-comments">
           <c:choose>
-            <c:when test="true"></c:when>
+            <c:when test="${true}">
+              Hey
+            </c:when>
             <c:otherwise>
-
+              Yo
             </c:otherwise>
           </c:choose>
         </div>
