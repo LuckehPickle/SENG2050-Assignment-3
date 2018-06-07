@@ -18,7 +18,6 @@
       <form action="${pageContext.request.contextPath}/session" method="POST"
             accept-charset="UTF-8">
         <input name="utf8" value="✓" type="hidden"/>
-
         <c:if test="${requestScope.message != null}">
           <div class="error">
             <p><c:out value="${requestScope.message}"/></p>

@@ -21,6 +21,7 @@
         href="${pageContext.request.contextPath}/static/styles/app.min.css"/>
 </head>
 <body class="<jsp:invoke fragment="bodyClass" />">
+  <jsp:include page="../shared/_head.jsp"/>
   <c:if test="${requestScope.flash != null}">
     <div class="flash">
       <p><c:out value="${requestScope.flash}" /></p>

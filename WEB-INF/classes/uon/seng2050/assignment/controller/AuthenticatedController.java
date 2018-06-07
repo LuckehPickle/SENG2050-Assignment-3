@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import uon.seng2050.assignment.exception.HttpException;
 import uon.seng2050.assignment.model.User;
+import uon.seng2050.assignment.util.Logger;
 
 /**
  * A controller that forces uses to be authenticated before accessing any of it's contents.
@@ -20,6 +21,8 @@ import uon.seng2050.assignment.model.User;
  * @since 2018-05-28
  */
 abstract class AuthenticatedController extends ActionController {
+
+  private static Logger LOGGER = new Logger();
 
 
   /**
@@ -38,6 +41,7 @@ abstract class AuthenticatedController extends ActionController {
     HttpSession session = request.getSession();
 
     if (session.getAttribute("userId") == null) {
+      LOGGER.fine("user id null");
       return;
     }
 

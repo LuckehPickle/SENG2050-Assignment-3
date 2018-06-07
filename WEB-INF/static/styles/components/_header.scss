@@ -1,0 +1,37 @@
+.header {
+  nav {
+    display: flex;
+    align-items: center;
+    margin: 0 -0.75rem;
+    a {
+      display: flex;
+      align-items: center;
+      margin: 0 0.75rem;
+      text-decoration: none;
+      color: $text;
+      position: relative;
+      &:hover {
+        color: $primary;
+        &:after {
+          content: "";
+          position: absolute;
+          top: calc(100% + 5px);
+          left: 0;
+          right: 0;
+          height: 1.5px;
+          background: $primary;
+        }
+      }
+
+    }
+    .logout-link {
+      margin-left: auto;
+
+      i.material-icons{
+        font-size: 22px;
+        margin: -0.2rem 0.5rem -0.2rem 0;
+      }
+
+    }
+  }
+}

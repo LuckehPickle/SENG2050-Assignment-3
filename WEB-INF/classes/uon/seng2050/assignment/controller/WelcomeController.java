@@ -32,6 +32,8 @@ public class WelcomeController extends AuthenticatedController {
   protected void handleRequest(HttpServletRequest request, HttpServletResponse response)
       throws HttpException, ServletException, IOException {
 
+    super.handleRequest(request, response);
+
     // Authenticate user
     if (authenticate(request, response)) {
       route(this, request, response);
@@ -50,7 +52,8 @@ public class WelcomeController extends AuthenticatedController {
   private void handleIndex(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException, HttpException {
 
-    throw new HttpException(HttpStatusCode.PAGE_NOT_FOUND, "We could not find that page");
+    render(View.WELCOME, request, response);
+    //throw new HttpException(HttpStatusCode.PAGE_NOT_FOUND, "We could not find that page");
   }
 
 }
