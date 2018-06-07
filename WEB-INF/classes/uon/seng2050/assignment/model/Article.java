@@ -96,4 +96,8 @@ public class Article extends Model {
   public void setSubCategory(String subCategory) {
     this.subCategory = SubCategory.valueOf(subCategory);
   }
+
+  public void addHelpful() {
+    helpfulness++;
+  }
 }
