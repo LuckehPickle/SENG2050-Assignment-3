@@ -210,6 +210,7 @@ public class Issue extends Model {
   }
 
   public String getAnswerId() {
+    if (answerId == null) return null;
     return answerId.toString();
   }
 
