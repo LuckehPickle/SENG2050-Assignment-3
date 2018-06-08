@@ -1,6 +1,7 @@
 package uon.seng2050.assignment.controller;
 
 import io.seanbailey.adapter.Model;
+import io.seanbailey.adapter.SQLChain;
 import io.seanbailey.adapter.exception.SQLAdapterException;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -61,26 +62,21 @@ public class IssueController extends AuthenticatedController {
   private void renderIndex(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException, SQLException, SQLAdapterException {
 
-    //some ifs here?
     User user = (User) request.getAttribute("currentUser");
+    SQLChain chain = Model
+        .all(Issue.class)
+        .page(request.getParameter("page"))
+        .per(25);
 
     if (user.getRole().equals(Role.IT_STAFF.name())) {
-      List<Model> issues = Model
-          .where(Issue.class, "state", "NEW")
-          .or("state = ?", "IN_PROGRESS")
-          .page(request.getParameter("page"))
-          .per(25)
-          .execute();
-      request.setAttribute("issues", issues);
+      chain = chain.where("state", "NEW")
+          .or("state = ?", "IN_PROGRESS");
     } else {
-      List<Model> issues = Model
-          .where(Issue.class, "authorId", user.getId())
-          .page(request.getParameter("page"))
-          .per(25)
-          .execute();
-      request.setAttribute("issues", issues);
+      chain = chain.where("authorId", user.getId());
     }
 
+    List<Model> issues = chain.execute();
+    request.setAttribute("issues", issues);
     render(View.ISSUES, request, response);
 
   }
@@ -162,16 +158,16 @@ public class IssueController extends AuthenticatedController {
           "Could not find an issue with the id " + id);
     }
 
-    User current = (User) request.getAttribute("currentUser");
+    User user = (User) request.getAttribute("currentUser");
     Issue issue = (Issue) issues.get(0);
 
     // Ensure user is either staff member or user that created issue
-    if (current.getRole().equals(Role.USER.name()) && !current.getId().equals(issue.getAuthorId())) {
-
+    if (user.getRole().equals(Role.USER.name()) && !user.getId().equals(issue.getAuthorId())) {
+      redirect("/articles",request,response);
+    } else {
+      request.setAttribute("issue", issue);
+      render(View.ISSUE, request, response);
     }
-
-    request.setAttribute("issue", issue);
-    render(View.ISSUE, request, response);
 
   }
 
