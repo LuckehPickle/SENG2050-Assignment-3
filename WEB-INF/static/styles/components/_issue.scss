@@ -81,6 +81,16 @@
   .comment {
     margin-bottom: 1.75rem;
 
+    &.answer {
+      border: 2px solid $primary;
+      border-radius: 3px;
+      padding: 0.5rem;
+
+      i.material-icons{
+
+      }
+    }
+
     p {
       margin: 0;
     }
