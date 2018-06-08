@@ -84,8 +84,8 @@ public class Issue extends Model {
     if (title == null) {
       addError("Title must exist.");
       valid = false;
-    } else if (title.length() > 128) {
-      addError("Title must be less than 128 characters long.");
+    } else if (title.length() > 80) {
+      addError("Title must be less than 80 characters long.");
       valid = false;
     } else if (title.length() < 10) {
       addError("Title must be at least 10 characters long.");
@@ -121,6 +121,26 @@ public class Issue extends Model {
   }
 
 
+  public Comment getAnswer() {
+
+    List<Model> comments;
+
+    try {
+      comments = Model.find(Comment.class, "id", answerId).execute();
+    } catch (SQLException | SQLAdapterException e) {
+      e.printStackTrace();
+      return null;
+    }
+
+    if (comments.isEmpty()) {
+      return null;
+    } else {
+      return (Comment) comments.get(0);
+    }
+
+  }
+
+
   /**
    * Attempts to retrieve all comments related to this issue.
    *
@@ -133,7 +153,7 @@ public class Issue extends Model {
     try {
       comments = Model
           .where(Comment.class, "issueId", getId())
-          .order("createdAt", Order.DESCENDING)
+          .order("createdAt", Order.ASCENDING)
           .execute();
     } catch (SQLException | SQLAdapterException e) {
       e.printStackTrace();

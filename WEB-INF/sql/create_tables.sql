@@ -19,7 +19,7 @@ CREATE TABLE Issues (
   state       VARCHAR(24)  NOT NULL DEFAULT 'NEW',
   category    VARCHAR(24)  NOT NULL,
   subCategory VARCHAR(32)  NOT NULL,
-  title       VARCHAR(128) NOT NULL,
+  title       VARCHAR(80) NOT NULL,
   body        TEXT         NOT NULL,
   answerId    CHAR(36),
   locked      BIT          NOT NULL DEFAULT 0,
@@ -43,21 +43,21 @@ ALTER TABLE Comments ADD INDEX comment_author_index (authorId);
 ALTER TABLE Comments ADD INDEX comment_issue_index (issueId);
 
 CREATE TABLE Articles (
-  id          CHAR(36)     PRIMARY KEY,
-  title       VARCHAR(128) NOT NULL,
-  body        TEXT         NOT NULL,
-  answer      TEXT         NOT NULL,
-  helpfulness INT          NOT NULL DEFAULT 0,
-  category    VARCHAR(24)  NOT NULL,
-  subCategory VARCHAR(32)  NOT NULL,
-  publisher   VARCHAR(64)  NOT NULL,
-  createdAt   DATETIME     NOT NULL DEFAULT '2018-06-8 13:30:00',
-  updatedAt   DATETIME     NOT NULL DEFAULT '2018-06-8 13:30:00'
+  id          CHAR(36)    PRIMARY KEY,
+  title       VARCHAR(80) NOT NULL,
+  body        TEXT        NOT NULL,
+  answer      TEXT        NOT NULL,
+  helpfulness INT         NOT NULL DEFAULT 0,
+  category    VARCHAR(24) NOT NULL,
+  subCategory VARCHAR(32) NOT NULL,
+  publisher   VARCHAR(64) NOT NULL,
+  createdAt   DATETIME    NOT NULL DEFAULT '2018-06-8 13:30:00',
+  updatedAt   DATETIME    NOT NULL DEFAULT '2018-06-8 13:30:00'
 );
 
 CREATE TABLE MaintenanceEvents (
   id          CHAR(36)     PRIMARY KEY,
-  title       VARCHAR(128) NOT NULL,
+  title       VARCHAR(256) NOT NULL,
   startAt     DATETIME     NOT NULL,
   finishAt    DATETIME     NOT NULL,
   createdAt   DATETIME     NOT NULL DEFAULT '2018-06-8 13:30:00',

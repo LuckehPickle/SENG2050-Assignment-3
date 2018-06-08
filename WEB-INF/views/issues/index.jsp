@@ -19,8 +19,7 @@
 
         <c:choose>
           <c:when test="${issues.isEmpty()}">
-            <%-- TODO Improve this empty state --%>
-            There's nothing here!
+            <p class="empty-state">There's nothing here!</p>
           </c:when>
           <c:otherwise>
             <ul class="issue-list">
@@ -58,6 +57,16 @@
 
         <div class="buttons">
           <a href="${pageContext.request.contextPath}/issues/new" class="button wide">New Issue</a>
+          <c:if test='${requestScope.currentUser.getRole() == "IT_STAFF"}'>
+            <c:choose>
+              <c:when test="${requestScope.archived != null}">
+                <a href="${pageContext.request.contextPath}/issues" class="button-secondary wide">View Outstanding Issues</a>
+              </c:when>
+              <c:otherwise>
+                <a href="${pageContext.request.contextPath}/issues/?archived=true" class="button-secondary wide">View Archived Issues</a>
+              </c:otherwise>
+            </c:choose>
+          </c:if>
         </div>
 
       </div>

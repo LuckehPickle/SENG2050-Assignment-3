@@ -128,14 +128,13 @@ public class SelectGenerator extends Generator {
   private String generateOrders() {
 
     StringJoiner joiner = new StringJoiner(" ");
-    Map<String, Order> orders = chain.getOrders();
+    List<String> orders = chain.getOrders();
 
     joiner.add("ORDER BY");
 
-    // Iterate over hashmap
-    for (String attribute : orders.keySet()) {
-      joiner.add(attribute);
-      joiner.add(orders.get(attribute).toSQL() + ",");
+    // Iterate over orders
+    for (String attribute : orders) {
+      joiner.add(attribute + ",");
     }
 
     // Remove final character (will always be a trailing comma).
