@@ -27,7 +27,7 @@
 
                     <%-- Title --%>
                     <p class="preview">
-                      <c:out value="${fn:substring(event.description, 0, 64)}"/>
+                      <c:out value="${fn:substring(event.title, 0, 64)}"/>
                     </p>
 
                     <%-- Footer --%>
