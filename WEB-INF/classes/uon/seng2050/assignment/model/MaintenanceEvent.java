@@ -31,7 +31,35 @@ public class MaintenanceEvent extends Model {
    */
   @Override
   public boolean validate() {
-    return true;
+    boolean valid = true;
+    if(id == null) {
+      addError("ID is null");
+      valid = false;
+    }
+    if(title == null) {
+      addError("Title is null");
+      valid = false;
+    }
+    if(startAt == null) {
+      addError("startAt is null");
+      valid = false;
+    }
+    if(finishAt == null) {
+      addError("finishAt is null");
+      valid = false;
+    }
+    if(valid) {
+      if(startAt.compareTo(finishAt) > 0) {
+        addError("The end date cannot be earlier than the start date.");
+        valid = false;
+      }
+      if(title.isEmpty()) {
+        addError("Please enter a name for the event");
+        valid = false;
+      }
+    }
+
+    return valid;
   }
 
 
