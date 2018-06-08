@@ -1,8 +1,10 @@
 .header {
+
   nav {
     display: flex;
     align-items: center;
     margin: 0 -0.75rem;
+
     a {
       display: flex;
       align-items: center;
@@ -10,8 +12,10 @@
       text-decoration: none;
       color: $text;
       position: relative;
+
       &:hover {
-        color: $primary;
+        color: darken($primary, 5%);
+
         &:after {
           content: "";
           position: absolute;
@@ -24,6 +28,7 @@
       }
 
     }
+
     .logout-link {
       margin-left: auto;
 

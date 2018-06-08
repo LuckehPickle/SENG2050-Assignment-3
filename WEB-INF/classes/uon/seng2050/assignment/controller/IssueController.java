@@ -75,7 +75,8 @@ public class IssueController extends AuthenticatedController {
    * @param response HTTP response object
    */
   @Action(route = "/issues/new")
-  private void renderNew(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+  private void renderNew(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
     render(View.NEW_ISSUE, request, response);
   }
 
@@ -85,11 +86,9 @@ public class IssueController extends AuthenticatedController {
    *
    * @param request HTTP request object
    * @param response HTTP response object
-   * @param params URL parameters.
    */
   @Action(methods = "POST", route = "/issues")
-  private void createIssue(HttpServletRequest request, HttpServletResponse response,
-      List<String> params) {
+  private void createIssue(HttpServletRequest request, HttpServletResponse response) {
 
   }
 
@@ -102,8 +101,8 @@ public class IssueController extends AuthenticatedController {
    * @param params URL parameters.
    */
   @Action(route = "/issues/:id;/edit")
-  private void renderEdit(HttpServletRequest request, HttpServletResponse response,
-      List<String> params) throws ServletException, IOException {
+  private void renderEdit(HttpServletRequest request, HttpServletResponse response, String id)
+      throws ServletException, IOException {
     render(View.EDIT_ISSUE, request, response);
   }
 

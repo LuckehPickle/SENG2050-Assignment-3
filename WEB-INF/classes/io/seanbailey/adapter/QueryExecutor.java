@@ -186,11 +186,12 @@ class QueryExecutor {
       return new ResultPackage(connection, statement, statement.executeQuery());
 
     } catch (NamingException e) {
-      throw new SQLAdapterException(String.format(
-          "Failed to execute SQL Chain of type %s. Exception: %s",
-          chain.getClazz().getSimpleName(),
-          e.getMessage())
-      );
+      SQLAdapterException exception = new SQLAdapterException(String.format(
+          "Failed to execute SQL Chain of type %s.",
+          chain.getClazz().getSimpleName()
+      ));
+      exception.initCause(e);
+      throw exception;
     }
 
   }
@@ -220,11 +221,9 @@ class QueryExecutor {
       statement.execute();
 
     } catch (NamingException e) {
-      e.printStackTrace();
-      throw new SQLAdapterException(String.format(
-          "Failed to execute SQL. Exception: %s",
-          e.getMessage())
-      );
+      SQLAdapterException exception = new SQLAdapterException("Failed to execute SQL.");
+      exception.initCause(e);
+      throw exception;
     }
 
   }

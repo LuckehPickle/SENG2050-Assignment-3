@@ -64,6 +64,7 @@ abstract class AuthenticatedController extends ActionController {
     // Retrieve user and set as request attribute
     User currentUser = (User) users.get(0);
     request.setAttribute("currentUser", currentUser);
+    LOGGER.fine("Current user is %s", currentUser.getFullName());
 
   }
 
