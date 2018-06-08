@@ -31,5 +31,6 @@
   <script src="${pageContext.request.contextPath}/static/scripts/ujs.min.js"></script>
   <script src="${pageContext.request.contextPath}/static/scripts/select.min.js"></script>
   <script src="${pageContext.request.contextPath}/static/scripts/category-select.min.js"></script>
+  <script src="${pageContext.request.contextPath}/static/scripts/accordion.min.js"></script>
 </body>
 </html>
