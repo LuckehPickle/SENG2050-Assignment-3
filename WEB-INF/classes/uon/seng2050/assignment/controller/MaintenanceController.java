@@ -90,7 +90,7 @@ public class MaintenanceController extends AuthenticatedController {
    */
   @Action(methods = "POST", route = "/maintenance")
   private void createMaintenanceEvent(HttpServletRequest request, HttpServletResponse response)
-      throws ParseException, SQLException, SQLAdapterException {
+      throws ParseException, SQLException, SQLAdapterException, IOException {
     String name = request.getParameter("eventName");
     String start = request.getParameter("eventDate");
     String finish = request.getParameter("eventEnd");
@@ -106,6 +106,7 @@ public class MaintenanceController extends AuthenticatedController {
     newEvent.setFinishAt(eventFinish);
 
     newEvent.save();
+    redirect("/maintenance",request,response);
   }
 
 

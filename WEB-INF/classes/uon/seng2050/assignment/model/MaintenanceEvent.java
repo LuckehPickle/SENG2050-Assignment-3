@@ -31,7 +31,7 @@ public class MaintenanceEvent extends Model {
    */
   @Override
   public boolean validate() {
-    return false;
+    return true;
   }
 
 
