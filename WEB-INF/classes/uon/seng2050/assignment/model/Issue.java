@@ -3,6 +3,7 @@ package uon.seng2050.assignment.model;
 import io.seanbailey.adapter.Model;
 import io.seanbailey.adapter.exception.SQLAdapterException;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -116,6 +117,25 @@ public class Issue extends Model {
   }
 
 
+  /**
+   * Attempts to retrieve all comments related to this issue.
+   *
+   * @return A list of comments.
+   */
+  public List<Model> getComments() {
+
+    List<Model> comments = null;
+
+    try {
+      comments = Model.all(Comment.class).where("issueId", getId()).execute();
+    } catch (SQLException | SQLAdapterException e) {
+      e.printStackTrace();
+    }
+
+    return comments;
+
+  }
+
   public String getAuthorId() {
     return authorId.toString();
   }
@@ -188,6 +208,26 @@ public class Issue extends Model {
 
   public void setLocked(boolean locked) {
     this.locked = locked;
+  }
+
+  @Override
+  public Date getCreatedAt() {
+    return super.getCreatedAt();
+  }
+
+  @Override
+  public void setCreatedAt(Date createdAt) {
+    super.setCreatedAt(createdAt);
+  }
+
+  @Override
+  public Date getUpdatedAt() {
+    return super.getUpdatedAt();
+  }
+
+  @Override
+  public void setUpdatedAt(Date updatedAt) {
+    super.setUpdatedAt(updatedAt);
   }
 
 }

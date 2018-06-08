@@ -2,6 +2,7 @@ package uon.seng2050.assignment.controller;
 
 import io.seanbailey.adapter.Model;
 import io.seanbailey.adapter.exception.SQLAdapterException;
+import io.seanbailey.adapter.util.Order;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -64,6 +65,7 @@ public class IssueController extends AuthenticatedController {
         .all(Issue.class)
         .page(request.getParameter("page"))
         .per(25)
+        .order("updatedAt", Order.DESCENDING)
         .execute();
 
     request.setAttribute("issues", issues);
@@ -163,8 +165,7 @@ public class IssueController extends AuthenticatedController {
    * @param params URL parameters.
    */
   @Action(methods = {"PATCH", "PUT"}, route = "/issues/:id;")
-  private void updateIssue(HttpServletRequest request, HttpServletResponse response,
-      List<String> params) {
+  private void updateIssue(HttpServletRequest request, HttpServletResponse response, String id) {
 
   }
 

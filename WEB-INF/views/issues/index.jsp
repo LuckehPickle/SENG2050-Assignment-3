@@ -2,6 +2,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <t:application>
   <jsp:attribute name="title">Issues</jsp:attribute>
@@ -11,7 +12,6 @@
       <h1 class="has-subtitle">Issues</h1>
       <p class="subtitle">Here you'll find all your reported issues.</p>
     </div>
-
 
     <div class="column-wrapper">
 
@@ -39,7 +39,8 @@
                     </p>
 
                     <div class="footer">
-                      <p>Posted by <c:out value="${issue.getAuthor().getFullName()}" /></p>
+                      <p>Posted by <c:out value="${issue.getAuthor().getFullName()}" /> &middot;
+                        Last updated: <fmt:formatDate pattern="h:mma MMM dd, yyyy" value="${issue.getUpdatedAt()}" /></p>
                       <span class="badge"><c:out value="${issue.category.replaceAll('_', ' ')}" /></span>
                       <span class="badge"><c:out value="${issue.subCategory.replaceAll('_', ' ')}" /></span>
                     </div>

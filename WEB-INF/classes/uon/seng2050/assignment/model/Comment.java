@@ -1,7 +1,10 @@
 package uon.seng2050.assignment.model;
 
 import io.seanbailey.adapter.Model;
+import io.seanbailey.adapter.exception.SQLAdapterException;
+import java.sql.SQLException;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -11,6 +14,7 @@ public class Comment extends Model {
 
   private UUID id;
   private UUID issueId;
+  private UUID authorId;
   private String body;
   private boolean edited;
 
@@ -36,25 +40,64 @@ public class Comment extends Model {
    */
   @Override
   public boolean validate() {
-    return false;
+
+    boolean valid = true;
+
+    // Validate body
+    if (body == null) {
+      addError("Comment body must be present.");
+      valid = false;
+    } else if (body.length() > 500) {
+      addError("Comment body must be less than 500 characters long.");
+      valid = false;
+    }
+
+    return valid;
+
   }
 
 
   //GET/SET
-  public UUID getId() {
-    return id;
+  public User getAuthor() {
+
+    List<Model> authors = null;
+
+    try {
+      authors = Model.find(User.class, "id", authorId.toString()).execute();
+    } catch (SQLException | SQLAdapterException e) {
+      e.printStackTrace();
+    }
+
+    if (authors.isEmpty()) {
+      return null;
+    }
+
+    return (User) authors.get(0);
+
   }
 
-  public void setId(UUID id) {
-    this.id = id;
+  public String getId() {
+    return id.toString();
   }
 
-  public UUID getIssueId() {
-    return issueId;
+  public void setId(String id) {
+    this.id = UUID.fromString(id);
   }
 
-  public void setIssueId(UUID issueId) {
-    this.issueId = issueId;
+  public String getIssueId() {
+    return issueId.toString();
+  }
+
+  public void setIssueId(String issueId) {
+    this.issueId = UUID.fromString(issueId);
+  }
+
+  public String getAuthorId() {
+    return authorId.toString();
+  }
+
+  public void setAuthorId(String authorId) {
+    this.authorId = UUID.fromString(authorId);
   }
 
   public String getBody() {
@@ -71,6 +114,26 @@ public class Comment extends Model {
 
   public void setEdited(boolean edited) {
     this.edited = edited;
+  }
+
+  @Override
+  public Date getCreatedAt() {
+    return super.getCreatedAt();
+  }
+
+  @Override
+  public void setCreatedAt(Date createdAt) {
+    super.setCreatedAt(createdAt);
+  }
+
+  @Override
+  public Date getUpdatedAt() {
+    return super.getUpdatedAt();
+  }
+
+  @Override
+  public void setUpdatedAt(Date updatedAt) {
+    super.setUpdatedAt(updatedAt);
   }
 
 }

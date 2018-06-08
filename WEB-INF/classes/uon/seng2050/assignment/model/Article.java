@@ -100,4 +100,25 @@ public class Article extends Model {
   public void addHelpful() {
     helpfulness++;
   }
+
+  @Override
+  public Date getCreatedAt() {
+    return super.getCreatedAt();
+  }
+
+  @Override
+  public void setCreatedAt(Date createdAt) {
+    super.setCreatedAt(createdAt);
+  }
+
+  @Override
+  public Date getUpdatedAt() {
+    return super.getUpdatedAt();
+  }
+
+  @Override
+  public void setUpdatedAt(Date updatedAt) {
+    super.setUpdatedAt(updatedAt);
+  }
+
 }
