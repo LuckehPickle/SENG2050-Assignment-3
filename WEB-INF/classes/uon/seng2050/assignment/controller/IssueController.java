@@ -19,6 +19,7 @@ import uon.seng2050.assignment.model.Issue;
 import uon.seng2050.assignment.model.Issue.State;
 import uon.seng2050.assignment.model.User;
 import uon.seng2050.assignment.model.User.Role;
+import java.text.ParseException;
 
 /**
  * A controller which handles all requests related to issues.
@@ -133,7 +134,17 @@ public class IssueController extends AuthenticatedController {
    */
   @Action(route = "/issues/:id;/edit")
   private void renderEdit(HttpServletRequest request, HttpServletResponse response, String id)
-      throws ServletException, IOException {
+      throws ServletException, IOException, SQLException, SQLAdapterException, HttpException {
+    // Retrieve issue in question
+    List<Model> issues = Model.find(Issue.class, "id", id).execute();
+
+    // Ensure result set is not empty
+    if (issues.isEmpty()) {
+      throw new HttpException(HttpStatusCode.PAGE_NOT_FOUND,
+          "Could not find an event with the id " + id);
+    }
+
+    request.setAttribute("issue", issues.get(0));
     render(View.EDIT_ISSUE, request, response);
   }
 
@@ -148,7 +159,6 @@ public class IssueController extends AuthenticatedController {
   @Action(route = "/issues/:id;")
   private void renderIssue(HttpServletRequest request, HttpServletResponse response, String id)
       throws ServletException, IOException, SQLException, SQLAdapterException, HttpException {
-
     // Retrieve issue in question
     List<Model> issues = Model.find(Issue.class, "id", id).execute();
 
@@ -178,9 +188,37 @@ public class IssueController extends AuthenticatedController {
    * @param request HTTP request object
    * @param response HTTP response object
    */
-  @Action(methods = {"PATCH", "PUT"}, route = "/issues/:id;")
-  private void updateIssue(HttpServletRequest request, HttpServletResponse response, String id) {
+  @Action(methods = {"PATCH", "PUT", "POST"}, route = "/issues/:id;")
+  private void updateIssue(HttpServletRequest request, HttpServletResponse response, String id)
+throws ServletException, IOException, SQLException, SQLAdapterException, HttpException, ParseException {
 
+      String title = request.getParameter("title");
+      String category = request.getParameter("category");
+      String subCategory = request.getParameter("subCategory");
+      String body = request.getParameter("body");
+
+      List<Model> issues = Model.find(Issue.class, "id", id).execute();
+      if (issues.isEmpty()) {
+        throw new HttpException(HttpStatusCode.PAGE_NOT_FOUND,
+            "Could not find an event with the id " + id);
+      }
+      Issue issue = (Issue) issues.get(0);
+      if (title != null) {
+        issue.setTitle(title);
+      }
+      if (category != null) {
+        issue.setCategory(category);
+      }
+      if (subCategory != null) {
+        issue.setSubCategory(subCategory);
+      }
+      if(issue.update()){
+        redirect("/issues", request, response);
+      }
+      else {
+        request.setAttribute("errors",issue.getErrors());
+        render(View.EDIT_ISSUE, request, response);
+      }
   }
 
 }
