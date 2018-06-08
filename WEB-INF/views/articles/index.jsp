@@ -46,8 +46,8 @@
                     <div class="footer">
                       <p>Rating: <c:out
                           value="${article.helpfulness}"/></p>
-                      <p><c:out value="${article.category}"/></p>
-                      <p><c:out value="${article.subCategory}"/></p>
+                      <span class="badge"><c:out value="${article.category.replaceAll('_',' ')}"/></span>
+                      <span class="badge"><c:out value="${article.subCategory.replaceAll('_',' ')}"/></span>
                     </div>
 
                   </a>
