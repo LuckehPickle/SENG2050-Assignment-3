@@ -15,6 +15,7 @@ import uon.seng2050.assignment.annotation.Action;
 import uon.seng2050.assignment.exception.HttpException;
 import uon.seng2050.assignment.exception.HttpStatusCode;
 import uon.seng2050.assignment.model.User;
+import uon.seng2050.assignment.model.User.Role;
 import uon.seng2050.assignment.util.Logger;
 import uon.seng2050.assignment.util.PageUtil;
 
@@ -106,7 +107,11 @@ public class SessionController extends ActionController {
     session.setAttribute("userId", user.getId());
     LOGGER.fine("User authenticated as %s", user.getFullName());
 
-    redirect("/", request, response);
+    if (user.getRole().equals(Role.IT_STAFF.name())) {
+      redirect("/issues", request, response);
+    } else {
+      redirect("/articles", request, response);
+    }
 
   }
 
@@ -117,7 +122,7 @@ public class SessionController extends ActionController {
    * @param request HTTP request object.
    * @param response HTTP response object.
    */
-  @Action(methods = "DELETE", route = "/session")
+  @Action(methods = "POST", route = "/session/logout")
   private void handleLogout(HttpServletRequest request, HttpServletResponse response)
       throws IOException {
 

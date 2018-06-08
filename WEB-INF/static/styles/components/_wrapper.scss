@@ -20,7 +20,7 @@
 // Wraps content into two columns on desktop, or one column on mobile.
 .column-wrapper {
   display: grid;
-  grid-template-columns: 1fr 320px;
+  grid-template-columns: 1fr 300px;
   grid-gap: 3rem;
   align-items: flex-start;
   margin-top: -2rem;

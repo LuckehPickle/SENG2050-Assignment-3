@@ -57,12 +57,10 @@ public class Adapter {
       return model;
 
     } catch (InstantiationException | IllegalAccessException e) {
-      e.printStackTrace();
-      throw new SQLAdapterException(String.format(
-          "Could not create model of type %s. Reason: %s",
-          clazz.getSimpleName(),
-          e.getMessage()
-      ));
+      SQLAdapterException exception = new SQLAdapterException(
+          String.format("Could not create model of type %s.", clazz.getSimpleName()));
+      exception.initCause(e);
+      throw exception;
     }
 
   }
@@ -193,11 +191,11 @@ public class Adapter {
       return field.get(model);
 
     } catch (IllegalAccessException | InvocationTargetException | NoSuchFieldException e) {
-      throw new SQLAdapterException(String.format(
-          "Could not retrieve attribute value from %s. Exception: %s",
-          model.getClass().getSimpleName(),
-          e.getMessage()
-      ));
+      SQLAdapterException exception = new SQLAdapterException(String.format(
+          "Could not retrieve attribute value from %s.",
+          model.getClass().getSimpleName()));
+      exception.initCause(e);
+      throw exception;
     }
 
   }

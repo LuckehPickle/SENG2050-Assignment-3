@@ -8,7 +8,7 @@
         <c:if test='${requestScope.currentUser.getRole() == "IT_STAFF"}'>
           <a href="${pageContext.request.contextPath}/maintenance">Maintenance Events</a>
         </c:if>
-        <a class="logout-link" href="${pageContext.request.contextPath}/session" data-method="DELETE">
+        <a class="logout-link" href="${pageContext.request.contextPath}/session/logout" data-method="post" data-params="{}">
           <i class="material-icons">exit_to_app</i>
           <span>Logout</span>
         </a>
