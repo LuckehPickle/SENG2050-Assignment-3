@@ -1,6 +1,7 @@
 package uon.seng2050.assignment.model;
 
 import io.seanbailey.adapter.Model;
+import io.seanbailey.adapter.annotation.PrimaryKey;
 import java.util.Date;
 import java.util.UUID;
 import uon.seng2050.assignment.model.Issue.Category;
@@ -8,6 +9,7 @@ import uon.seng2050.assignment.model.Issue.SubCategory;
 
 public class Article extends Model {
 
+  @PrimaryKey
   private UUID id;
   private String title;
   private String body;

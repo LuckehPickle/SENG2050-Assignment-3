@@ -2,7 +2,6 @@ package uon.seng2050.assignment.controller;
 
 import io.seanbailey.adapter.Model;
 import io.seanbailey.adapter.exception.SQLAdapterException;
-import io.seanbailey.adapter.util.Order;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -18,6 +17,7 @@ import uon.seng2050.assignment.exception.HttpStatusCode;
 import uon.seng2050.assignment.model.Issue;
 import uon.seng2050.assignment.model.Issue.State;
 import uon.seng2050.assignment.model.User;
+import uon.seng2050.assignment.model.User.Role;
 
 /**
  * A controller which handles all requests related to issues.
@@ -61,14 +61,26 @@ public class IssueController extends AuthenticatedController {
   private void renderIndex(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException, SQLException, SQLAdapterException {
 
-    List<Model> issues = Model
-        .all(Issue.class)
-        .page(request.getParameter("page"))
-        .per(25)
-        .order("updatedAt", Order.DESCENDING)
-        .execute();
+    //some ifs here?
+    User user = (User) request.getAttribute("currentUser");
 
-    request.setAttribute("issues", issues);
+    if (user.getRole().equals(Role.IT_STAFF.name())) {
+      List<Model> issues = Model
+          .where(Issue.class, "state", "NEW")
+          .or("state = ?", "IN_PROGRESS")
+          .page(request.getParameter("page"))
+          .per(25)
+          .execute();
+      request.setAttribute("issues", issues);
+    } else {
+      List<Model> issues = Model
+          .where(Issue.class, "authorId", user.getId())
+          .page(request.getParameter("page"))
+          .per(25)
+          .execute();
+      request.setAttribute("issues", issues);
+    }
+
     render(View.ISSUES, request, response);
 
   }
@@ -122,7 +134,6 @@ public class IssueController extends AuthenticatedController {
    *
    * @param request HTTP request object
    * @param response HTTP response object
-   * @param params URL parameters.
    */
   @Action(route = "/issues/:id;/edit")
   private void renderEdit(HttpServletRequest request, HttpServletResponse response, String id)
@@ -162,7 +173,6 @@ public class IssueController extends AuthenticatedController {
    *
    * @param request HTTP request object
    * @param response HTTP response object
-   * @param params URL parameters.
    */
   @Action(methods = {"PATCH", "PUT"}, route = "/issues/:id;")
   private void updateIssue(HttpServletRequest request, HttpServletResponse response, String id) {

@@ -3,6 +3,7 @@ package uon.seng2050.assignment.model;
 import io.seanbailey.adapter.Model;
 import io.seanbailey.adapter.exception.SQLAdapterException;
 import java.sql.SQLException;
+import io.seanbailey.adapter.annotation.PrimaryKey;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -12,6 +13,7 @@ import java.util.UUID;
  */
 public class Comment extends Model {
 
+  @PrimaryKey
   private UUID id;
   private UUID issueId;
   private UUID authorId;

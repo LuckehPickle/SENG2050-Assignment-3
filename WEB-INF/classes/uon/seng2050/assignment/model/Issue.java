@@ -1,6 +1,7 @@
 package uon.seng2050.assignment.model;
 
 import io.seanbailey.adapter.Model;
+import io.seanbailey.adapter.annotation.PrimaryKey;
 import io.seanbailey.adapter.exception.SQLAdapterException;
 import java.sql.SQLException;
 import java.util.Date;
@@ -9,6 +10,7 @@ import java.util.UUID;
 
 public class Issue extends Model {
 
+  @PrimaryKey
   private UUID id;
   private UUID authorId;
   private State state;
