@@ -1,0 +1,64 @@
+.accordion {
+
+  .open {
+    .category {
+      background: $primary;
+      color: $primary-inverted;
+      a {
+        color: $primary-inverted !important;
+      }
+    }
+
+    .sub-category {
+      display: block;
+      list-style-type: none;
+      a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: $text;
+        position: relative;
+        flex-grow: 1;
+        padding: 0.5rem 0 0.5rem 1rem;
+      }
+    }
+  }
+
+  .category {
+    display: flex;
+    align-items: center;
+    border-top: 1px solid $border;
+    border-radius: 2px;
+    padding: 0.75rem;
+
+    a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: $text;
+      position: relative;
+      flex-grow: 1;
+    }
+    .accordion-dropdown {
+      @include no-highlight;
+      flex-shrink: 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      i.material-icons {
+        font-size: 22px;
+        margin: -0.2rem 0.5rem -0.2rem 0;
+      }
+    }
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0.5rem 0;
+  }
+  .sub-category {
+    display: none;
+  }
+
+}
