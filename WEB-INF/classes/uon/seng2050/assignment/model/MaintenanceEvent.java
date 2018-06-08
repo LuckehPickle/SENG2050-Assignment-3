@@ -31,7 +31,17 @@ public class MaintenanceEvent extends Model {
    */
   @Override
   public boolean validate() {
-    return true;
+    boolean valid = true;
+    if(id == null) {valid = false;}
+    if(title == null) {valid = false;}
+    if(startAt == null) {valid = false;}
+    if(finishAt == null) {valid = false;}
+    if(valid) {
+      if(startAt.compareTo(finishAt) > 0) {valid = false;}
+      if(title.isEmpty()) {valid = false;}
+    }
+
+    return valid;
   }
 
 

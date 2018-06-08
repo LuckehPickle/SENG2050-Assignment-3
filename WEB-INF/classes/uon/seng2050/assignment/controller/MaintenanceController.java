@@ -90,23 +90,31 @@ public class MaintenanceController extends AuthenticatedController {
    */
   @Action(methods = "POST", route = "/maintenance")
   private void createMaintenanceEvent(HttpServletRequest request, HttpServletResponse response)
-      throws ParseException, SQLException, SQLAdapterException, IOException {
+      throws ParseException, SQLException, SQLAdapterException, IOException, ServletException {
     String name = request.getParameter("eventName");
     String start = request.getParameter("eventDate");
     String finish = request.getParameter("eventEnd");
-
-    DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-    Date eventStart = format.parse(start);
-    Date eventFinish = format.parse(finish);
-
     MaintenanceEvent newEvent = new MaintenanceEvent();
-    newEvent.generateID();
-    newEvent.setTitle(name);
-    newEvent.setStartAt(eventStart);
-    newEvent.setFinishAt(eventFinish);
 
-    newEvent.save();
-    redirect("/maintenance",request,response);
+    if(!name.isEmpty() && !start.isEmpty() && !finish.isEmpty()) {
+      DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+      Date eventStart = format.parse(start);
+      Date eventFinish = format.parse(finish);
+
+      newEvent.generateID();
+      newEvent.setTitle(name);
+      newEvent.setStartAt(eventStart);
+      newEvent.setFinishAt(eventFinish);
+    }
+
+    if(newEvent.save()) {
+      redirect("/maintenance",request,response);
+    }
+    else {
+      request.setAttribute("errors", newEvent.getErrors());
+      render(View.NEW_MAINTENANCE, request, response);
+    }
+
   }
 
 
