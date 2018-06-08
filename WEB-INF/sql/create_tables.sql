@@ -21,12 +21,13 @@ CREATE TABLE Issues (
   subCategory VARCHAR(32)  NOT NULL,
   title       VARCHAR(128) NOT NULL,
   body        TEXT         NOT NULL,
+  answerId    CHAR(36),
   locked      BIT          NOT NULL DEFAULT 0,
   createdAt   DATETIME     NOT NULL DEFAULT '2018-06-8 13:30:00',
   updatedAt   DATETIME     NOT NULL DEFAULT '2018-06-8 13:30:00'
 );
 
-ALTER TABLE Issues ADD INDEX author_index (authorId);
+ALTER TABLE Issues ADD INDEX issue_author_index (authorId);
 
 CREATE TABLE Comments (
   id        CHAR(36) PRIMARY KEY,

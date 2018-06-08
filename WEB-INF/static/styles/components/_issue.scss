@@ -14,10 +14,19 @@
     margin: 0;
   }
 
+  .issue-title {
+    display: flex;
+    align-items: center;
+
+    i {
+      margin-right: 0.5rem;
+      font-size: 22px;
+    }
+  }
 }
 
 .issue-description {
-  margin: 0.25rem 0;
+  margin: 1.25rem 0 0.25rem;
 
   .badge {
     background: $primary;
@@ -70,7 +79,7 @@
   list-style-type: none;
 
   .comment {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.75rem;
 
     p {
       margin: 0;
@@ -92,6 +101,10 @@
     .footer {
       margin: 0.25rem 0 0;
       color: lighten($text, 20%);
+    }
+
+    .resolve-link {
+      color: lighten($text, 15%);
     }
 
     &:last-child {

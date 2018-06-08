@@ -36,7 +36,7 @@ var generateOption = function (option) {
 
   // Add selected attribute
   if (option.hasAttribute("selected")) {
-    element.set("data-selected", "true");
+    element.setAttribute("data-selected", "true");
   }
 
   return element;

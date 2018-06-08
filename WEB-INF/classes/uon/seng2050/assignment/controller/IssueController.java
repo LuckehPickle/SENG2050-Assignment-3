@@ -162,7 +162,15 @@ public class IssueController extends AuthenticatedController {
           "Could not find an issue with the id " + id);
     }
 
-    request.setAttribute("issue", issues.get(0));
+    User current = (User) request.getAttribute("currentUser");
+    Issue issue = (Issue) issues.get(0);
+
+    // Ensure user is either staff member or user that created issue
+    if (current.getRole().equals(Role.USER.name()) && !current.getId().equals(issue.getAuthorId())) {
+
+    }
+
+    request.setAttribute("issue", issue);
     render(View.ISSUE, request, response);
 
   }
