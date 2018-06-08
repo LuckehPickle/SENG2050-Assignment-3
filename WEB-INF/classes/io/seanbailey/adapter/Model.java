@@ -1,6 +1,5 @@
 package io.seanbailey.adapter;
 
-import io.seanbailey.adapter.annotation.Excluded;
 import io.seanbailey.adapter.exception.SQLAdapterException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -19,13 +18,13 @@ import uon.seng2050.assignment.util.Logger;
  */
 public abstract class Model {
 
-  @Excluded private static final Logger LOGGER = new Logger();
+  private static final Logger LOGGER = new Logger();
 
-  @Excluded private List<String> errors = new ArrayList<>();
-  @Excluded private boolean saved = false;
+  private List<String> errors = new ArrayList<>();
+  private boolean saved = false;
 
-  private Date createdAt;
-  private Date updatedAt;
+  protected Date createdAt;
+  protected Date updatedAt;
 
 
   /**
@@ -115,6 +114,8 @@ public abstract class Model {
     }
 
     beforeSave();
+    this.createdAt = new Date();
+    this.updatedAt = new Date();
     QueryExecutor.save(this);
     afterSave();
     return true;
@@ -145,6 +146,7 @@ public abstract class Model {
     }
 
     beforeUpdate();
+    this.updatedAt = new Date();
     QueryExecutor.update(this);
     afterUpdate();
     return true;

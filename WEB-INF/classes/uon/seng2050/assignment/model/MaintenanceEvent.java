@@ -99,4 +99,25 @@ public class MaintenanceEvent extends Model {
   public void setTitle(String title) {
     this.title = title;
   }
+
+  @Override
+  public Date getCreatedAt() {
+    return super.getCreatedAt();
+  }
+
+  @Override
+  public void setCreatedAt(Date createdAt) {
+    super.setCreatedAt(createdAt);
+  }
+
+  @Override
+  public Date getUpdatedAt() {
+    return super.getUpdatedAt();
+  }
+
+  @Override
+  public void setUpdatedAt(Date updatedAt) {
+    super.setUpdatedAt(updatedAt);
+  }
+
 }

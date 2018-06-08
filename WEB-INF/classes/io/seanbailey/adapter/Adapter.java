@@ -227,17 +227,23 @@ public class Adapter {
       } catch (NoSuchMethodException ignored) {
       }
 
-      // No setter was found, set by field
-      Field field = model.getClass().getDeclaredField(attribute);
+      // No setter was found, attempt to set by field
+      try {
+        Field field = model.getClass().getDeclaredField(attribute);
+        field.setAccessible(true);
+        field.set(model, value);
+        return;
+      } catch (NoSuchFieldException ignored) {
+      }
+
+      // Attempt to set on super method
+      Field field = model.getClass().getSuperclass().getDeclaredField(attribute);
       field.setAccessible(true);
       field.set(model, value);
 
     } catch (IllegalAccessException | InvocationTargetException | NoSuchFieldException e) {
       SQLAdapterException exception = new SQLAdapterException(String.format(
-          "Could not set attribute for %s. Exception: %s",
-          model.getClass().getSimpleName(),
-          e.getMessage()
-      ));
+          "Could not set attribute for %s.", model.getClass().getSimpleName()));
       exception.initCause(e);
       throw exception;
     }
