@@ -37,7 +37,7 @@
                                     <div class="article-body">
 
                                             <div class="article-question">
-                                                <p class="question"><c:out value="${event.description}"/></p>
+                                                <p class="question"><c:out value="${event.title}"/></p>
                                             </div>
 
                                             <div class="footer">
