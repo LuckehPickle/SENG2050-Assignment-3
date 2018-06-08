@@ -5,21 +5,26 @@ var icons = {
 
 var getValueAsString = function (select) {
 
-  var value = select.value;
+  console.log("test");
 
-  // Ensure value is not empty
+// Ensure value is not empty
+  var value = select.value;
   if (value === "") {
     return value;
+
   }
+
+  var out = "";
 
   // Iterate over children
-  for (var option in select.children) {
-    if (option.value === value) {
-      return option.innerText;
+  select.querySelectorAll("option").forEach(function (option) {
+    if (option.hasAttribute("selected")) {
+      out = option.innerText;
+      return;
     }
-  }
+  });
 
-  return "";
+  return out;
 
 };
 
@@ -36,7 +41,7 @@ var generateOption = function (option) {
 
   // Add selected attribute
   if (option.hasAttribute("selected")) {
-    element.set("data-selected", "true");
+    element.setAttribute("data-selected", "true");
   }
 
   return element;
