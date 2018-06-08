@@ -5,6 +5,7 @@ import io.seanbailey.adapter.exception.SQLAdapterException;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.UUID;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +15,8 @@ import uon.seng2050.assignment.annotation.Action;
 import uon.seng2050.assignment.exception.HttpException;
 import uon.seng2050.assignment.exception.HttpStatusCode;
 import uon.seng2050.assignment.model.Issue;
+import uon.seng2050.assignment.model.Issue.State;
+import uon.seng2050.assignment.model.User;
 
 /**
  * A controller which handles all requests related to issues.
@@ -38,6 +41,7 @@ public class IssueController extends AuthenticatedController {
       throws HttpException, ServletException, IOException {
 
     super.handleRequest(request, response);
+
     // Authenticate user
     if (authenticate(request, response)) {
       route(this, request, response);
@@ -88,7 +92,25 @@ public class IssueController extends AuthenticatedController {
    * @param response HTTP response object
    */
   @Action(methods = "POST", route = "/issues")
-  private void createIssue(HttpServletRequest request, HttpServletResponse response) {
+  private void createIssue(HttpServletRequest request, HttpServletResponse response)
+      throws SQLException, SQLAdapterException, IOException, ServletException {
+
+    // Create a new issue
+    Issue issue = new Issue();
+    issue.setId(UUID.randomUUID().toString());
+    issue.setTitle(request.getParameter("title"));
+    issue.setBody(request.getParameter("body"));
+    issue.setCategory(request.getParameter("category"));
+    issue.setSubCategory(request.getParameter("subCategory"));
+    issue.setAuthorId(((User) request.getAttribute("currentUser")).getId());
+    issue.setState(State.NEW.name());
+
+    if (issue.save()) {
+      redirect("/issues", request, response);
+    } else {
+      request.setAttribute("errors", issue.getErrors());
+      render(View.NEW_ISSUE, request, response);
+    }
 
   }
 

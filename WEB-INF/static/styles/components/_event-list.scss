@@ -11,9 +11,15 @@
       padding: 1.25rem 1.5rem;
       text-decoration: none;
       color: $text;
+
+      &:hover .preview {
+        color: $primary;
+      }
     }
 
     .preview {
+      color: lighten($text-bold, 5%);
+      font-weight: bold;
       margin: 0 0 0.25rem;
     }
 
@@ -21,7 +27,6 @@
       display: flex;
       align-items: flex-start;
       margin: 0;
-      color: lighten($text, 15%);
 
       p {
         display: inline;

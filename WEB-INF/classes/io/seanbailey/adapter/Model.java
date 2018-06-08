@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import uon.seng2050.assignment.util.Logger;
 
 /**
  * Models can be automatically translated to and from SQL. You can also use the methods defined in
@@ -17,6 +18,8 @@ import java.util.List;
  * @since 2018-05-10
  */
 public abstract class Model {
+
+  @Excluded private static final Logger LOGGER = new Logger();
 
   @Excluded private List<String> errors = new ArrayList<>();
   @Excluded private boolean saved = false;
@@ -107,6 +110,7 @@ public abstract class Model {
 
     // Ensure valid
     if (!valid) {
+      LOGGER.fine("Model failed to validate. Cancelling save.");
       return false;
     }
 
