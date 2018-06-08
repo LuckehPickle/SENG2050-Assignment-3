@@ -84,8 +84,8 @@ public class Issue extends Model {
     if (title == null) {
       addError("Title must exist.");
       valid = false;
-    } else if (title.length() > 128) {
-      addError("Title must be less than 128 characters long.");
+    } else if (title.length() > 80) {
+      addError("Title must be less than 80 characters long.");
       valid = false;
     } else if (title.length() < 10) {
       addError("Title must be at least 10 characters long.");

@@ -50,10 +50,7 @@ public class KnowledgebaseController extends AuthenticatedController {
   private void renderIndex(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException, SQLException, SQLAdapterException {
 
-    SQLChain chain = Model
-        .all(Article.class)
-        .page(request.getParameter("page"))
-        .per(25);
+    SQLChain chain = Model.all(Article.class);
 
     String category = request.getParameter("category");
     String subCategory = request.getParameter("subcategory");

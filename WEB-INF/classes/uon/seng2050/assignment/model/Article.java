@@ -40,7 +40,7 @@ public class Article extends Model {
    */
   @Override
   public boolean validate() {
-    return false;
+    return true;
   }
 
   //GET/SET

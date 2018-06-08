@@ -63,8 +63,6 @@ public class MaintenanceController extends AuthenticatedController {
       throws ServletException, IOException, SQLException, SQLAdapterException {
     List<Model> events = Model
         .all(MaintenanceEvent.class)
-        .page(request.getParameter("page"))
-        .per(25)
         .execute();
 
     request.setAttribute("events", events);

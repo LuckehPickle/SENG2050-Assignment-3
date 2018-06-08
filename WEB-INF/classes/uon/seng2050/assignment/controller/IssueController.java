@@ -5,6 +5,7 @@ import io.seanbailey.adapter.SQLChain;
 import io.seanbailey.adapter.exception.SQLAdapterException;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.List;
 import java.util.UUID;
 import javax.servlet.ServletException;
@@ -19,7 +20,6 @@ import uon.seng2050.assignment.model.Issue;
 import uon.seng2050.assignment.model.Issue.State;
 import uon.seng2050.assignment.model.User;
 import uon.seng2050.assignment.model.User.Role;
-import java.text.ParseException;
 
 /**
  * A controller which handles all requests related to issues.
@@ -64,10 +64,7 @@ public class IssueController extends AuthenticatedController {
       throws ServletException, IOException, SQLException, SQLAdapterException {
 
     User user = (User) request.getAttribute("currentUser");
-    SQLChain chain = Model
-        .all(Issue.class)
-        .page(request.getParameter("page"))
-        .per(25);
+    SQLChain chain = Model.all(Issue.class);
 
     if (user.getRole().equals(Role.IT_STAFF.name())) {
       chain = chain.where("state", "NEW")
@@ -173,8 +170,102 @@ public class IssueController extends AuthenticatedController {
 
     // Ensure user is either staff member or user that created issue
     if (user.getRole().equals(Role.USER.name()) && !user.getId().equals(issue.getAuthorId())) {
-      redirect("/articles",request,response);
+      redirect("/articles", request, response);
     } else {
+      request.setAttribute("issue", issue);
+      render(View.ISSUE, request, response);
+    }
+
+  }
+
+
+  /**
+   * Marks an issue as completed.
+   *
+   * @param request HTTP request object.
+   * @param response HTTP response object.
+   * @param id Issue id
+   */
+  @Action(methods = "POST", route = "/issues/:id;/mark-complete")
+  private void markAsCompleted(HttpServletRequest request, HttpServletResponse response,
+      String id)
+      throws SQLException, SQLAdapterException, HttpException, IOException, ServletException {
+
+    // Get issues
+    List<Model> issues = Model.find(Issue.class, "id", id).execute();
+
+    // Ensure issue exists
+    if (issues.isEmpty()) {
+      throw new HttpException(HttpStatusCode.PAGE_NOT_FOUND, "Could not find an issue with the id" + id);
+    }
+
+    // Get current user
+    Issue issue = (Issue) issues.get(0);
+    User currentUser = (User) request.getAttribute("currentUser");
+
+    // Ensure staff
+    if (!currentUser.getRole().equals(Role.IT_STAFF.name())) {
+      throw new HttpException(HttpStatusCode.FORBIDDEN, "Only staff members can perform this action.");
+    }
+
+    // Ensure issue is not already completed
+    if (issue.getState().equals(State.COMPLETED.name())) {
+      throw new HttpException(HttpStatusCode.BAD_REQUEST, "This issue has already been completed.");
+    }
+
+    issue.setState(State.COMPLETED.name());
+    issue.setLocked(true);
+
+    if (issue.update()) {
+      redirect("/issues/" + issue.getId(), request, response);
+    } else {
+      render(View.ISSUE, request, response);
+    }
+
+  }
+
+
+  /**
+   * Marks an issue as completed.
+   *
+   * @param request HTTP request object.
+   * @param response HTTP response object.
+   * @param id Issue id
+   */
+  @Action(methods = "POST", route = "/issues/:id;/unmark-complete")
+  private void unmarkAsCompleted(HttpServletRequest request, HttpServletResponse response,
+      String id)
+      throws SQLException, SQLAdapterException, HttpException, IOException, ServletException {
+
+    // Get issues
+    List<Model> issues = Model.find(Issue.class, "id", id).execute();
+
+    // Ensure issue exists
+    if (issues.isEmpty()) {
+      throw new HttpException(HttpStatusCode.PAGE_NOT_FOUND, "Could not find an issue with the id" + id);
+    }
+
+    // Get current user
+    Issue issue = (Issue) issues.get(0);
+    User currentUser = (User) request.getAttribute("currentUser");
+
+    // Ensure staff
+    if (!currentUser.getRole().equals(Role.IT_STAFF.name())) {
+      throw new HttpException(HttpStatusCode.FORBIDDEN, "Only staff members can perform this action.");
+    }
+
+    // Ensure issue is not already completed
+    if (!issue.getState().equals(State.COMPLETED.name())) {
+      throw new HttpException(HttpStatusCode.BAD_REQUEST, "This issue has not yet been completed.");
+    }
+
+    issue.setState(State.IN_PROGRESS.name());
+    issue.setLocked(false);
+
+    if (issue.update()) {
+      redirect("/issues/" + issue.getId(), request, response);
+    } else {
+      request.setAttribute("errors", issue.getErrors());
       request.setAttribute("issue", issue);
       render(View.ISSUE, request, response);
     }
@@ -190,35 +281,39 @@ public class IssueController extends AuthenticatedController {
    */
   @Action(methods = {"PATCH", "PUT", "POST"}, route = "/issues/:id;")
   private void updateIssue(HttpServletRequest request, HttpServletResponse response, String id)
-throws ServletException, IOException, SQLException, SQLAdapterException, HttpException, ParseException {
+      throws ServletException, IOException, SQLException, SQLAdapterException, HttpException, ParseException {
 
-      String title = request.getParameter("title");
-      String category = request.getParameter("category");
-      String subCategory = request.getParameter("subCategory");
-      String body = request.getParameter("body");
+    String title = request.getParameter("title");
+    String category = request.getParameter("category");
+    String subCategory = request.getParameter("subCategory");
+    String body = request.getParameter("body");
 
-      List<Model> issues = Model.find(Issue.class, "id", id).execute();
-      if (issues.isEmpty()) {
-        throw new HttpException(HttpStatusCode.PAGE_NOT_FOUND,
-            "Could not find an event with the id " + id);
-      }
-      Issue issue = (Issue) issues.get(0);
-      if (title != null) {
-        issue.setTitle(title);
-      }
-      if (category != null) {
-        issue.setCategory(category);
-      }
-      if (subCategory != null) {
-        issue.setSubCategory(subCategory);
-      }
-      if(issue.update()){
-        redirect("/issues", request, response);
-      }
-      else {
-        request.setAttribute("errors",issue.getErrors());
-        render(View.EDIT_ISSUE, request, response);
-      }
+    List<Model> issues = Model.find(Issue.class, "id", id).execute();
+    if (issues.isEmpty()) {
+      throw new HttpException(HttpStatusCode.PAGE_NOT_FOUND,
+          "Could not find an event with the id " + id);
+    }
+
+    Issue issue = (Issue) issues.get(0);
+
+    if (title != null) {
+      issue.setTitle(title);
+    }
+
+    if (category != null) {
+      issue.setCategory(category);
+    }
+
+    if (subCategory != null) {
+      issue.setSubCategory(subCategory);
+    }
+
+    if (issue.update()) {
+      redirect("/issues", request, response);
+    } else {
+      request.setAttribute("errors", issue.getErrors());
+      render(View.EDIT_ISSUE, request, response);
+    }
   }
 
 }

@@ -116,14 +116,49 @@
       </div>
 
       <div class="column">
-        <c:if test='${requestScope.currentUser.getRole() == "IT_STAFF" && !issue.isLocked()}'>
-          <div class="buttons">
-            <a href="" class="button wide">
-              <i class="material-icons">check</i>
-              <span>Mark as complete</span>
-            </a>
+        <c:if test="${requestScope.errors != null}">
+          <div class="errors">
+            <p>The following errors prevented you from completing this action.</p>
+            <ul>
+              <c:forEach var="error" items="${requestScope.errors}">
+                <li><p><c:out value="${error}" /></p></li>
+              </c:forEach>
+            </ul>
           </div>
         </c:if>
+
+        <c:choose>
+          <c:when test='${requestScope.currentUser.getRole() == "IT_STAFF" && !issue.getState().equals("COMPLETED")}'>
+            <%-- Mark as completed --%>
+            <div class="buttons">
+              <a href="${pageContext.request.contextPath}/issues/${issue.getId()}/mark-complete" data-method="POST" class="button wide">
+                <i class="material-icons">check</i>
+                <span>Mark as complete</span>
+              </a>
+            </div>
+          </c:when>
+          <c:when test='${requestScope.currentUser.getRole() == "IT_STAFF" && issue.getState().equals("COMPLETED")}'>
+            <div class="buttons">
+              <c:choose>
+                <c:when test="${issue.getAnswerId() != null}">
+                  <%-- Publish --%>
+                  <a href="${pageContext.request.contextPath}/articles" data-method="POST" data-params='{"issueId": "${issue.getId()}"}' class="button wide">
+                    <i class="material-icons">save_alt</i>
+                    <span>Publish to Knowledgebase</span>
+                  </a>
+                </c:when>
+                <c:otherwise>
+                  <p class="empty-state" style="margin: 0.5rem;">You cannot publish this issue to the knowledgebase because it doesn't have an accepted answer.</p>
+                </c:otherwise>
+              </c:choose>
+
+              <a href="${pageContext.request.contextPath}/issues/${issue.getId()}/unmark-complete" data-method="POST" class="button-secondary wide">
+                <i class="material-icons">lock_open</i>
+                <span>Reopen this issue</span>
+              </a>
+            </div>
+          </c:when>
+        </c:choose>
       </div>
 
     </div>

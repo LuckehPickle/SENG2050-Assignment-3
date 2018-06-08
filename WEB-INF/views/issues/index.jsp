@@ -19,8 +19,7 @@
 
         <c:choose>
           <c:when test="${issues.isEmpty()}">
-            <%-- TODO Improve this empty state --%>
-            There's nothing here!
+            <p class="empty-state">There's nothing here!</p>
           </c:when>
           <c:otherwise>
             <ul class="issue-list">
