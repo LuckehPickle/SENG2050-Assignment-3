@@ -1,6 +1,7 @@
 package uon.seng2050.assignment.controller;
 
 import io.seanbailey.adapter.Model;
+import io.seanbailey.adapter.SQLChain;
 import io.seanbailey.adapter.exception.SQLAdapterException;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -63,24 +64,20 @@ public class IssueController extends AuthenticatedController {
 
     //some ifs here?
     User user = (User) request.getAttribute("currentUser");
+    SQLChain chain = Model
+        .all(Issue.class)
+        .page(request.getParameter("page"))
+        .per(25);
 
     if (user.getRole().equals(Role.IT_STAFF.name())) {
-      List<Model> issues = Model
-          .where(Issue.class, "state", "NEW")
-          .or("state = ?", "IN_PROGRESS")
-          .page(request.getParameter("page"))
-          .per(25)
-          .execute();
-      request.setAttribute("issues", issues);
+      chain = chain.where("state", "NEW")
+          .or("state = ?", "IN_PROGRESS");
     } else {
-      List<Model> issues = Model
-          .where(Issue.class, "authorId", user.getId())
-          .page(request.getParameter("page"))
-          .per(25)
-          .execute();
-      request.setAttribute("issues", issues);
+      chain = chain.where("authorId", user.getId());
     }
 
+    List<Model> issues = chain.execute();
+    request.setAttribute("issues", issues);
     render(View.ISSUES, request, response);
 
   }
