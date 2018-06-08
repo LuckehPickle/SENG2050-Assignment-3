@@ -44,8 +44,8 @@
                     </p>
 
                     <div class="footer">
-                      <p>Rating: <c:out
-                          value="${article.helpfulness}"/></p>
+                      <p>Rating: <c:out value="${article.helpfulness}"/> &middot
+                      Last updated: <fmt:formatDate pattern="dd/MM/yyyy" value="${article.updatedAt}" /></p>
                       <span class="badge"><c:out value="${article.category.replaceAll('_',' ')}"/></span>
                       <span class="badge"><c:out value="${article.subCategory.replaceAll('_',' ')}"/></span>
                     </div>
