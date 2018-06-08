@@ -39,7 +39,7 @@
 
                     <div class="footer">
                       <p>Posted by <c:out value="${issue.getAuthor().getFullName()}" /> &middot;
-                        Last updated: <fmt:formatDate pattern="h:mma MMM dd, yyyy" value="${issue.getUpdatedAt()}" /></p>
+                        Issue Created: <fmt:formatDate pattern="h:mma MMM dd, yyyy" value="${issue.getCreatedAt()}" /></p>
                       <span class="badge"><c:out value="${issue.category.replaceAll('_', ' ')}" /></span>
                       <span class="badge"><c:out value="${issue.subCategory.replaceAll('_', ' ')}" /></span>
                     </div>
