@@ -62,7 +62,6 @@ public class IssueController extends AuthenticatedController {
   private void renderIndex(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException, SQLException, SQLAdapterException {
 
-    //some ifs here?
     User user = (User) request.getAttribute("currentUser");
     SQLChain chain = Model
         .all(Issue.class)
@@ -159,16 +158,16 @@ public class IssueController extends AuthenticatedController {
           "Could not find an issue with the id " + id);
     }
 
-    User current = (User) request.getAttribute("currentUser");
+    User user = (User) request.getAttribute("currentUser");
     Issue issue = (Issue) issues.get(0);
 
     // Ensure user is either staff member or user that created issue
-    if (current.getRole().equals(Role.USER.name()) && !current.getId().equals(issue.getAuthorId())) {
-
+    if (user.getRole().equals(Role.USER.name()) && !user.getId().equals(issue.getAuthorId())) {
+      redirect("/articles",request,response);
+    } else {
+      request.setAttribute("issue", issue);
+      render(View.ISSUE, request, response);
     }
-
-    request.setAttribute("issue", issue);
-    render(View.ISSUE, request, response);
 
   }
 
