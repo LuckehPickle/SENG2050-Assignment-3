@@ -136,16 +136,25 @@ public class IssueController extends AuthenticatedController {
   private void renderEdit(HttpServletRequest request, HttpServletResponse response, String id)
       throws ServletException, IOException, SQLException, SQLAdapterException, HttpException {
     // Retrieve issue in question
+    User user = (User) request.getAttribute("currentUser");
     List<Model> issues = Model.find(Issue.class, "id", id).execute();
+    Issue issue = (Issue) issues.get(0);
 
-    // Ensure result set is not empty
-    if (issues.isEmpty()) {
-      throw new HttpException(HttpStatusCode.PAGE_NOT_FOUND,
-          "Could not find an event with the id " + id);
+    // Ensure user is either staff member or user that created issue
+    if (user.getRole().equals(Role.USER.name()) && !user.getId().equals(issue.getAuthorId())) {
+      redirect("/articles", request, response);
+    } else {
+      // Ensure result set is not empty
+      if (issues.isEmpty()) {
+        throw new HttpException(HttpStatusCode.PAGE_NOT_FOUND,
+            "Could not find an event with the id " + id);
+      }
+      request.setAttribute("issue", issues.get(0));
+      render(View.EDIT_ISSUE, request, response);
+
     }
 
-    request.setAttribute("issue", issues.get(0));
-    render(View.EDIT_ISSUE, request, response);
+
   }
 
 
@@ -173,7 +182,7 @@ public class IssueController extends AuthenticatedController {
 
     // Ensure user is either staff member or user that created issue
     if (user.getRole().equals(Role.USER.name()) && !user.getId().equals(issue.getAuthorId())) {
-      redirect("/articles",request,response);
+      redirect("/articles", request, response);
     } else {
       request.setAttribute("issue", issue);
       render(View.ISSUE, request, response);
@@ -190,35 +199,37 @@ public class IssueController extends AuthenticatedController {
    */
   @Action(methods = {"PATCH", "PUT", "POST"}, route = "/issues/:id;")
   private void updateIssue(HttpServletRequest request, HttpServletResponse response, String id)
-throws ServletException, IOException, SQLException, SQLAdapterException, HttpException, ParseException {
+      throws ServletException, IOException, SQLException, SQLAdapterException, HttpException, ParseException {
 
-      String title = request.getParameter("title");
-      String category = request.getParameter("category");
-      String subCategory = request.getParameter("subCategory");
-      String body = request.getParameter("body");
+    String title = request.getParameter("title");
+    String category = request.getParameter("category");
+    String subCategory = request.getParameter("subCategory");
+    String body = request.getParameter("body");
 
-      List<Model> issues = Model.find(Issue.class, "id", id).execute();
-      if (issues.isEmpty()) {
-        throw new HttpException(HttpStatusCode.PAGE_NOT_FOUND,
-            "Could not find an event with the id " + id);
-      }
-      Issue issue = (Issue) issues.get(0);
-      if (title != null) {
-        issue.setTitle(title);
-      }
-      if (category != null) {
-        issue.setCategory(category);
-      }
-      if (subCategory != null) {
-        issue.setSubCategory(subCategory);
-      }
-      if(issue.update()){
-        redirect("/issues", request, response);
-      }
-      else {
-        request.setAttribute("errors",issue.getErrors());
-        render(View.EDIT_ISSUE, request, response);
-      }
+    List<Model> issues = Model.find(Issue.class, "id", id).execute();
+    if (issues.isEmpty()) {
+      throw new HttpException(HttpStatusCode.PAGE_NOT_FOUND,
+          "Could not find an event with the id " + id);
+    }
+    Issue issue = (Issue) issues.get(0);
+
+    if (title != null) {
+      issue.setTitle(title);
+    }
+    if (category != null) {
+      issue.setCategory(category);
+    }
+    if (subCategory != null) {
+      issue.setSubCategory(subCategory);
+    }
+    if (issue.update()) {
+      redirect("/issues", request, response);
+    } else {
+      request.setAttribute("errors", issue.getErrors());
+      render(View.EDIT_ISSUE, request, response);
+    }
+
   }
+
 
 }

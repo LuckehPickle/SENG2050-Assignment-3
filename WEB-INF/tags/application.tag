@@ -22,6 +22,7 @@
 </head>
 <body class="<jsp:invoke fragment="bodyClass" />">
   <jsp:include page="../shared/_head.jsp"/>
+  <jsp:include page="../shared/_banner.jsp"/>
   <c:if test="${requestScope.flash != null}">
     <div class="flash">
       <p><c:out value="${requestScope.flash}" /></p>

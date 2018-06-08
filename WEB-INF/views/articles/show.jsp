@@ -36,13 +36,8 @@
 
             </div>
 
-            <%-- Helpfulness --%>
-            <div class="article-helpful">
-                <p id="help"><c:out value="${article.helpfulness}"/> found this article helpful.</p>
-            </div>
-
             <div class="buttons">
-                <div class ="button js-help" data-article-id="${article.id}">This helped!</div>
+
                 <a href="${pageContext.request.contextPath}/articles" class="button">Return</a>
             </div>
 
