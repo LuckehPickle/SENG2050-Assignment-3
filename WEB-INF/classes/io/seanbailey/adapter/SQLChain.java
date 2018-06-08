@@ -6,9 +6,7 @@ import io.seanbailey.adapter.util.WhereOperation;
 import io.seanbailey.adapter.util.WhereOperation.Type;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * A chain of SQL operations, that come together to create a single SQL Query when executed.
@@ -23,7 +21,7 @@ public class SQLChain {
   private Integer limit = null;
   private Integer offset = null;
   private Integer page = null;
-  private Map<String, Order> orders = new LinkedHashMap<>();
+  private List<String> orders = new ArrayList<>();
   private List<WhereOperation> wheres = new ArrayList<>();
 
 
@@ -41,6 +39,7 @@ public class SQLChain {
   /**
    * An enum containing all possible finisher operations. Note that in most circumstances, EXISTS is
    * an alias of COUNT.
+   *
    * @since 2018-05-12
    */
   public enum Finisher {
@@ -157,7 +156,8 @@ public class SQLChain {
     // Attempt to parse as int
     try {
       p = Integer.parseInt(page);
-    } catch (NumberFormatException ignored) {}
+    } catch (NumberFormatException ignored) {
+    }
 
     return page(p);
 
@@ -186,12 +186,13 @@ public class SQLChain {
    * Applies a new order. You may chain more than one, and they will be applied in the order that
    * they are chained.
    *
-   * @param attribute Attribute to order by.
+   * @param raw Raw Order by string
    * @return An SQLChain for further chaining.
    * @since 2018-05-14
    */
-  public SQLChain order(String attribute) {
-    return order(attribute, Order.ASCENDING);
+  public SQLChain order(String raw) {
+    orders.add(raw);
+    return this;
   }
 
 
@@ -205,7 +206,7 @@ public class SQLChain {
    * @since 2018-05-14
    */
   public SQLChain order(String attribute, Order order) {
-    orders.put(attribute, order);
+    orders.add(String.format("%s %s", attribute, order.toSQL()));
     return this;
   }
 
@@ -269,7 +270,7 @@ public class SQLChain {
     return page;
   }
 
-  public Map<String, Order> getOrders() {
+  public List<String> getOrders() {
     return orders;
   }
 
