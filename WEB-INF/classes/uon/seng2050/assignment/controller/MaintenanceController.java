@@ -18,6 +18,8 @@ import uon.seng2050.assignment.annotation.Action;
 import uon.seng2050.assignment.exception.HttpException;
 import uon.seng2050.assignment.exception.HttpStatusCode;
 import uon.seng2050.assignment.model.MaintenanceEvent;
+import uon.seng2050.assignment.model.User;
+import uon.seng2050.assignment.model.User.Role;
 
 @WebServlet(urlPatterns = {"/maintenance", "/maintenance/*"})
 public class MaintenanceController extends AuthenticatedController {
@@ -39,6 +41,10 @@ public class MaintenanceController extends AuthenticatedController {
 
     // Authenticate user
     if (authenticate(request, response)) {
+      User user = (User) request.getAttribute("currentUser");
+      if(user.getRole().equals(Role.USER.name())) {
+        redirect("/articles",request,response);
+      }
       route(this, request, response);
     }
 
