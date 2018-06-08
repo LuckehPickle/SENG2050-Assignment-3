@@ -1,6 +1,7 @@
 package uon.seng2050.assignment.model;
 
 import io.seanbailey.adapter.Model;
+import io.seanbailey.adapter.annotation.PrimaryKey;
 import java.util.Date;
 import java.util.UUID;
 
@@ -9,6 +10,7 @@ import java.util.UUID;
  */
 public class Comment extends Model {
 
+  @PrimaryKey
   private UUID id;
   private UUID issueId;
   private String body;
