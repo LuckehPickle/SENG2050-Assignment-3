@@ -133,7 +133,7 @@ public class Issue extends Model {
     try {
       comments = Model
           .where(Comment.class, "issueId", getId())
-          .order("createdAt", Order.DESCENDING)
+          .order("createdAt", Order.ASCENDING)
           .execute();
     } catch (SQLException | SQLAdapterException e) {
       e.printStackTrace();
