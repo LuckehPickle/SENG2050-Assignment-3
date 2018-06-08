@@ -66,7 +66,8 @@ public class IssueController extends AuthenticatedController {
 
     if(user.getRole().equals(Role.IT_STAFF.name())) {
       List<Model> issues = Model
-          .all(Issue.class)
+          .where(Issue.class,"state","NEW")
+          .or("state = ?","IN_PROGRESS")
           .page(request.getParameter("page"))
           .per(25)
           .execute();
