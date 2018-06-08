@@ -35,7 +35,7 @@ INSERT INTO MaintenanceEvents (id, title, startAt, finishAt)
 VALUES ('f31a1c3e-d526-4de3-aa42-b6f5770c4054','Donec sollicitudin magna vitae congue finibus','2016-06-1 07:27:39','2018-07-1 07:27:39'),
 	     ('f31a2c3e-d526-4de3-aa42-b6f5770c4054','Sed lacinia metus eget ante bibendum bibendum. Cras in elit malesuada, luctus odio in, feugiat nibh.','2018-06-1 07:27:39','2018-07-1 07:27:39'),
 	     ('f31a3c3e-d526-4de3-aa42-b6f5770c4054','Phasellus facilisis, libero nec efficitur cursus, odio ligula maximus dui, quis bibendum nisl tortor at sem.','2018-06-1 07:27:39','2018-07-1 07:27:39'),
-	     ('f34a1c3e-d526-4de3-aa42-b6f5770c4054','Proin massa ante, faucibus id malesuada blandit, ullamcorper non mi.','2018-06-1 07:27:39','2018-07-1 07:27:39');
+	     ('f34a1c3e-d526-4de3-aa42-b6f5770c4054','Proin massa ante, faucibus id malesuada blandit, ullamcorper non mi.','2018-06-1 07:27:39','2018-06-20 07:27:39');
 
 INSERT INTO Comments (id, authorId, issueId, body, edited, createdAt)
 VALUES ('afd5c316-3ae4-47df-96fa-a4e6c953ae1d','03364a8a-d21e-4a66-ad22-1a4757ac3388','db197273-811d-4fb1-9d0c-5f02e356a0b8','Phasellus at imperdiet quam. Nullam aliquet molestie mi. Nulla ornare neque lacus, eget convallis erat convallis eu. Vestibulum a porttitor mi, a laoreet tortor. Aenean gravida odio lacinia sem cursus tincidunt. Phasellus malesuada justo nunc, sit amet imperdiet leo faucibus sed. Aenean ut imperdiet lectus.',0,'2018-06-6 14:30:00'),
