@@ -3,6 +3,7 @@ package uon.seng2050.assignment.model;
 import io.seanbailey.adapter.Model;
 import io.seanbailey.adapter.annotation.PrimaryKey;
 import io.seanbailey.adapter.exception.SQLAdapterException;
+import io.seanbailey.adapter.util.Order;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
@@ -18,6 +19,7 @@ public class Issue extends Model {
   private SubCategory subCategory;
   private String title;
   private String body;
+  private UUID answerId;
   private boolean locked;
 
 
@@ -129,7 +131,10 @@ public class Issue extends Model {
     List<Model> comments = null;
 
     try {
-      comments = Model.all(Comment.class).where("issueId", getId()).execute();
+      comments = Model
+          .where(Comment.class, "issueId", getId())
+          .order("createdAt", Order.DESCENDING)
+          .execute();
     } catch (SQLException | SQLAdapterException e) {
       e.printStackTrace();
     }
@@ -202,6 +207,15 @@ public class Issue extends Model {
 
   public void setBody(String body) {
     this.body = body;
+  }
+
+  public String getAnswerId() {
+    if (answerId == null) return null;
+    return answerId.toString();
+  }
+
+  public void setAnswerId(String answerId) {
+    this.answerId = UUID.fromString(answerId);
   }
 
   public boolean isLocked() {

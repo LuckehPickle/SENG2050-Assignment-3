@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -53,7 +54,6 @@ public class Adapter {
 
       }
 
-      model.setSaved(true);
       return model;
 
     } catch (InstantiationException | IllegalAccessException e) {
@@ -108,8 +108,14 @@ public class Adapter {
     // Create list
     List<String> attributes = new ArrayList<>();
 
+    // Merge super and class declared fields
+    Field[] classFields = clazz.getDeclaredFields();
+    Field[] superFields = clazz.getSuperclass().getDeclaredFields();
+    Field[] fields = Arrays.copyOf(classFields, classFields.length + superFields.length);
+    System.arraycopy(superFields, 0, fields, classFields.length, superFields.length);
+
     // Get and iterate over private fields
-    for (Field field : clazz.getDeclaredFields()) {
+    for (Field field : fields) {
       String name = field.getName();
 
       // Iterate over annotations
@@ -186,7 +192,15 @@ public class Adapter {
       }
 
       // No getter is available, get it directly from declared field
-      Field field = model.getClass().getDeclaredField(attribute);
+      try {
+        Field field = model.getClass().getDeclaredField(attribute);
+        field.setAccessible(true);
+        return field.get(model);
+      } catch (NoSuchFieldException ignored) {
+      }
+
+      // Attempt to get from super method
+      Field field = model.getClass().getSuperclass().getDeclaredField(attribute);
       field.setAccessible(true);
       return field.get(model);
 
@@ -213,6 +227,10 @@ public class Adapter {
   @SuppressWarnings("WeakerAccess")
   public static <T extends Model> void setAttribute(T model, String attribute, Object value)
       throws SQLAdapterException {
+
+    if (value == null) {
+      return;
+    }
 
     try {
 
