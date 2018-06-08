@@ -12,6 +12,10 @@ import javax.servlet.http.HttpSession;
 import uon.seng2050.assignment.exception.HttpException;
 import uon.seng2050.assignment.model.User;
 import uon.seng2050.assignment.util.Logger;
+import java.util.Date;
+import uon.seng2050.assignment.model.MaintenanceEvent;
+import io.seanbailey.adapter.util.Order;
+
 
 /**
  * A controller that forces uses to be authenticated before accessing any of it's contents.
@@ -60,6 +64,22 @@ abstract class AuthenticatedController extends ActionController {
       redirect("/", request, response);
       return;
     }
+
+    MaintenanceEvent event = null;
+    try {
+      List<Model> events = Model
+          .find(MaintenanceEvent.class, "startAt >= ?", new Date())
+          .order("startAt", Order.ASCENDING)
+          .execute();
+      if (!events.isEmpty()) {
+        event = (MaintenanceEvent) events.get(0);
+      }
+    } catch (SQLException | SQLAdapterException e) {
+      e.printStackTrace();
+      return;
+    }
+
+    request.setAttribute("event", event);
 
     // Retrieve user and set as request attribute
     User currentUser = (User) users.get(0);

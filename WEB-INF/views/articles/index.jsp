@@ -7,7 +7,6 @@
 <t:application>
   <jsp:attribute name="title">KnowledgeBase</jsp:attribute>
   <jsp:body>
-
     <%-- Header --%>
     <div class="wrapper">
       <h1 class="has-subtitle">Knowledgebase</h1>
@@ -45,7 +44,7 @@
                     </p>
 
                     <div class="footer">
-                      <p>Rating: <c:out value="${article.helpfulness}"/> &middot;
+
                         Last updated:
                         <fmt:formatDate pattern="dd/MM/yyyy" value="${article.updatedAt}"/></p>
                       <span class="badge"><c:out
