@@ -78,6 +78,11 @@ public class CommentController extends AuthenticatedController {
     comment.setBody(request.getParameter("comment").trim());
 
     if (comment.save()) {
+      if(user.getRole().equals("IT_STAFF") && issue.getState().equals("NEW"))
+      {
+        issue.setState("IN_PROGRESS");
+        issue.update();
+      }
       redirect("/issues/" + issue.getId(), request, response);
     } else {
       request.setAttribute("errors", comment.getErrors());

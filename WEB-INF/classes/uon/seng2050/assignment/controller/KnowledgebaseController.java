@@ -58,11 +58,11 @@ public class KnowledgebaseController extends AuthenticatedController {
     String category = request.getParameter("category");
     String subCategory = request.getParameter("subcategory");
 
-    if(category != null){
+    if (category != null) {
       chain = chain.where("category", category);
     }
 
-    if(subCategory != null){
+    if (subCategory != null) {
       chain = chain.where("subcategory", subCategory);
     }
 
@@ -134,7 +134,7 @@ public class KnowledgebaseController extends AuthenticatedController {
 
   @Action(methods = "POST", route = "/articles/:id;")
   private void addHelp(HttpServletRequest request, HttpServletResponse response, String id)
-      throws ServletException, IOException, HttpException, SQLException, SQLAdapterException{
+      throws ServletException, IOException, HttpException, SQLException, SQLAdapterException {
 
     List<Model> articles = Model.find(Article.class, "id", id).execute();
 
@@ -147,7 +147,7 @@ public class KnowledgebaseController extends AuthenticatedController {
     Article article = (Article) articles.get(0);
     article.addHelpful();
     article.update();
-    throw new HttpException(HttpStatusCode.BAD_REQUEST,"hey");
+    throw new HttpException(HttpStatusCode.BAD_REQUEST, "hey");
   }
 
 }

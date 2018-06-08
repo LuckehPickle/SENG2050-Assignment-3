@@ -23,7 +23,6 @@
       <div class="column border">
         <c:choose>
           <c:when test="${articles.isEmpty()}">
-            <%-- TODO Improve this empty state --%>
             <p class="empty-state">There are no articles in this category.
               <i class="material-icons">
                 sentiment_very_dissatisfied
