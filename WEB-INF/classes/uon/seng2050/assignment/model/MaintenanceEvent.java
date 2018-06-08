@@ -7,7 +7,7 @@ import java.util.UUID;
 public class MaintenanceEvent extends Model {
 
   private UUID id;
-  private String description;
+  private String title;
   private Date startAt;
   private Date finishAt;
 
@@ -44,14 +44,7 @@ public class MaintenanceEvent extends Model {
     this.id = UUID.fromString(id);
   }
 
-
-  public String getDescription() {
-    return description;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
+  public void generateID(){ this.id = UUID.randomUUID();}
 
   public Date getStartAt() {
     return startAt;
@@ -69,4 +62,11 @@ public class MaintenanceEvent extends Model {
     this.finishAt = finishAt;
   }
 
+  public String getTitle() {
+    return title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
 }

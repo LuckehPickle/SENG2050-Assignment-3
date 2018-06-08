@@ -34,7 +34,7 @@ CREATE TABLE Articles (
 
 CREATE TABLE MaintenanceEvents (
   id          CHAR(36)     PRIMARY KEY,
-  description TEXT         NOT NULL,
+  title       VARCHAR(128) NOT NULL,
   startAt     DATETIME     NOT NULL,
   finishAt       DATETIME     NOT NULL
 );

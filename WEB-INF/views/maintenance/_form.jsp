@@ -12,21 +12,22 @@
                        placeholder="e.g. Site Wide Maintenance" autofocus/>
             </div>
 
-            <%-- Event Summary --%>
+            <%-- Event Summary
             <div class="field">
                 <label for="eventSummary">Event Summary</label><br/>
                 <input type="text" id="eventSummary" name="eventSummary" spellcheck="false" class="wide"
                        placeholder="e.g. Event Details..." autofocus/>
-            </div>
+            </div>--%>
+
             <%-- Event Date --%>
             <div class="field">
-                <label for="eventDate">Event Date</label><br/>
+                <label for="eventDate">Event Start</label><br/>
                 <input type="date" id="eventDate" name="eventDate" class="wide" autofocus/>
             </div>
-            <%-- Event Time --%>
+            <%-- Event End --%>
             <div class="field">
-                <label for="eventTime">Event Time</label><br/>
-                <input type="time" id="eventTime" name="eventTime" class="wide" autofocus/>
+                <label for="eventEnd">Event End</label><br/>
+                <input type="date" id="eventEnd" name="eventEnd" class="wide" autofocus/>
             </div>
 
             <hr/>

@@ -4,6 +4,10 @@ import io.seanbailey.adapter.Model;
 import io.seanbailey.adapter.exception.SQLAdapterException;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -85,8 +89,23 @@ public class MaintenanceController extends AuthenticatedController {
    * @param params URL parameters.
    */
   @Action(methods = "POST", route = "/maintenance")
-  private void createMaintenanceEvent(HttpServletRequest request, HttpServletResponse response) {
+  private void createMaintenanceEvent(HttpServletRequest request, HttpServletResponse response)
+      throws ParseException, SQLException, SQLAdapterException {
+    String name = request.getParameter("eventName");
+    String start = request.getParameter("eventDate");
+    String finish = request.getParameter("eventEnd");
 
+    DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+    Date eventStart = format.parse(start);
+    Date eventFinish = format.parse(finish);
+
+    MaintenanceEvent newEvent = new MaintenanceEvent();
+    newEvent.generateID();
+    newEvent.setTitle(name);
+    newEvent.setStartAt(eventStart);
+    newEvent.setFinishAt(eventFinish);
+
+    newEvent.save();
   }
 
 

@@ -53,7 +53,6 @@
         </c:choose>
 
       </div>
-
       <div class="column">
 
         <div class="buttons">
