@@ -64,23 +64,23 @@ public class IssueController extends AuthenticatedController {
     //some ifs here?
     User user = (User) request.getAttribute("currentUser");
 
-    if(user.getRole().equals(Role.IT_STAFF.name())) {
+    if (user.getRole().equals(Role.IT_STAFF.name())) {
       List<Model> issues = Model
-          .where(Issue.class,"state","NEW")
-          .or("state = ?","IN_PROGRESS")
+          .where(Issue.class, "state", "NEW")
+          .or("state = ?", "IN_PROGRESS")
+          .page(request.getParameter("page"))
+          .per(25)
+          .execute();
+      request.setAttribute("issues", issues);
+    } else {
+      List<Model> issues = Model
+          .where(Issue.class, "authorId", user.getId())
           .page(request.getParameter("page"))
           .per(25)
           .execute();
       request.setAttribute("issues", issues);
     }
-    else {
-      List<Model> issues = Model
-          .where(Issue.class,"authorId",user.getId())
-          .page(request.getParameter("page"))
-          .per(25)
-          .execute();
-      request.setAttribute("issues", issues);
-    }
+
     render(View.ISSUES, request, response);
 
   }
@@ -134,7 +134,6 @@ public class IssueController extends AuthenticatedController {
    *
    * @param request HTTP request object
    * @param response HTTP response object
-   * @param params URL parameters.
    */
   @Action(route = "/issues/:id;/edit")
   private void renderEdit(HttpServletRequest request, HttpServletResponse response, String id)
@@ -174,11 +173,9 @@ public class IssueController extends AuthenticatedController {
    *
    * @param request HTTP request object
    * @param response HTTP response object
-   * @param params URL parameters.
    */
   @Action(methods = {"PATCH", "PUT"}, route = "/issues/:id;")
-  private void updateIssue(HttpServletRequest request, HttpServletResponse response,
-      List<String> params) {
+  private void updateIssue(HttpServletRequest request, HttpServletResponse response, String id) {
 
   }
 

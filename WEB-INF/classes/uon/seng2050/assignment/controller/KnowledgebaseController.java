@@ -1,6 +1,7 @@
 package uon.seng2050.assignment.controller;
 
 import io.seanbailey.adapter.Model;
+import io.seanbailey.adapter.SQLChain;
 import io.seanbailey.adapter.exception.SQLAdapterException;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -36,7 +37,6 @@ public class KnowledgebaseController extends AuthenticatedController {
     if (authenticate(request, response)) {
       route(this, request, response);
     }
-
   }
 
 
@@ -50,11 +50,23 @@ public class KnowledgebaseController extends AuthenticatedController {
   private void renderIndex(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException, SQLException, SQLAdapterException {
 
-    List<Model> articles = Model
+    SQLChain chain = Model
         .all(Article.class)
         .page(request.getParameter("page"))
-        .per(25)
-        .execute();
+        .per(25);
+
+    String category = request.getParameter("category");
+    String subCategory = request.getParameter("subcategory");
+
+    if(category != null){
+      chain = chain.where("category", category);
+    }
+
+    if(subCategory != null){
+      chain = chain.where("subcategory", subCategory);
+    }
+
+    List<Model> articles = chain.execute();
 
     request.setAttribute("articles", articles);
     render(View.ARTICLES, request, response);

@@ -51,7 +51,7 @@
 
     .badge {
       text-transform: lowercase;
-      background: $input;
+      background: darken($input, 3%);
       border-radius: 2px;
       font-weight: normal;
       color: lighten($text, 8%);
