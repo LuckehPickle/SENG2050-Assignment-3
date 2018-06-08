@@ -63,7 +63,7 @@
       </div>
       <div class="column">
         <div class="accordion">
-
+            <%-- Network --%>
           <div>
             <div class="category">
               <a href="${pageContext.request.contextPath}/articles?category=NETWORK">Network</a>
@@ -86,7 +86,7 @@
               </li>
             </ul>
           </div>
-
+            <%-- Software --%>
           <div>
             <div class="category">
               <a href="${pageContext.request.contextPath}/articles?category=SOFTWARE">Software</a>
@@ -106,7 +106,7 @@
               </li>
             </ul>
           </div>
-
+            <%-- Hardware--%>
           <div>
             <div class="category">
               <a href="${pageContext.request.contextPath}/articles?category=HARDWARE">Hardware</a>
@@ -130,7 +130,7 @@
               <li><a href="">Other</a></li>
             </ul>
           </div>
-
+            <%-- Email --%>
           <div>
             <div class="category">
               <a href="${pageContext.request.contextPath}/articles?category=EMAIL">Email</a>
@@ -153,7 +153,7 @@
               </li>
             </ul>
           </div>
-
+            <%-- Account --%>
           <div>
             <div class="category">
               <a href="${pageContext.request.contextPath}/articles?category=ACCOUNT">Account</a>
@@ -173,6 +173,7 @@
               </li>
             </ul>
           </div>
+            <%-- Other --%>
           <div>
             <div class="category">
               <a href="${pageContext.request.contextPath}/articles?category=OTHER">Other</a>
