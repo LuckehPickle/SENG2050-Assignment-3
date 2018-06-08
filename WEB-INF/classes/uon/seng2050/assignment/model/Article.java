@@ -17,6 +17,7 @@ public class Article extends Model {
   private int helpfulness;
   private Category category;
   private SubCategory subCategory;
+  private String publisher;
 
   /**
    * Default constructor. Set any defaults here. Note: All primitives must have a default.
@@ -101,5 +102,13 @@ public class Article extends Model {
 
   public void addHelpful() {
     helpfulness++;
+  }
+
+  public String getPublisher() {
+    return publisher;
+  }
+
+  public void setPublisher(String publisher) {
+    this.publisher = publisher;
   }
 }

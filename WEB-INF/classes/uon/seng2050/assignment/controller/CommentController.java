@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import uon.seng2050.assignment.annotation.Action;
 import uon.seng2050.assignment.exception.HttpException;
+import uon.seng2050.assignment.model.Comment;
+import uon.seng2050.assignment.model.User;
 
 /**
  * A controller for handling Comments.

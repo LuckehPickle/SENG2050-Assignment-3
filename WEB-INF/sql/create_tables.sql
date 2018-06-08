@@ -29,7 +29,8 @@ CREATE TABLE Articles (
   answer      TEXT         NOT NULL,
   helpfulness INT          NOT NULL DEFAULT 0,
   category    VARCHAR(24)  NOT NULL,
-  subCategory VARCHAR(32)  NOT NULL
+  subCategory VARCHAR(32)  NOT NULL,
+  publisher   VARCHAR(64)  NOT NULL
 );
 
 CREATE TABLE MaintenanceEvents (
