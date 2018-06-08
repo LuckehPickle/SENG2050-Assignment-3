@@ -64,12 +64,17 @@ public class IssueController extends AuthenticatedController {
       throws ServletException, IOException, SQLException, SQLAdapterException {
 
     User user = (User) request.getAttribute("currentUser");
+    String archived = request.getParameter("archived");
     SQLChain chain = Model
         .all(Issue.class)
         .page(request.getParameter("page"))
         .per(25);
 
-    if (user.getRole().equals(Role.IT_STAFF.name())) {
+    if(archived != null) {
+      chain = chain.where("state", "COMPLETED")
+          .or("state = ?", "RESOLVED");
+    }
+    else if (user.getRole().equals(Role.IT_STAFF.name())) {
       chain = chain.where("state", "NEW")
           .or("state = ?", "IN_PROGRESS");
     } else {
@@ -78,6 +83,7 @@ public class IssueController extends AuthenticatedController {
 
     List<Model> issues = chain.execute();
     request.setAttribute("issues", issues);
+    request.setAttribute("archived",archived);
     render(View.ISSUES, request, response);
 
   }
