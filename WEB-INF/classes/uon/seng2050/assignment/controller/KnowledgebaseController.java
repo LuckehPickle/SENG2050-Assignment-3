@@ -6,6 +6,7 @@ import io.seanbailey.adapter.exception.SQLAdapterException;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.UUID;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +16,12 @@ import uon.seng2050.assignment.annotation.Action;
 import uon.seng2050.assignment.exception.HttpException;
 import uon.seng2050.assignment.exception.HttpStatusCode;
 import uon.seng2050.assignment.model.Article;
+import uon.seng2050.assignment.model.Comment;
+import uon.seng2050.assignment.model.Issue;
+import uon.seng2050.assignment.model.Issue.State;
+import uon.seng2050.assignment.model.User;
+import uon.seng2050.assignment.model.User.Role;
+import uon.seng2050.assignment.util.Logger;
 
 @WebServlet(urlPatterns = {"/articles", "/articles/*"})
 public class KnowledgebaseController extends AuthenticatedController {
@@ -88,7 +95,8 @@ public class KnowledgebaseController extends AuthenticatedController {
           "Could not find an article with the id " + id);
     }
 
-    request.setAttribute("article", articles.get(0));
+    Article article = (Article) articles.get(0);
+    request.setAttribute("article", article);
     render(View.ARTICLE, request, response);
   }
 
@@ -100,7 +108,69 @@ public class KnowledgebaseController extends AuthenticatedController {
    * @param response HTTP response object
    */
   @Action(methods = "POST", route = "/articles")
-  private void publish(HttpServletRequest request, HttpServletResponse response) {
+  private void publish(HttpServletRequest request, HttpServletResponse response)
+      throws HttpException, SQLException, SQLAdapterException, IOException, ServletException {
+
+    // Issue id
+    String issueId = request.getParameter("issueId");
+
+    // Ensure issue id was given
+    if (issueId == null) {
+      throw new HttpException(HttpStatusCode.BAD_REQUEST, "No issue id given.");
+    }
+
+    // Retrieve all issues
+    List<Model> issues = Model.find(Issue.class, "id", issueId).execute();
+
+    // Ensure issue exists
+    if (issues.isEmpty()) {
+      throw new HttpException(HttpStatusCode.PAGE_NOT_FOUND, "No issue was found with the id " + issueId);
+    }
+
+    // Retrieve issue
+    Issue issue = (Issue) issues.get(0);
+    User user = (User) request.getAttribute("currentUser");
+
+    // Ensure user is staff
+    if (!user.getRole().equals(Role.IT_STAFF.name())) {
+      throw new HttpException(HttpStatusCode.FORBIDDEN, "Only IT Staff can publish articles.");
+    }
+
+    // Ensure issue is publishable
+    if (!issue.getState().equals(State.COMPLETED.name())) {
+      throw new HttpException(HttpStatusCode.BAD_REQUEST, "This issue is not completed yet.");
+    }
+
+    // Ensure issue has answer
+    if (issue.getAnswerId() == null) {
+      throw new HttpException(HttpStatusCode.BAD_REQUEST, "This issue has not yet been answered.");
+    }
+
+    // Ensure issue has answer
+    List<Model> comments = Model.find(Comment.class, "id", issue.getAnswerId()).execute();
+
+    if (comments.isEmpty()) {
+      throw new HttpException(HttpStatusCode.BAD_REQUEST, "This issue's comment doesn't exist.");
+    }
+
+    Comment answer = (Comment) comments.get(0);
+
+    Article article = new Article();
+    article.setId(UUID.randomUUID().toString());
+    article.setAnswer(answer.getBody());
+    article.setTitle(issue.getTitle());
+    article.setBody(issue.getBody());
+    article.setCategory(issue.getCategory());
+    article.setSubCategory(issue.getSubCategory());
+    article.setPublisher(user.getFullName());
+
+    if (article.save()) {
+      redirect("/articles/" + article.getId(), request, response);
+    } else {
+      request.setAttribute("errors", article.getErrors());
+      request.setAttribute("issue", issue);
+      render(View.ISSUE, request, response);
+    }
 
   }
 

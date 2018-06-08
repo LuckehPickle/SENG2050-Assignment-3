@@ -43,6 +43,7 @@ public class Article extends Model {
     return true;
   }
 
+
   //GET/SET
   public String getId() {
     return id.toString();

@@ -121,7 +121,7 @@ public class IssueController extends AuthenticatedController {
     issue.setState(State.NEW.name());
 
     if (issue.save()) {
-      redirect("/issues", request, response);
+      redirect("/issues/" + issue.getId(), request, response);
     } else {
       request.setAttribute("errors", issue.getErrors());
       render(View.NEW_ISSUE, request, response);

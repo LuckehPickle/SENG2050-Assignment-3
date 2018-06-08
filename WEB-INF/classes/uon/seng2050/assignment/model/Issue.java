@@ -121,6 +121,26 @@ public class Issue extends Model {
   }
 
 
+  public Comment getAnswer() {
+
+    List<Model> comments;
+
+    try {
+      comments = Model.find(Comment.class, "id", answerId).execute();
+    } catch (SQLException | SQLAdapterException e) {
+      e.printStackTrace();
+      return null;
+    }
+
+    if (comments.isEmpty()) {
+      return null;
+    } else {
+      return (Comment) comments.get(0);
+    }
+
+  }
+
+
   /**
    * Attempts to retrieve all comments related to this issue.
    *

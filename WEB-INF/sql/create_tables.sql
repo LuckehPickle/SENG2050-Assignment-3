@@ -43,16 +43,16 @@ ALTER TABLE Comments ADD INDEX comment_author_index (authorId);
 ALTER TABLE Comments ADD INDEX comment_issue_index (issueId);
 
 CREATE TABLE Articles (
-  id          CHAR(36)     PRIMARY KEY,
+  id          CHAR(36)    PRIMARY KEY,
   title       VARCHAR(80) NOT NULL,
-  body        TEXT         NOT NULL,
-  answer      TEXT         NOT NULL,
-  helpfulness INT          NOT NULL DEFAULT 0,
-  category    VARCHAR(24)  NOT NULL,
-  subCategory VARCHAR(32)  NOT NULL,
-  publisher   VARCHAR(64)  NOT NULL,
-  createdAt   DATETIME     NOT NULL DEFAULT '2018-06-8 13:30:00',
-  updatedAt   DATETIME     NOT NULL DEFAULT '2018-06-8 13:30:00'
+  body        TEXT        NOT NULL,
+  answer      TEXT        NOT NULL,
+  helpfulness INT         NOT NULL DEFAULT 0,
+  category    VARCHAR(24) NOT NULL,
+  subCategory VARCHAR(32) NOT NULL,
+  publisher   VARCHAR(64) NOT NULL,
+  createdAt   DATETIME    NOT NULL DEFAULT '2018-06-8 13:30:00',
+  updatedAt   DATETIME    NOT NULL DEFAULT '2018-06-8 13:30:00'
 );
 
 CREATE TABLE MaintenanceEvents (
