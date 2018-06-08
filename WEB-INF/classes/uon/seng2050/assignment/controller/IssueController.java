@@ -3,6 +3,7 @@ package uon.seng2050.assignment.controller;
 import io.seanbailey.adapter.Model;
 import io.seanbailey.adapter.SQLChain;
 import io.seanbailey.adapter.exception.SQLAdapterException;
+import io.seanbailey.adapter.util.Order;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -74,9 +75,13 @@ public class IssueController extends AuthenticatedController {
     }
     else if (user.getRole().equals(Role.IT_STAFF.name())) {
       chain = chain.where("state", "NEW")
-          .or("state = ?", "IN_PROGRESS");
+          .or("state = ?", "IN_PROGRESS")
+          .order("FIELD(state, 'NEW', 'IN_PROGRESS', 'COMPLETED' , 'RESOLVED')")
+          .order("createdAt", Order.ASCENDING);
     } else {
-      chain = chain.where("authorId", user.getId());
+      chain = chain.where("authorId", user.getId())
+          .order("FIELD(state, 'NEW', 'IN_PROGRESS', 'COMPLETED' , 'RESOLVED')")
+          .order("createdAt", Order.ASCENDING);
     }
 
     List<Model> issues = chain.execute();
