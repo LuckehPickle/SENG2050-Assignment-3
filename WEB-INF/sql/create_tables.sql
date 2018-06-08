@@ -50,6 +50,7 @@ CREATE TABLE Articles (
   helpfulness INT          NOT NULL DEFAULT 0,
   category    VARCHAR(24)  NOT NULL,
   subCategory VARCHAR(32)  NOT NULL,
+  publisher   VARCHAR(64)  NOT NULL,
   createdAt   DATETIME     NOT NULL DEFAULT '2018-06-8 13:30:00',
   updatedAt   DATETIME     NOT NULL DEFAULT '2018-06-8 13:30:00'
 );
