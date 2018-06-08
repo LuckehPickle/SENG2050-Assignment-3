@@ -12,8 +12,8 @@
             <%-- Header --%>
             <div class="article-header">
                 <h1 class="title"><c:out value="${article.title}"/></h1>
-                <%--<h2 class="category"><c:out value="${article.category}"/></h2>--%>
-                <%-- Subcategory --%>
+                <span class="badge"><c:out value="${article.category.replaceAll('_',' ')}"/></span>
+                <span class="badge"><c:out value="${article.subCategory.replaceAll('_',' ')}"/></span>
                 <%--<h3 class="date"><c:out value="${article.lastUpdated}"/></h3>--%>
             </div>
 
@@ -22,10 +22,16 @@
 
                 <div class="issue-body">
                     <p class="question"><c:out value="${article.body}"/></p>
+                    <div class="footer">
+                        <p>- Anonymous User</p>
+                    </div>
                 </div>
 
                 <div class="issue-comments">
                     <p class="answer"><c:out value="${article.answer}"/></p>
+                    <div class="footer">
+                        <p>- <c:out value="${article.publisher}"/></p>
+                    </div>
                 </div>
 
             </div>
