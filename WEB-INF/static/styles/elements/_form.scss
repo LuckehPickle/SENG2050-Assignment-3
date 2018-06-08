@@ -38,14 +38,19 @@ form {
   .error {
     margin: 0.5rem 0 2rem;
     padding: 0.5rem 1rem;
-    background: $danger;
-    color: $danger-inverted;
+    //background: $danger;
+    color: $danger;
+    border: 1px solid $danger;
     border-radius: 2px;
 
     // Fix the highlight colour, otherwise it will cause my eyes to bleed.
     ::selection {
       background: $danger-inverted;
       color: $danger;
+    }
+
+    ul {
+      margin-bottom: 0.4rem !important;
     }
   }
 

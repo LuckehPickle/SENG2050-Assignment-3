@@ -137,7 +137,16 @@ var selectOptionClickHandler = function (option) {
   select.value = option.getAttribute("data-value");
 
   // Fire event
-  select.dispatchEvent(new Event("change", { bubbles: true }));
+  var event = new CustomEvent("select:change", {
+    bubbles: true,
+    "detail": {
+      select: select,
+      value: select.value
+    }
+  });
+
+  // console.log(event);
+  document.dispatchEvent(event);
 
 };
 

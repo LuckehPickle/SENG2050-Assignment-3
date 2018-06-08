@@ -241,7 +241,11 @@ class QueryExecutor {
     // Join prepared objects
     StringJoiner joiner = new StringJoiner(", ");
     for (Object object : generator.getObjects()) {
-      joiner.add(object.toString());
+      if (object == null) {
+        joiner.add("null");
+      } else {
+        joiner.add(object.toString());
+      }
     }
 
     LOGGER.fine("%s [%s]", generator.getSql(), joiner.toString());

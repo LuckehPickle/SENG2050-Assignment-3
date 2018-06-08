@@ -9,6 +9,8 @@ import uon.seng2050.assignment.View;
 import uon.seng2050.assignment.annotation.Action;
 import uon.seng2050.assignment.exception.HttpException;
 import uon.seng2050.assignment.exception.HttpStatusCode;
+import uon.seng2050.assignment.model.User;
+import uon.seng2050.assignment.model.User.Role;
 
 /**
  * A controller which manages requests to the index of the website.
@@ -52,8 +54,14 @@ public class WelcomeController extends AuthenticatedController {
   private void handleIndex(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException, HttpException {
 
-    render(View.WELCOME, request, response);
-    //throw new HttpException(HttpStatusCode.PAGE_NOT_FOUND, "We could not find that page");
+    User user = (User) request.getAttribute("currentUser");
+
+    if (user.getRole().equals(Role.IT_STAFF.name())) {
+      redirect("/issues", request, response);
+    } else {
+      redirect("/articles", request, response);
+    }
+
   }
 
 }

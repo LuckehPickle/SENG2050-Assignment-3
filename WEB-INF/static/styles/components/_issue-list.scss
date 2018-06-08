@@ -11,12 +11,16 @@
       padding: 1.25rem 1.5rem;
       text-decoration: none;
       color: $text;
+
+      &:hover .title {
+        color: $primary;
+      }
     }
 
     .title {
       display: flex;
       align-items: center;
-      color: $primary;
+      color: lighten($text-bold, 5%);
       font-weight: bold;
       margin: 0;
     }

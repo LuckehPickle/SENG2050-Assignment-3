@@ -146,7 +146,7 @@ abstract class ActionController extends Controller {
     // Add matching groups
     route = route
         .replaceAll(":", "(?<")
-        .replaceAll(";", Matcher.quoteReplacement(">[\\w-]+)"));
+        .replaceAll(";", Matcher.quoteReplacement(">[\\w-]{36})"));
 
     // Ensure end is matched
     route = route + "$";

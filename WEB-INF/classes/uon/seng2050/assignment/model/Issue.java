@@ -149,11 +149,21 @@ public class Issue extends Model {
   }
 
   public String getSubCategory() {
+
+    if (subCategory == null) {
+      return null;
+    }
+
     return subCategory.name();
+
   }
 
   public void setSubCategory(String subCategory) {
-    this.subCategory = SubCategory.valueOf(subCategory);
+    if (subCategory == null) {
+      this.subCategory = SubCategory.OTHER;
+    } else {
+      this.subCategory = SubCategory.valueOf(subCategory);
+    }
   }
 
   public String getTitle() {
