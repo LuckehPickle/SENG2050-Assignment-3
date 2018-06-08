@@ -17,6 +17,7 @@ import uon.seng2050.assignment.exception.HttpStatusCode;
 import uon.seng2050.assignment.model.Issue;
 import uon.seng2050.assignment.model.Issue.State;
 import uon.seng2050.assignment.model.User;
+import uon.seng2050.assignment.model.User.Role;
 
 /**
  * A controller which handles all requests related to issues.
@@ -60,13 +61,25 @@ public class IssueController extends AuthenticatedController {
   private void renderIndex(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException, SQLException, SQLAdapterException {
 
-    List<Model> issues = Model
-        .all(Issue.class)
-        .page(request.getParameter("page"))
-        .per(25)
-        .execute();
+    //some ifs here?
+    User user = (User) request.getAttribute("currentUser");
 
-    request.setAttribute("issues", issues);
+    if(user.getRole().equals(Role.IT_STAFF.name())) {
+      List<Model> issues = Model
+          .all(Issue.class)
+          .page(request.getParameter("page"))
+          .per(25)
+          .execute();
+      request.setAttribute("issues", issues);
+    }
+    else {
+      List<Model> issues = Model
+          .where(Issue.class,"authorId",user.getId())
+          .page(request.getParameter("page"))
+          .per(25)
+          .execute();
+      request.setAttribute("issues", issues);
+    }
     render(View.ISSUES, request, response);
 
   }
